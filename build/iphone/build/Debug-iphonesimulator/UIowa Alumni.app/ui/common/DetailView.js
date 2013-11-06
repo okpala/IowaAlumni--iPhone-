@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/Resources/ui/common/DetailView.js
+/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/DetailView.js

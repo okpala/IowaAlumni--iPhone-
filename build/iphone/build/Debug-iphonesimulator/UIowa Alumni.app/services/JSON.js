@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/Resources/services/JSON.js
+/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/services/JSON.js

@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/Resources/ui/common/MenuRow.js
+/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/MenuRow.js

@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/Resources/ui/common/HomeImageSlider.js
+/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/HomeImageSlider.js

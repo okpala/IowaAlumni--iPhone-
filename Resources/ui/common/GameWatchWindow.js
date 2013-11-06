@@ -12,16 +12,20 @@ function GameWatchWindow(clubData, clubInfoData) {
 	
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
-		navBarHidden: true
+		navBarHidden: true,
+		//barColor:'#99cc66',
+		
+		
 	});
-
-	 var statusBar = Ti.UI.createView({
+	
+	var statusBar = Ti.UI.createView({
 	    backgroundColor:'#000',
 	    top: 0,
 	    height: 20
 	});
 	
-	self.add(statusBar);
+	
+	
 	
 	//create master view container
 	var masterContainerWindow = Ti.UI.createWindow({
@@ -57,7 +61,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	self.add(navGroup);
 	
 	
-	if (Ti.Platform.version == "6.0"){
+	if (Ti.Platform.version < 7.0){
 		var top = 43;
 		
 	}
@@ -193,8 +197,11 @@ function GameWatchWindow(clubData, clubInfoData) {
 	
 	//masterContainerWindow.add(mapWin);
 	self.add(mapWin);
-	
-
+	//self.add(statusBar);
+	if (Ti.Platform.version >= 7.0){
+		self.add(statusBar);
+		
+	}
 	table.addEventListener('click', function(e){
 		
 		map = Ti.Map.createView({
@@ -240,7 +247,11 @@ var mainWinTab1 = Titanium.UI.createWindow({
 });
 
 
-	mainWinTab1.add(statusBar);
+	
+	if (Ti.Platform.version >= 7.0){
+		mainWinTab1.add(statusBar);
+		
+	}
 
 var navTab1 = Titanium.UI.iPhone.createNavigationGroup({
     window: mainWinTab1
@@ -411,6 +422,9 @@ var tab2 = Titanium.UI.createTab({
 tabGroup.addTab(tab2); 
 
 tabGroup.setActiveTab(0); 
+if (Ti.Platform.version < 7.0){
+	tabGroup.add(statusBar);
+}
 tabGroup.open();
 
 return mainWinTab1;
