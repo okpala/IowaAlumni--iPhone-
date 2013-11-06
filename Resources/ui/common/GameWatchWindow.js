@@ -422,7 +422,7 @@ var tab2 = Titanium.UI.createTab({
 tabGroup.addTab(tab2); 
 
 tabGroup.setActiveTab(0); 
-if (Ti.Platform.version < 7.0){
+if (Ti.Platform.version >= 7.0){
 	tabGroup.add(statusBar);
 }
 tabGroup.open();
