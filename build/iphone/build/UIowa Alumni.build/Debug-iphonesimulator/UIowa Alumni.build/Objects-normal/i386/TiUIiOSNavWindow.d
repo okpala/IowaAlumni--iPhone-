@@ -1,42 +1,42 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUIiOSNavWindow.m \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUIiOSNavWindow.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUIWindow.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUIView.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBase.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiThreading.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiPublicAPI.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiEvaluator.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/KrollContext.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/headers/TiCore/TiCore.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUIiOSNavWindow.m \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUIiOSNavWindow.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUIWindow.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUIView.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBase.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiThreading.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiPublicAPI.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiEvaluator.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/KrollContext.h \
+  /Users/schmidt/IowaAlumni/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/KrollCallback.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/KrollObject.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBindingRunLoop.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiAnimation.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiPoint.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDimension.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiColor.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/ListenerEntry.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiModule.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUtils.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/WebFont.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiFile.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBuffer.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBlob.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/LayoutConstraint.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiGradient.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUIiOSNavWindowProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiWindowProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiViewProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiRect.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiViewTemplate.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiTab.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiTabGroup.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiViewController.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiControllerProtocols.h
+  /Users/schmidt/IowaAlumni/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/KrollCallback.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/KrollObject.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBindingRunLoop.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiAnimation.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiPoint.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDimension.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiColor.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/ListenerEntry.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiModule.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUtils.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/WebFont.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiFile.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBuffer.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBlob.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/LayoutConstraint.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiGradient.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUIiOSNavWindowProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiWindowProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiViewProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiRect.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiViewTemplate.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiTab.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiTabGroup.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiViewController.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiControllerProtocols.h

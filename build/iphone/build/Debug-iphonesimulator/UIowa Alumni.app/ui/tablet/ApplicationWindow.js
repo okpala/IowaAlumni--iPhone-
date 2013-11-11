@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/tablet/ApplicationWindow.js
+/Users/schmidt/IowaAlumni/Resources/ui/tablet/ApplicationWindow.js

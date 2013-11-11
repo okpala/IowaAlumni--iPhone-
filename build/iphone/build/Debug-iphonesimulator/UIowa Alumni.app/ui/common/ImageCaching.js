@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/ImageCaching.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/ImageCaching.js

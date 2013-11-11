@@ -1,2 +1,1 @@
-dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/main.m
+dependencies: /Users/schmidt/IowaAlumni/build/iphone/main.m

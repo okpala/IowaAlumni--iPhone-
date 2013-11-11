@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiThreading.m \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiThreading.h
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiThreading.m \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiThreading.h

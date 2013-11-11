@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/CachedImageView.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/CachedImageView.js

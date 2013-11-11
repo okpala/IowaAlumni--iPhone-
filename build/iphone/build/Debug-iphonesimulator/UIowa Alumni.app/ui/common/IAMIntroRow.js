@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/IAMIntroRow.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/IAMIntroRow.js

@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/ApplicationRouting.m \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/ApplicationRouting.h
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/ApplicationRouting.m \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/ApplicationRouting.h

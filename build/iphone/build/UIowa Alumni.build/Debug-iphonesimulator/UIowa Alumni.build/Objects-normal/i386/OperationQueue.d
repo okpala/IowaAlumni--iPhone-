@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/OperationQueue.m \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBase.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiThreading.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiPublicAPI.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/OperationQueue.h
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/OperationQueue.m \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBase.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiThreading.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiPublicAPI.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/OperationQueue.h

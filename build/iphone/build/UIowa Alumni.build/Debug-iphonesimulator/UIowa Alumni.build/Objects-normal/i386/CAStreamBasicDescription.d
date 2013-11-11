@@ -1,5 +1,5 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/CAStreamBasicDescription.cpp \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/CAStreamBasicDescription.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/CADebugMacros.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/CAMath.h
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/CAStreamBasicDescription.cpp \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/CAStreamBasicDescription.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/CADebugMacros.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/CAMath.h

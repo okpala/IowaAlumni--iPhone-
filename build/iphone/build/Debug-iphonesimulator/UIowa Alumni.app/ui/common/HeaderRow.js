@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/HeaderRow.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/HeaderRow.js

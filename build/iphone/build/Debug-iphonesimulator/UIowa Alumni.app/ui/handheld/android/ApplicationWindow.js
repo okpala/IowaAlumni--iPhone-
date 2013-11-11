@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/handheld/android/ApplicationWindow.js
+/Users/schmidt/IowaAlumni/Resources/ui/handheld/android/ApplicationWindow.js

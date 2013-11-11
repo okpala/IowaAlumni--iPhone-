@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/SingleRow.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/SingleRow.js

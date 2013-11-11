@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/HomeSMSection.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/HomeSMSection.js

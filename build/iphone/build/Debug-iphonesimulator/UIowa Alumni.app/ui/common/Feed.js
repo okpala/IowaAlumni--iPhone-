@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/Feed.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/Feed.js

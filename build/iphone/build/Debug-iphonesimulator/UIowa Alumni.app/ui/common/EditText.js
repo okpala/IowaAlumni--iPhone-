@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/ui/common/EditText.js
+/Users/schmidt/IowaAlumni/Resources/ui/common/EditText.js

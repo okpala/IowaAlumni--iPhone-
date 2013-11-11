@@ -1,22 +1,22 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMDocumentProxy.m \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMDocumentProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBase.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiThreading.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiPublicAPI.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiEvaluator.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/KrollContext.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/headers/TiCore/TiCore.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMDocumentProxy.m \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMDocumentProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBase.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiThreading.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiPublicAPI.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiEvaluator.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/KrollContext.h \
+  /Users/schmidt/IowaAlumni/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/KrollCallback.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/KrollObject.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBindingRunLoop.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/GDataXMLNode.h \
+  /Users/schmidt/IowaAlumni/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/KrollCallback.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/KrollObject.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBindingRunLoop.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/GDataXMLNode.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2/libxml/tree.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2/libxml/xmlversion.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2/libxml/xmlexports.h \
@@ -40,24 +40,24 @@ dependencies: \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2/libxml/SAX2.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2/libxml/xpath.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/include/libxml2/libxml/xpathInternals.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMNodeProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMNodeListProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMTextNodeProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TIDOMCharacterDataProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMElementProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMAttrProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMCDATANodeProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMCommentProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMPIProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMDocFragProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TIDOMDOMImplementationProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TIDOMDocumentTypeProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMEntityRefProxy.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiUtils.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDimension.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiColor.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/WebFont.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiFile.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBuffer.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiBlob.h \
-  /Users/localadmin/IowaAlumni\ (iPhone)/IowaAlumni\ (iPhone)/build/iphone/Classes/TiDOMValidator.h
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMNodeProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMNodeListProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMTextNodeProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TIDOMCharacterDataProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMElementProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMAttrProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMCDATANodeProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMCommentProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMPIProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMDocFragProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TIDOMDOMImplementationProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TIDOMDocumentTypeProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMEntityRefProxy.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiUtils.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDimension.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiColor.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/WebFont.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiFile.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBuffer.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiBlob.h \
+  /Users/schmidt/IowaAlumni/build/iphone/Classes/TiDOMValidator.h

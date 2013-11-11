@@ -1,1 +1,1 @@
-/Users/localadmin/IowaAlumni (iPhone)/IowaAlumni (iPhone)/Resources/services/rss.js
+/Users/schmidt/IowaAlumni/Resources/services/rss.js
