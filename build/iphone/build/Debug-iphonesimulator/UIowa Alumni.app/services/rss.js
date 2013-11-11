@@ -1,1 +1,0 @@
-/Users/schmidt/IowaAlumni/Resources/services/rss.js

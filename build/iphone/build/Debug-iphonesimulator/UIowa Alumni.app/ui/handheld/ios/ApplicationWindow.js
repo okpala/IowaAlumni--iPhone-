@@ -1,1 +1,0 @@
-/Users/schmidt/IowaAlumni/Resources/ui/handheld/ios/ApplicationWindow.js
