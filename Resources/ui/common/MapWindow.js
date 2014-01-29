@@ -3,7 +3,8 @@ var ApplicationWindow = require('ui/common/ApplicationWindow');
 var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
-function MapWindow() {
+function MapWindow(title, tracker) {
+	tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var mapWin = Ti.UI.createView({
 	    
@@ -86,6 +87,12 @@ function MapWindow() {
 		
 	linkLabel.addEventListener('click', function(e){
 		new WebView ('http://iowalum.com/membership/benefits.cfm');
+		tracker.trackEvent({
+						category: "Benefits",
+						action: "click",
+						label: "Members Benefits' Website",
+						value: 1
+					});
 	});
 	textView.add(linkLabel);	
 
@@ -164,6 +171,13 @@ function MapWindow() {
 		mapWin.add(map);
 		
 		map.selectAnnotation(companyInfo[e.index]);
+		
+		tracker.trackEvent({
+			category: "Benefits",
+			action: "click",
+			label: companyInfo[e.index].title,
+			value: 1
+		});
 	});
 	
 	

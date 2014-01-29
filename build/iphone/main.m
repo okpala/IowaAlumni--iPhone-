@@ -7,7 +7,7 @@
 #define _QUOTEME(x) #x
 #define STRING(x) _QUOTEME(x)
 
-NSString * const TI_APPLICATION_DEPLOYTYPE = @"production";
+NSString * const TI_APPLICATION_DEPLOYTYPE = @"development";
 NSString * const TI_APPLICATION_ID = @"com.iowalum.uiowaalumni";
 NSString * const TI_APPLICATION_PUBLISHER = @"University of Iowa Alumni Association";
 NSString * const TI_APPLICATION_URL = @"http://www.iowalum.com/";
@@ -15,7 +15,7 @@ NSString * const TI_APPLICATION_NAME = @"UIowa Alumni";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
 NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
 NSString * const TI_APPLICATION_COPYRIGHT = @"2013 by University of Iowa Alumni Association";
-NSString * const TI_APPLICATION_GUID = @"0d268600-4584-4b3f-9837-3546725ec1e6";
+NSString * const TI_APPLICATION_GUID = @"1d505bc3-a313-4102-81b6-62ed140216c7";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 
 #ifdef TARGET_IPHONE_SIMULATOR

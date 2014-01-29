@@ -4,7 +4,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function Ad(post) {
+function Ad(post, tracker, title) {
 
     var row = Ti.UI.createTableViewRow({
 		hasChild:true,
@@ -50,6 +50,12 @@ function Ad(post) {
 	
 	row.addEventListener('click', function(e) {
 		new WebView (post.link );
+		tracker.trackEvent({
+				category: "Ads",
+				action: "click",
+				label: "An Ad in the " + title + "'s Window - " + post.ad,
+				value: 1
+		});
 	});
 	
 	return row;

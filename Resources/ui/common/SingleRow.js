@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * that contains Tilte, Time, and Place
  */
 
-function SingleRow(post) {
+function SingleRow(post, tracker, title) {
 
    var table = Ti.UI.createTableView({
 		separatorColor: 	'd5d5d5',
@@ -29,6 +29,12 @@ function SingleRow(post) {
 
 	 rowText.addEventListener('click', function(e) {
 			new WebView (post.url);
+			tracker.trackEvent({
+				category: "Events",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
 	 });
 	table.height = rowText.height;
 	var data = [];

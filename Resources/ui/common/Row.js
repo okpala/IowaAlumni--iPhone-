@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function Row(post) {
+function Row(post, tracker, title) {
 
     this.postheight		= 0;
 
@@ -86,6 +86,12 @@ function Row(post) {
 	
 	row.addEventListener('click', function(e) {
 		new WebView (e.row.link);
+		tracker.trackEvent({
+				category: "Articles",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + e.row.link,
+				value: 1
+			});
 	});
 	
 	return row;

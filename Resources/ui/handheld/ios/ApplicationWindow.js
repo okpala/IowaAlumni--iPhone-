@@ -1,7 +1,8 @@
 //Application Window Component Constructor
 var RootWindow = require('ui/common/RootWindow');
 
-function ApplicationWindow(feed,windowtitle) {
+function ApplicationWindow(feed,windowtitle, tracker) {
+	tracker.trackScreen(windowtitle);
 	//declare module dependencies
 	var RSS = require('services/rss'),
 		MasterView = require('ui/common/MasterView'),
@@ -26,7 +27,7 @@ function ApplicationWindow(feed,windowtitle) {
 	self.add(statusBar);
 
 	//construct UI
-	var masterView = new MasterView(feed);
+	var masterView = new MasterView(feed, windowtitle, tracker);
 	var	detailView = new DetailView();
 
 	

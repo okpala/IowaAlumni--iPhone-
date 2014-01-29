@@ -1,1 +1,0 @@
-function WebView(e){var t=Ti.UI.createWebView({url:e,top:0}),i=new NavigateWindow("",t);return i.open(),i}var NavigateWindow=require("ui/common/NavigateWindow");module.exports=WebView;

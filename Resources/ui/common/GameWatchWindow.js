@@ -1,9 +1,10 @@
 var WebView = require('ui/common/WebView');
 var EditText = require('ui/common/EditText');
+var ClubsWindow = require('ui/common/ClubsWindow');
 /*
  * Clubs and Game Watch Tabs 
  */
-function GameWatchWindow(clubData, clubInfoData) {
+function GameWatchWindow(clubData, clubInfoData, tracker) {
 	
 //-----------	Game Watch Window -----------//
 
@@ -23,7 +24,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	    top: 0,
 	    height: 20
 	});
-	
+	self.add(statusBar);
 	
 	
 	
@@ -199,10 +200,16 @@ function GameWatchWindow(clubData, clubInfoData) {
 	self.add(mapWin);
 	//self.add(statusBar);
 	if (Ti.Platform.version >= 7.0){
-		self.add(statusBar);
+		//self.add(statusBar);
 		
 	}
 	table.addEventListener('click', function(e){
+		tracker.trackEvent({
+					category: "Game Watches",
+					action: "click",
+					label: clubData[e.index].club,
+					value: 1
+		});
 		
 		map = Ti.Map.createView({
 			mapType: Titanium.Map.STANDARD_TYPE,
@@ -226,20 +233,65 @@ function GameWatchWindow(clubData, clubInfoData) {
 	
 //Creating tabs on the Game Watch Window 
 var tabGroup = Titanium.UI.createTabGroup();
+/*
+var tab1 = Titanium.UI.createTab({  
+    icon: "people.png",
+    title: 'Iowa Clubs',
+    window: mainWinTab1
+});
+tabGroup.addTab(tab1); 
 
 
-
-var navTab2 = Titanium.UI.iPhone.createNavigationGroup({
+var tab2 = Titanium.UI.createTab({  
+    icon: 'tv.png',
+    title: 'Game Watch Locations',
     window: self
+});
+tabGroup.addTab(tab2); 
+
+tabGroup.setActiveTab(0); 
+
+
+tabGroup.open();
+*/
+var navTab2 = Titanium.UI.iPhone.createNavigationGroup({
+	window: self
 });
 
 var baseWinTab2 = Titanium.UI.createWindow({
     navBarHidden: true
 });
+baseWinTab2.add(navTab2);	
 
-baseWinTab2.add(navTab2);
+	
+var navTab1 = new ClubsWindow(clubData, clubInfoData, tabGroup, tracker, top);
+
+var baseWinTab1 = Titanium.UI.createWindow({
+    navBarHidden: true
+});
+baseWinTab1.add(navTab1);
+
+var tab1 = Titanium.UI.createTab({  
+    icon: "people.png",
+    title: 'Iowa Clubs',
+    window: baseWinTab1
+});
+tabGroup.addTab(tab1); 
 
 
+var tab2 = Titanium.UI.createTab({  
+    icon: 'tv.png',
+    title: 'Game Watch Locations',
+    window: baseWinTab2
+});
+tabGroup.addTab(tab2); 
+
+//tabGroup.setActiveTab(0); 
+//tabGroup.add(statusBar);
+if (Ti.Platform.version >= 7.0){
+	//tabGroup.add(statusBar);
+}
+/*
 //--------------Club Window ----------------------//
 var mainWinTab1 = Titanium.UI.createWindow({
     navBarHidden: true,
@@ -431,8 +483,15 @@ return mainWinTab1;
 
 }
 
-//Helper Functions
 
+
+
+	*/
+	tabGroup.open();
+	return self;
+}
+
+//Helper Functions
 function addRows(i, data, flag){
 	if (i == 1 && flag == true){
 		var row = Ti.UI.createTableViewRow({
@@ -494,9 +553,8 @@ function addRows(i, data, flag){
 		data.push(row);
 		
 	}
+	
 	return data;
 }
-
-
 
 module.exports = GameWatchWindow;

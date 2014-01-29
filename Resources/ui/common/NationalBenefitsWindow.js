@@ -4,7 +4,8 @@ var GetFeed = require('ui/common/GetFeed');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 
-function NationalBenefitsWindow(){
+function NationalBenefitsWindow(title, tracker){
+	tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var masterView = Ti.UI.createView();
 	var textView = Ti.UI.createView({
@@ -48,7 +49,7 @@ function NationalBenefitsWindow(){
 		});
 		
 	linkLabel.addEventListener('click', function(e){
-		(new MapWindow()).open();
+		(new MapWindow(title, tracker)).open();
 	});
 	
 	var discount = new GetFeed (Feeds.nationalDiscountFeed());
@@ -90,6 +91,12 @@ function NationalBenefitsWindow(){
 	
 	table.addEventListener('click', function(e){
 		new WebView (discount[e.index].link);
+		tracker.trackEvent({
+			 category: "Benefits",
+			 action: "click",
+			 label: discount[e.index].title,
+			 value: 1
+		});
 	});
 	
 

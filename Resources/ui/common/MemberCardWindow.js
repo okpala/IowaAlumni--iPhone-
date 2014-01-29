@@ -2,8 +2,8 @@ var ApplicationWindow = require('ui/common/ApplicationWindow');
 var GetFeed = require('ui/common/GetFeed');
 var Feed = require('ui/common/Feed');
 
-function  MemberCardWindow(title){
-	
+function  MemberCardWindow(title, tracker){
+	tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var passwordWin = Ti.UI.createView({
 	    top: 0,
@@ -136,11 +136,22 @@ function  MemberCardWindow(title){
 		password.pass2 =  password.pass2.replace(" ","");
    		if (passwordTextField.value == password.pass) {
 			 getMemberCard(false);
-			
+			tracker.trackEvent({
+				category: "Members Card",
+				action: "using card",
+				label: "Password: onceahawkeye",
+				value: 1
+			});
 		}
 		
 		else if (passwordTextField.value == password.pass2) {
 			 getMemberCard(true);
+			 tracker.trackEvent({
+				category: "Members Card",
+				action: "using card",
+				label: "Password: hawkeyes",
+				value: 1
+			});
 		}
 		else {
 			wrongPasswordLabel.setVisible(true);

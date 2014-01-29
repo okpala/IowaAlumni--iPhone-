@@ -21,7 +21,7 @@ var Post = require('ui/common/Post'),
  *  and Iowa Insider Window
  */
 
-function MasterView(feed) {
+function MasterView(feed, title, tracker) {
 	
 	var minheight = 200;
 	var Feeds = new Feed();
@@ -60,6 +60,12 @@ function MasterView(feed) {
 			table.setContentInsets({top:60},{animated:true});
 			table.scrollToTop(-60,true);
 			beginReloading();
+			tracker.trackEvent({
+				category: "Refreshing  Window",
+				action: "refresh",
+				label: "Refreshing " + title + "'s Window",
+				value: 1
+			});
 		}
 	});
 
@@ -114,13 +120,13 @@ function MasterView(feed) {
 				
 				//Add Feed's Ad
 				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.iowaInsiderFeed()){
-					var row = new Ad(ads[adIndex + 3]);
+					var row = new Ad(ads[adIndex + 3], tracker, title);
 					rows.push(row);
 					adIndex++;
 				}
 				
 				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-					var row = new Ad(ads[adIndex + 6]);
+					var row = new Ad(ads[adIndex + 6], tracker, title);
 					rows.push(row);
 					adIndex++;
 				}
@@ -129,7 +135,7 @@ function MasterView(feed) {
 				
 				if(post.imageheight != null && post.imageheight > 150 && post.imageheight < 300 && featureSet == false && feed != Feeds.eventsFeed()) {
 					
-					var row = new FeatureRow(post);
+					var row = new FeatureRow(post, tracker, title);
 					featureSet = true;
 					row.addEventListener('swipe', function(e){
 				 		self.fireEvent('swipeToggle');
@@ -139,10 +145,10 @@ function MasterView(feed) {
 				
 				else if (feed == Feeds.eventsFeed()){
 					if ((Counter == 0) ||(tempDate != post.pubDate && Counter != 0)){
-						var header = new HeaderRow(post);
+						var header = new HeaderRow(post, tracker, title);
 						
 						if (headerCounter != 0 && (headerCounter % 3) == 0 && adIndex < 3 ){
-							var row = new Ad(ads[adIndex]);
+							var row = new Ad(ads[adIndex], tracker, title);
 							rows.push(row);
 							adIndex++;
 							if (adIndex == 3){
@@ -152,13 +158,13 @@ function MasterView(feed) {
 						rows.push(header);
 						headerCounter++;
 					}
-					var row = new SingleRow(post);
+					var row = new SingleRow(post, tracker, title);
 					
 					rows.push(row);
 				}
 				
 				else {
-					var row =  new Row(post);
+					var row =  new Row(post, tracker, title);
 
 					if(groupCount >= 1) {
 						group.push(row);
@@ -204,13 +210,13 @@ function MasterView(feed) {
 	
 	
 	if ( feed == Feeds.iowaInsiderFeed()){
-		var ad = new StaticAd(13,350);
+		var ad = new StaticAd(13,350, tracker, title);
 	}
 	else if ( feed == Feeds.magazineFeed()){
-		var ad = new StaticAd(12,350);
+		var ad = new StaticAd(12,350, tracker, title);
 	}
 	else {
-		var ad = new StaticAd(10,350);
+		var ad = new StaticAd(10,350, tracker, title);
 	}
 	
 	self.add(ad);

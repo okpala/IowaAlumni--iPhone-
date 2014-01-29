@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * Return a Single Post Area that contains
  * tilte, description, and picture(Not Required)
  */
-function SinglePost (post){
+function SinglePost (post, tracker, title){
 	
 	
 	
@@ -31,7 +31,12 @@ function SinglePost (post){
 
 	 rowText.addEventListener('click', function(e) {
 			new WebView ( post.url);
-			
+			tracker.trackEvent({
+				category: "Articles",
+				action: "click",
+				label: "An Article in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
 	 });
 	 
 	 table.height = rowText.height;

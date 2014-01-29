@@ -3,10 +3,10 @@
     <sdk-version>3.1.3.GA</sdk-version>
     <deployment-targets>
         <target device="tizen">false</target>
-        <target device="mobileweb">true</target>
+        <target device="mobileweb">false</target>
         <target device="iphone">true</target>
-        <target device="ipad">true</target>
-        <target device="android">true</target>
+        <target device="ipad">false</target>
+        <target device="android">false</target>
         <target device="blackberry">false</target>
     </deployment-targets>
     <id>com.iowalum.uiowaalumni</id>
@@ -32,7 +32,7 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>0d268600-4584-4b3f-9837-3546725ec1e6</guid>
+    <guid>1d505bc3-a313-4102-81b6-62ed140216c7</guid>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -44,13 +44,8 @@
             <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
         </orientations>
     </iphone>
-    <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest>
-            <supports-screens android:anyDensity="false"/>
-        </manifest>
-    </android>
-    <mobileweb>
-        <theme>default</theme>
-    </mobileweb>
-    <modules/>
+    
+     <modules>
+        <module platform="iphone" version="1.0">analytics.google</module>
+    </modules>
 </ti:app>

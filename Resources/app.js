@@ -1,6 +1,6 @@
 
 
-
+/*
 if (Ti.version < 1.8 ) {
 	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
 }
@@ -31,16 +31,26 @@ else {
 				Window = require('ui/handheld/ios/ApplicationWindow');
 			}
 		}
+*/		
+		//determine platform and form factor and render appropriate components
 		
+		var osname = Ti.Platform.osname,
+			height = Ti.Platform.displayCaps.platformHeight,
+			width = Ti.Platform.displayCaps.platformWidth;
+		
+		var Window = require('ui/handheld/ios/ApplicationWindow');
 		var ContactUsWindow = require('ui/common/ContactUsWindow');
-		var ClubsWindow = require('ui/common/ClubsWindow');
+		var StatesWindow = require('ui/common/StatesWindow');
 		var MapWindow = require('ui/common/MapWindow');
 		var MemberCardWindow = require('ui/common/MemberCardWindow');
 		var RootWindow = require('ui/common/RootWindow');
 		var Feed = require('ui/common/Feed');
 		var MenuRow = require('ui/common/MenuRow');
 		var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
-		var Feed = new Feed();
+		var Tracker = require('ui/common/Tracker');
+	
+		var tracker = new Tracker();
+		var Feeds = new Feed();
 		
 	
 		
@@ -117,12 +127,12 @@ else {
 		
 		var menuTitles = [
 			(new MenuRow(home,'home','',true)),
-			(new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+			(new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 			(new MenuRow(clubsTitle,'clubs','',false)),
 			(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 			(new MenuRow(memberCardTitle,'membercard','',false)),
-			(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-		    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+			(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+		    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 		    (new MenuRow(contactUsTitle,'info','',false))
 		];
 
@@ -140,7 +150,7 @@ else {
 		
 		// Main window
 		
-		var win = new RootWindow();
+		var win = new RootWindow(home, tracker);
 		
 		win.moving = false;
 		win.axis = 0;
@@ -202,15 +212,15 @@ else {
 			
 			// Navigate to the item selected
 			if(e.row.feedTitle==iowaInsiderTitle) {
-				var win = new Window(e.row.feed,e.row.feedTitle);
+				var win = new Window(e.row.feed,e.row.feedTitle, tracker);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),true)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),true)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles); 
@@ -220,16 +230,16 @@ else {
 			}
 			
 			else if(e.row.feedTitle==home) {
-				var win =  new RootWindow();
+				var win =  new RootWindow(home, tracker);
 				
 				menuTitles = [
 					(new MenuRow(home,'home','',true)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles); 
@@ -238,15 +248,15 @@ else {
 			}
 			
 			else if(e.row.feedTitle==alumniMagazineTitle) {
-				var win = new Window(e.row.feed,e.row.feedTitle);
+				var win = new Window(e.row.feed,e.row.feedTitle, tracker);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),true)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),true)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles); 
@@ -255,16 +265,16 @@ else {
 			}
 			
 			else if(e.row.feedTitle==eventsTitle) {
-				var win = new Window(e.row.feed,e.row.feedTitle);
+				var win = new Window(e.row.feed,e.row.feedTitle, tracker);
 				//var win = new EventsHomeWindow(eventsTitle);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),true)),
+				    (new MenuRow(eventsTitle,'events', Feeds.eventsFeed(),true)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles); 
@@ -273,15 +283,15 @@ else {
 			}
 
 			else if(e.row.feedTitle==memberBenefitsTitle) {
-				var win = new NationalBenefitsWindow();
+				var win = new NationalBenefitsWindow(e.row.feedTitle, tracker);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',true)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles); 
@@ -289,15 +299,15 @@ else {
 			}
 			
 			else if(e.row.feedTitle==clubsTitle) {
-				var win = new ClubsWindow(clubsTitle);
+				var win = new StatesWindow(clubsTitle, tracker);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',true)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles); 
@@ -305,30 +315,30 @@ else {
 			}
 			
 			else if(e.row.feedTitle==contactUsTitle) {
-				var win = new ContactUsWindow(contactUsTitle);
+				var win = new ContactUsWindow(contactUsTitle, tracker);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',false)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',true))
 				];
 				tableView.setData(menuTitles); 
 				menuWindow.add(tableView);
 			}
 			else {
-				var win = new MemberCardWindow(memberCardTitle);
+				var win = new MemberCardWindow(memberCardTitle, tracker);
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
-				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+				    (new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 					(new MenuRow(clubsTitle,'clubs','',false)),
 					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 					(new MenuRow(memberCardTitle,'membercard','',true)),
-					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
-				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feeds.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feeds.iowaInsiderFeed(),false)),
 				    (new MenuRow(contactUsTitle,'info','',false))
 				];
 				tableView.setData(menuTitles);
@@ -368,10 +378,12 @@ else {
 			});
 
 		});
-
-
+		
+/*
 
 	})();
 	
 
 }
+*/
+

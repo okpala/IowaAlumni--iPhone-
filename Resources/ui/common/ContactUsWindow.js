@@ -4,9 +4,9 @@ var SocialMediaIcons = require('ui/common/SocialMediaIcons');
 var StaticAd = require('ui/common/StaticAd');
 
 
-function ContactUsWindow(title) {
+function ContactUsWindow(title, tracker) {
 	
-
+	tracker.trackScreen(title);
 	//The Different Views
 	var contactView = Ti.UI.createView({
 		separatorColor: 	'd5d5d5',
@@ -45,8 +45,7 @@ function ContactUsWindow(title) {
 	  showHorizontalScrollIndicator: false
 	});
 	
-	var ad = new StaticAd(14,392);
-	
+	var ad = new StaticAd(14,392, tracker, title);
 	
 	
 	// The Contact View 
@@ -71,6 +70,12 @@ function ContactUsWindow(title) {
 	
 	levittLabel.addEventListener('click', function(e) {
 		new WebView ('http://www.iowalum.com/about/levitt.cfm');
+		tracker.trackEvent({
+					category: "General Information",
+					action: "click",
+					label: "UIAA About Us Site",
+					value: 1
+				});
 	}); 
 	
 	
@@ -102,6 +107,12 @@ function ContactUsWindow(title) {
 		var f = Ti.Filesystem.getFile('cricket.wav');
 		emailDialog.addAttachment(f);
 		emailDialog.open();
+		tracker.trackEvent({
+					category: "General Information",
+					action: "click",
+					label: "UIAA Email Address",
+					value: 1
+				});
 	}); 
 	
 	
@@ -115,12 +126,12 @@ function ContactUsWindow(title) {
 	
 	var icon = new SocialMediaIcons();
 	
-	var facebookimage = icon.facebook(37,55);
-	var twitterimage = icon.twitter(37,115);
-	var foursquareimage = icon.foursquare(37,175);
-	var linkedInimage = icon.linkedIn(97,55);
-	var pinterestimage = icon.pinterest(97,115);
-	var instagramimage = icon.instagram(97,175);
+	var facebookimage = icon.facebook(37,55,tracker);
+	var twitterimage = icon.twitter(37,115,tracker);
+	var foursquareimage = icon.foursquare(37,175,tracker);
+	var linkedInimage = icon.linkedIn(97,55,tracker);
+	var pinterestimage = icon.pinterest(97,115,tracker);
+	var instagramimage = icon.instagram(97,175,tracker);
 	
 	
 	

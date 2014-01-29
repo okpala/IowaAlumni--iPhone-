@@ -14,8 +14,8 @@ var Feed = require('ui/common/Feed');
 /*
  * Home Window
  */
-function RootWindow(data) {
-	
+function RootWindow(title, tracker) {
+	tracker.trackScreen(title);
 	var masterView = Ti.UI.createView();
 	var Feeds = new Feed();
 	var tableView = new PostTable();
@@ -115,7 +115,7 @@ function RootWindow(data) {
 			row.add(headerLabel);
 			rows.push(row);
 			
-			var row = new SinglePost(alerts[i]);
+			var row = new SinglePost(alerts[i], tracker, title);
 			rows.push(row);
 		}
 	}	
@@ -139,7 +139,7 @@ function RootWindow(data) {
 			
 			
 			for (var i = 0; i < events.length; i++) {
-				var row = new SingleRow (events[i]);
+				var row = new SingleRow (events[i], tracker, title);
 				
 				rows.push(row);
 			}
@@ -159,7 +159,7 @@ function RootWindow(data) {
 		rows.push(row);
 	
 		var article = new GetFeed (Feeds.articleOfTheWeekFeed());
-		var row = new SinglePost(article[0]);
+		var row = new SinglePost(article[0],tracker);
 		
 		rows.push(row);
 	//----------------------------------------------------------------------------	
@@ -172,7 +172,7 @@ function RootWindow(data) {
 		});
 		
 		
-		var row = new HomeSMSection();
+		var row = new HomeSMSection(tracker);
 		
 		rows.push(row);
 		
@@ -189,7 +189,7 @@ function RootWindow(data) {
 	// load initial rss feed
 	refreshRSS();
 
-	var ad = new StaticAd(9,392);
+	var ad = new StaticAd(9,392, tracker, title);
 	
 	
 	masterView.add(ad);

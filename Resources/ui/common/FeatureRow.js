@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function FeatureRow(post) {
+function FeatureRow(post, tracker, title) {
 
 	this.containerheight = 0;
 
@@ -93,6 +93,12 @@ function FeatureRow(post) {
 	
 	row.addEventListener('click', function(e) {
 		new WebView (post.url);
+		tracker.trackEvent({
+				category: "Featured Articles",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
 	});
 					
 	
