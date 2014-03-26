@@ -102,7 +102,7 @@ void DoProxyDelegateReadValuesWithKeysFromProxy(UIView<TiProxyDelegate> * target
  */
 @interface TiProxy : NSObject<KrollTargetable> {
 @public
-	BOOL _bubbleParent;
+	BOOL bubbleParent;
 
 @private
 	NSMutableDictionary *listeners;
@@ -121,12 +121,6 @@ void DoProxyDelegateReadValuesWithKeysFromProxy(UIView<TiProxyDelegate> * target
 	id<TiEvaluator> pageContext;
 	id<TiEvaluator> executionContext;
 }
-
-/* Convenience method, especially for autoloading modules. The selector
- * is a class method taking one argument, which is the TiBindingRunLoop
- * started.
- */
-+(void)performSelectorDuringRunLoopStart:(SEL)selector;
 
 -(void)boundBridge:(id<TiEvaluator>)newBridge withKrollObject:(KrollObject *)newKrollObject;
 -(void)unboundBridge:(id<TiEvaluator>)oldBridge;
@@ -233,8 +227,7 @@ void DoProxyDelegateReadValuesWithKeysFromProxy(UIView<TiProxyDelegate> * target
  is the type that has a parent to bubble to (This is primairly views, but may
  have some exceptions).
  */
--(NSNumber*)bubbleParent;
--(void)setBubbleParent:(id)arg;
+@property(nonatomic,readwrite,assign) BOOL bubbleParent;
 
 #pragma mark Utility
 -(KrollObject *)krollObjectForContext:(KrollContext *)context;

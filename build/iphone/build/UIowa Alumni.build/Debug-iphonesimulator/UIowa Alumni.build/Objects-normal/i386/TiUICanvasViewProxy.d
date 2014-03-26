@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiUICanvasViewProxy.m
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/TiUICanvasViewProxy.m

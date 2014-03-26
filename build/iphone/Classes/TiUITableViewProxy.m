@@ -68,7 +68,6 @@ USE_VIEW_FOR_CONTENT_HEIGHT
 
 -(void)viewWillDetach
 {
-    ((TiUITableView*)[self view]).viewWillDetach = YES;
     for (TiUITableViewSectionProxy* section in sections) {
         for (TiUITableViewRowProxy* row in [section rows]) {
             [row detachView];
@@ -80,8 +79,7 @@ USE_VIEW_FOR_CONTENT_HEIGHT
 
 -(void)viewDidAttach
 {
-    TiUITableView * ourView = (TiUITableView *)[self view];
-    ourView.viewWillDetach = NO;
+	TiUITableView * ourView = (TiUITableView *)[self view];
     for (TiUITableViewSectionProxy* section in sections) {
 		[section setTable:ourView];
     }
@@ -215,7 +213,7 @@ USE_VIEW_FOR_CONTENT_HEIGHT
 		return;
 	}
 	TiViewProxy<TiKeyboardFocusableView> * chosenField = [[[TiApp controller] keyboardFocusedProxy] retain];
-	BOOL hasFocus = [chosenField focused:nil];
+	BOOL hasFocus = [chosenField focused];
 	BOOL oldSuppress = [chosenField suppressFocusEvents];
 	[chosenField setSuppressFocusEvents:YES];
 	tableAction();

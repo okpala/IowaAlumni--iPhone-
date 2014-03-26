@@ -21,7 +21,6 @@
 @synthesize delegate;
 @synthesize needsRefreshingWithSelection;
 @synthesize placed;
-@synthesize offset;
 
 #define LEFT_BUTTON  1
 #define RIGHT_BUTTON 2
@@ -33,8 +32,6 @@
 	static int mapTags = 0;
 	tag = mapTags++;
 	needsRefreshingWithSelection = YES;
-	offset = CGPointZero;
-	[super _configure];
 }
 
 -(NSMutableDictionary*)langConversionTable
@@ -316,15 +313,6 @@
     }
 }
 
-- (void)setCenterOffset:(id)centeroffset
-{
-    [self replaceValue:centeroffset forKey:@"centerOffset" notification:NO];
-    CGPoint newVal = [TiUtils pointValue:centeroffset];
-    if (!CGPointEqualToPoint(newVal,offset)) {
-        offset = newVal;
-        [self setNeedsRefreshingWithSelection:YES];
-    }
-}
 
 -(int)tag
 {

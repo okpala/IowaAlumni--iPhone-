@@ -167,13 +167,12 @@
 	if ([[wrapper subviews] count]==0)
 	{
 		// we need to realize this view
+		[viewproxy windowWillOpen];
 		TiUIView *uiview = [viewproxy view];
 		[wrapper addSubview:uiview];
+		[viewproxy reposition];
 	}
-    [viewproxy windowWillOpen];
-    [viewproxy reposition];
-    [viewproxy windowDidOpen];
-
+	[viewproxy parentWillShow];
 }
 
 -(NSRange)cachedFrames:(int)page
@@ -223,10 +222,8 @@
         if (i >= renderRange.location && i < NSMaxRange(renderRange)) {
             [self renderViewForIndex:i];
         }
-        else {
-            [viewProxy windowWillClose];
-            [viewProxy parentWillHide];
-            [viewProxy windowDidClose];
+        else if ([viewProxy viewAttached]) {
+            [viewProxy detachView];
         }
     }
 }

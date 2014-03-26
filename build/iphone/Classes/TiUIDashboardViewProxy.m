@@ -16,18 +16,7 @@
 #import "LauncherButton.h"
 #import "LauncherView.h"
 
-NSArray* dashboardKeySequence;
-
 @implementation TiUIDashboardViewProxy
-
--(NSArray *)keySequence
-{
-	if (dashboardKeySequence == nil)
-	{
-		dashboardKeySequence = [[NSArray arrayWithObjects:@"rowCount",@"columnCount",nil] retain];
-	}
-	return dashboardKeySequence;
-}
 
 -(id)init
 {

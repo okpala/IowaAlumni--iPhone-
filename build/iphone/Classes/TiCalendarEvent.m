@@ -496,11 +496,9 @@
 
 -(NSNumber*) save:(id)arg
 {
-    id val = nil;
-    ENSURE_ARG_OR_NIL_AT_INDEX(val, arg, 0, NSNumber);
     EKSpan span = EKSpanThisEvent;
-    if (val != nil) {
-        span = [TiUtils intValue:val def:EKSpanThisEvent];
+    if (arg != nil) {
+        span = [TiUtils intValue:arg def:EKSpanThisEvent];
     }
     EKEventStore* ourStore = [module store];
     if (ourStore == NULL) {
@@ -527,11 +525,9 @@
 
 -(NSNumber*) remove:(id)arg
 {
-    id val = nil;
-    ENSURE_ARG_OR_NIL_AT_INDEX(val, arg, 0, NSNumber);
     EKSpan span = EKSpanThisEvent;
-    if (val != nil) {
-        span = [TiUtils intValue:val def:EKSpanThisEvent];
+    if (arg != nil) {
+        span = [TiUtils intValue:arg def:EKSpanThisEvent];
     }
     EKEventStore* ourStore = [module store];
     __block NSError * error = nil;

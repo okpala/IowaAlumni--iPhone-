@@ -18,6 +18,7 @@
 #import "TiUITableViewProxy.h"
 #import "TiApp.h"
 #import "TiLayoutQueue.h"
+#import "TiRootController.h"
 
 #define DEFAULT_SECTION_HEADERFOOTER_HEIGHT 20.0
 #define GROUPED_MARGIN_WIDTH 18.0
@@ -183,7 +184,7 @@
     
     // In order to avoid ugly visual behavior, whenever a cell is laid out, we MUST relayout the
     // row concurrently.
-    [proxy triggerLayout];
+    [TiLayoutQueue layoutProxy:proxy];
 }
 
 -(BOOL) selectedOrHighlighted
@@ -202,7 +203,9 @@
 		//Because there's the chance that the other state still has the gradient, let's keep it around.
 		return;
 	}
-    
+
+	CALayer * ourLayer = [self layer];
+	
 	if(gradientLayer == nil)
 	{
 		gradientLayer = [[TiGradientLayer alloc] init];
@@ -211,9 +214,6 @@
 	}
 
 	[gradientLayer setGradient:currentGradient];
-    
-	CALayer * ourLayer = [[[self contentView] layer] superlayer];
-	
 	if([gradientLayer superlayer] != ourLayer)
 	{
         CALayer* contentLayer = [[self contentView] layer];
@@ -295,7 +295,7 @@
 
 @implementation TiUITableView
 #pragma mark Internal 
-@synthesize searchString, viewWillDetach;
+@synthesize searchString;
 
 -(id)init
 {
@@ -659,7 +659,7 @@
     BOOL reloadSearch = NO;
 
 	TiViewProxy<TiKeyboardFocusableView> * chosenField = [[[TiApp controller] keyboardFocusedProxy] retain];
-	BOOL hasFocus = [chosenField focused:nil];
+	BOOL hasFocus = [chosenField focused];
 	BOOL oldSuppress = [chosenField suppressFocusEvents];
 	[chosenField setSuppressFocusEvents:YES];
 	switch (action.type)
@@ -1262,11 +1262,7 @@
 
 -(void)hideSearchScreen:(id)sender
 {
-    if (viewWillDetach) {
-        return;
-    }
-    
-	// check to make sure we're not in the middle of a layout, in which case we
+	// check to make sure we're not in the middle of a layout, in which case we 
 	// want to try later or we'll get weird drawing animation issues
 	if (tableview.frame.size.width==0)
 	{
@@ -1296,10 +1292,6 @@
     // because of where the hide might be triggered from.
     
     
-    if (viewWillDetach) {
-        return;
-    }
-    searchActivated = NO;
     NSArray* visibleRows = [tableview indexPathsForVisibleRows];
     [tableview reloadRowsAtIndexPaths:visibleRows withRowAnimation:UITableViewRowAnimationNone];
     
@@ -1410,10 +1402,8 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
 {
-    // called when cancel button pressed
-    [searchBar setText:nil];
-    [self setSearchString:nil];
-    [self updateSearchResultIndexes];
+	// called when cancel button pressed
+	[searchBar setText:nil];
     if (searchActivated) {
         searchActivated = NO;
         [tableview reloadData];
@@ -1598,7 +1588,6 @@
 		[searchField windowWillOpen];
 		[searchField setDelegate:self];
 		tableController = [[UITableViewController alloc] init];
-		[TiUtils configureController:tableController withObject:nil];
 		tableController.tableView = [self tableView];
 		[tableController setClearsSelectionOnViewWillAppear:!allowsSelectionSet];
 		searchController = [[UISearchDisplayController alloc] initWithSearchBar:[search searchBar] contentsController:tableController];
@@ -1842,17 +1831,12 @@ return result;	\
 	
 	TiUITableViewRowProxy *row = [self rowForIndexPath:index];
 	[row triggerAttach];
-    
+	
 	// the classname for all rows that have the same substainal layout will be the same
 	// we reuse them for speed
 	UITableViewCell *cell = [ourTableView dequeueReusableCellWithIdentifier:row.tableClass];
-
 	if (cell == nil)
 	{
-        if (row.callbackCell != nil) {
-            //Ensure that the proxy is associated with one cell only
-            [row.callbackCell setProxy:nil];
-        }
 		cell = [[[TiUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:row.tableClass row:row] autorelease];
         CGSize cellSize = [(TiUITableViewCell*)cell computeCellSize];
 		[cell setBounds:CGRectMake(0, 0, cellSize.width,cellSize.height)];
@@ -1860,8 +1844,6 @@ return result;	\
 	}
 	else
 	{
-        //Ensure that the row is detached if reusing cells did not do so.
-        [row prepareTableRowForReuse];
         // Have to reset the proxy on the cell, and the row's callback cell, as it may have been cleared in reuse operations (or reassigned)
         [(TiUITableViewCell*)cell setProxy:row];
         [row setCallbackCell:(TiUITableViewCell*)cell];
@@ -2180,7 +2162,7 @@ return result;	\
 -(CGFloat)computeRowWidth
 {
     CGFloat rowWidth = tableview.bounds.size.width;
-	if ((self.tableView.style == UITableViewStyleGrouped) && (![TiUtils isIOS7OrGreater]) ){
+	if (self.tableView.style == UITableViewStyleGrouped) {
 		rowWidth -= GROUPED_MARGIN_WIDTH;
 	}
     
@@ -2440,19 +2422,6 @@ return result;	\
 
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
-    if (viewWillDetach) {
-        return;
-    }
-
-    //IOS7 DP3. TableView seems to be adding the searchView to
-    //tableView. Bug on IOS7?
-    if ([TiUtils isIOS7OrGreater]) {
-        if (![[[controller searchBar] superview] isKindOfClass:[TiUIView class]]) {
-            if ([[searchField view] respondsToSelector:@selector(searchBar)]) {
-                [[searchField view] performSelector:@selector(searchBar)];
-            }
-        }
-    }
     animateHide = YES;
     [self performSelector:@selector(hideSearchScreen:) withObject:nil afterDelay:0.2];
 }

@@ -1,4 +1,4 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/CAXException.cpp \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/CAXException.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/CADebugMacros.h
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/CAXException.cpp \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/CAXException.h \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/CADebugMacros.h

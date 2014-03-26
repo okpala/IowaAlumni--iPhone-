@@ -1,1 +1,1 @@
-/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/common/MasterView.js
+/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/common/MasterView.js

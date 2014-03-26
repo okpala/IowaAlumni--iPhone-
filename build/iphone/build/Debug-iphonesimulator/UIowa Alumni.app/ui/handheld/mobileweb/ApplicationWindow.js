@@ -1,1 +1,1 @@
-/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/handheld/mobileweb/ApplicationWindow.js
+/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/handheld/mobileweb/ApplicationWindow.js

@@ -44,6 +44,7 @@ else {
 		var MapWindow = require('ui/common/MapWindow');
 		var MemberCardWindow = require('ui/common/MemberCardWindow');
 		var RootWindow = require('ui/common/RootWindow');
+		var EventWindow = require('ui/common/EventWindow');
 		var Feed = require('ui/common/Feed');
 		var MenuRow = require('ui/common/MenuRow');
 		var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');

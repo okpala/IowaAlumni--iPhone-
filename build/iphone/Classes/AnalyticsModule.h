@@ -18,9 +18,6 @@
 	NSTimer *flushTimer;
 	NSURL *url;
 	NSRecursiveLock *lock;
-	NSString * lastEvent;
 }
-
-@property(nonatomic,copy) NSString * lastEvent;
 
 @end

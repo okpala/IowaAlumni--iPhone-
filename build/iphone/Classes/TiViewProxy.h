@@ -39,7 +39,7 @@
 /**
  Tells if this proxy is currently focused
  */
-- (BOOL)focused:(id)unused;
+- (BOOL)focused;
 
 #pragma mark Private internal APIs.
 
@@ -567,10 +567,8 @@ enum
 -(void)relayout;
 
 -(void)reposition;	//Todo: Replace
-/**
- Tells if the view is enqueued in the LayoutQueue
- */
--(BOOL)willBeRelaying;
+
+-(BOOL)willBeRelaying;	//Todo: Replace
 
 -(BOOL) widthIsAutoFill;
 -(BOOL) widthIsAutoSize;

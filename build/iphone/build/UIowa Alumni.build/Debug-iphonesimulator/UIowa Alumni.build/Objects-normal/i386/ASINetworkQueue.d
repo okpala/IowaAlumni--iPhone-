@@ -1,8 +1,8 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASINetworkQueue.m \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASINetworkQueue.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIProgressDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequest.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestConfig.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASICacheDelegate.h
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASINetworkQueue.m \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASINetworkQueue.h \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestDelegate.h \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIProgressDelegate.h \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequest.h \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestConfig.h \
+  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASICacheDelegate.h

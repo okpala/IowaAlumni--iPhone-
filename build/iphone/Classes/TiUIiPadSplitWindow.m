@@ -19,7 +19,6 @@
 #import "TiViewController.h"
 #import "TiApp.h"
 #import "TiUIiPadPopoverProxy.h"
-#import "TiWindowProxy.h"
 
 #ifdef USE_TI_UIIPADSPLITWINDOWBUTTON
 #import "TiUIiPadSplitWindowButtonProxy.h"
@@ -29,13 +28,14 @@ UIViewController * ControllerForProxy(TiViewProxy * proxy);
 
 UIViewController * ControllerForProxy(TiViewProxy * proxy)
 {
-    if ([proxy isKindOfClass:[TiWindowProxy class]]) {
-        [(TiWindowProxy*)proxy setIsManaged:YES];
-    }
+	if([proxy respondsToSelector:@selector(controller)])
+	{
+	//	return [(TiWindowProxy *)proxy controller];
+	}
 
 	[[proxy view] setAutoresizingMask:UIViewAutoresizingNone];
 
-	return [[[TiViewController alloc] initWithViewProxy:proxy] autorelease];
+	return [[[TiViewController alloc] initWithViewProxy:(TiViewProxy<TiUIViewController>*)proxy] autorelease];
 }
 
 
@@ -57,9 +57,9 @@ UIViewController * ControllerForProxy(TiViewProxy * proxy)
 		controller = [[MGSplitViewController alloc] init];		
 		[controller setViewControllers:[NSArray arrayWithObjects:
 				ControllerForProxy(masterProxy),ControllerForProxy(detailProxy),nil]];
-		[TiUtils configureController:controller withObject:nil];
+
 		controller.delegate = self;
-        
+
 		UIView * controllerView = [controller view];
 		
 		[controllerView setFrame:[self bounds]];

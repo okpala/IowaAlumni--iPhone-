@@ -6,10 +6,15 @@
  * 
  * WARNING: This is generated code. Modify at your own risk and without support.
  */
-#ifdef USE_TI_UIIOSNAVIGATIONWINDOW
-#import "TiUIWindow.h"
 
-@interface TiUIiOSNavWindow : TiUIWindow
+/**
+ The protocol for tab controller.
+ */
+@protocol TiTabController
+
+/**
+ Returns the window associated with the tab controller.
+ */
+-(id)window;
 
 @end
-#endif

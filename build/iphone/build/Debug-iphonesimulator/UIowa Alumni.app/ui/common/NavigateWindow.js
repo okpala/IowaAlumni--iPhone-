@@ -1,1 +1,1 @@
-/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/common/NavigateWindow.js
+/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/common/NavigateWindow.js

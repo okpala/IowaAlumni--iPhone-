@@ -1,1 +1,1 @@
-/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/common/GetFeed.js
+/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/common/GetFeed.js

@@ -10,6 +10,10 @@ Feed.prototype.eventsFeed = function(){
 	return 'http://iowalum.com/calendar/feed_xml.cfm';
 };
 
+Feed.prototype.eventsSportsCategoryFeed = function(){
+	return 'http://iowalum.com/calendar/feed_xml_sports.cfm';
+};
+
 Feed.prototype.magazineFeed = function(){
 	return 'http://iowalum.com/magazine/feed_xml.cfm';
 };

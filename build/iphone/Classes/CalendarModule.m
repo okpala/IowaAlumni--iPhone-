@@ -27,15 +27,6 @@ enum {
 };
 typedef NSUInteger EKEntityType;
 
-typedef void(^EKEventStoreRequestAccessCompletionHandler)(BOOL granted, NSError *error);
-
-
-@protocol EKEventStoreIOS6Support <NSObject>
-@optional
-+ (NSInteger)authorizationStatusForEntityType:(EKEntityType)entityType;
-- (void)requestAccessToEntityType:(EKEntityType)entityType completion:(EKEventStoreRequestAccessCompletionHandler)completion;
-@end
-
 #endif
 
 @implementation CalendarModule
@@ -75,9 +66,12 @@ typedef void(^EKEventStoreRequestAccessCompletionHandler)(BOOL granted, NSError 
 {
     [super startup];
     store = NULL;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
     if ([EKEventStore respondsToSelector:@selector(authorizationStatusForEntityType:)]) {
          iOS6API = YES;
     }
+#endif
+
 }
 
 -(void) eventStoreChanged:(NSNotification*)notification
@@ -206,6 +200,7 @@ typedef void(^EKEventStoreRequestAccessCompletionHandler)(BOOL granted, NSError 
 	bool doPrompt = NO;
     
     
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
     if (iOS6API) {
         
         long int permissions = [EKEventStore authorizationStatusForEntityType:entityType];
@@ -225,6 +220,7 @@ typedef void(^EKEventStoreRequestAccessCompletionHandler)(BOOL granted, NSError 
 				break;
 		}
 	}
+#endif
     
 	if (!doPrompt) {
 		NSDictionary * propertiesDict = [TiUtils dictionaryWithCode:code message:errorStr];
@@ -234,22 +230,22 @@ typedef void(^EKEventStoreRequestAccessCompletionHandler)(BOOL granted, NSError 
 		[invocationArray release];
 		return;
 	}
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
 	TiThreadPerformOnMainThread(^(){
 		
         EKEventStore* ourstore = [self store];
         [ourstore requestAccessToEntityType:EKEntityTypeEvent
                                  completion:^(BOOL granted, NSError *error){
-                                     NSDictionary* propertiesDict;
-                                     if (error == nil) {
-                                         propertiesDict = [TiUtils dictionaryWithCode:(granted ? 0 : 1) message:nil];
-                                     } else {
-                                         propertiesDict = [TiUtils dictionaryWithCode:[error code]
-                                                                              message:[TiUtils messageFromError:error]];
-                                     }
+                                     NSDictionary *propertiesDict = [TiUtils dictionaryWithCode:[error code]
+                                                                                        message:[TiUtils messageFromError:error]];
                                      KrollEvent * invocationEvent = [[KrollEvent alloc] initWithCallback:callback eventObject:propertiesDict thisObject:self];
                                      [[callback context] enqueue:invocationEvent];
+                                     
+                                     
                                  }];
 	}, NO);
+#endif
 }
 
 #pragma mark - Public API
@@ -269,9 +265,11 @@ typedef void(^EKEventStoreRequestAccessCompletionHandler)(BOOL granted, NSError 
 -(NSNumber*) eventsAuthorization
 {
     long int result = EKAuthorizationStatusAuthorized;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
     if (iOS6API) { //in iOS 5.1 and below: no need to check for authorization.
         result = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
     }
+#endif
     return [NSNumber numberWithLong:result];
 }
 #pragma mark - Properties
