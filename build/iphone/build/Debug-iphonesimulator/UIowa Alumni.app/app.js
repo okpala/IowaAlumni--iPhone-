@@ -1,1 +1,1 @@
-/Users/aawebstudent/IowaAlumni--iPhone-/Resources/app.js
+/Users/charlesokpala/IowaAlumni--iPhone-/Resources/app.js

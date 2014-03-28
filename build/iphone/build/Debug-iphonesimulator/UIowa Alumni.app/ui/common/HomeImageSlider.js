@@ -1,1 +1,1 @@
-/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/common/HomeImageSlider.js
+/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/common/HomeImageSlider.js

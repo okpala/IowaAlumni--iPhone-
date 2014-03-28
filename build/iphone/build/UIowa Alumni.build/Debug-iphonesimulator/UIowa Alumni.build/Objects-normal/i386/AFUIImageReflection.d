@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/AFOpenFlow/AFUIImageReflection.m \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/AFOpenFlow/AFUIImageReflection.h
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/AFOpenFlow/AFUIImageReflection.m \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/AFOpenFlow/AFUIImageReflection.h

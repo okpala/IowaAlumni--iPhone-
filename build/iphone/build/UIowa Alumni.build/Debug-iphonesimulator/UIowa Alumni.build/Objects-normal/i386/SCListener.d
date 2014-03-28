@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/SCListener.m \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/SCListener.h
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/SCListener.m \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/SCListener.h

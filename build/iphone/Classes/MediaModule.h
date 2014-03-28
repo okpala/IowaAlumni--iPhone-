@@ -52,6 +52,7 @@
 	UIInterfaceOrientation oldOrientation;
 	UIInterfaceOrientation newOrientation;
 	BOOL isPresenting;
+	BOOL isPopoverSpecified;
 }
 
 +(NSDictionary*)itemProperties;

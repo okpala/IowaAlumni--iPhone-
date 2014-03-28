@@ -1,9 +1,9 @@
 dependencies: \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqliteDatabase.m \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PlausibleDatabase.h \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLResultSet.h \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLPreparedStatement.h \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLDatabase.h \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqliteDatabase.h \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqlitePreparedStatement.h \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqliteResultSet.h
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqliteDatabase.m \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PlausibleDatabase.h \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLResultSet.h \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLPreparedStatement.h \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLDatabase.h \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqliteDatabase.h \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqlitePreparedStatement.h \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/PlausibleDatabase/PLSqliteResultSet.h

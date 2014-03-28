@@ -1,1 +1,1 @@
-/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/common/Description.js
+/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/common/Description.js

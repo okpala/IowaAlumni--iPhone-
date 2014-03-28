@@ -169,8 +169,8 @@ else {
 
 		
 		// NavigationGroup
-		var navGroup = Ti.UI.iPhone.createNavigationGroup({
-		    window:win
+		var navGroup = Titanium.UI.iOS.createNavigationWindow({
+		    window: win
 		});
 		navWindow.add(navGroup);
 
@@ -350,7 +350,7 @@ else {
 			win.axis = 0;
 
 			// NavigationGroup
-			var navGroup = Ti.UI.iPhone.createNavigationGroup({
+			var navGroup = Titanium.UI.iOS.createNavigationWindow({
 			    window:win
 			});
 			navWindow.add(navGroup);

@@ -1,1 +1,1 @@
-/Users/aawebstudent/IowaAlumni--iPhone-/Resources/ui/common/SinglePost.js
+/Users/charlesokpala/IowaAlumni--iPhone-/Resources/ui/common/SinglePost.js

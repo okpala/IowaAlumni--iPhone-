@@ -132,7 +132,6 @@ TI_INLINE void waitForMemoryPanicCleared();   //WARNING: This must never be run 
 	
 	// attach our main view controller
 	controller = [[TiRootViewController alloc] init];
-	
 	// attach our main view controller... IF we haven't already loaded the main window.
 	[window setRootViewController:controller];
     [window makeKeyAndVisible];
@@ -187,7 +186,7 @@ TI_INLINE void waitForMemoryPanicCleared();   //WARNING: This must never be run 
 
 - (void)boot
 {
-	DebugLog(@"[INFO] %@/%@ (%s.57634ef)",TI_APPLICATION_NAME,TI_APPLICATION_VERSION,TI_VERSION_STR);
+	DebugLog(@"[INFO] %@/%@ (%s.222f4d1)",TI_APPLICATION_NAME,TI_APPLICATION_VERSION,TI_VERSION_STR);
 	
 	sessionId = [[TiUtils createUUID] retain];
 	TITANIUM_VERSION = [[NSString stringWithCString:TI_VERSION_STR encoding:NSUTF8StringEncoding] retain];
@@ -603,58 +602,18 @@ TI_INLINE void waitForMemoryPanicCleared();   //WARNING: This must never be run 
 
 -(void)showModalController:(UIViewController*)modalController animated:(BOOL)animated
 {
-	/*
-	 *	In iPad (TIMOB 7839) there is a bug in iOS where a text field having
-	 *	focus during a modal presentation can lead to an edge case.
-	 *	The new view is not attached yet, and any current view will be covered
-	 *	by the new modal controller. Because of this, there is no valid reason
-	 *	to have a text field with focus.
-	 */
-	[controller dismissKeyboard];
-
-	UINavigationController *navController = nil; //[(TiRootViewController *)controller focusedViewController];
-	if (navController==nil)
-	{
-		navController = [controller navigationController];
-	}
-	// if we have a nav controller, use him, otherwise use our root controller
-	if (navController!=nil)
-	{
-		[controller windowFocused:modalController];
-		[self attachModal:modalController toController:navController animated:animated];
-	}
-	else
-	{
-		[self attachModal:modalController toController:controller animated:animated];
-	}
+    [controller showControllerModal:modalController animated:animated];
 }
 
 -(void)hideModalController:(UIViewController*)modalController animated:(BOOL)animated
 {
-	UIViewController *navController = [modalController parentViewController];
-
-	//	As of iOS 5, Apple is phasing out the modal concept in exchange for
-	//	'presenting', making all non-Ti modal view controllers claim to have
-	//	no parent view controller.
-	if (navController==nil && [modalController respondsToSelector:@selector(presentingViewController)])
-	{
-		navController = [modalController presentingViewController];
-	}
-	[controller windowClosed:modalController];
-	if (navController!=nil)
-	{
-		[navController dismissModalViewControllerAnimated:animated];
-	}
-	else 
-	{
-		[controller dismissModalViewControllerAnimated:animated];
-	}
+    [controller hideControllerModal:modalController animated:animated];
 }
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     if ([self windowIsKeyWindow]) {
-        return [controller supportedInterfaceOrientations];
+        return [controller supportedOrientationsForAppDelegate];
     }
     
     //UIInterfaceOrientationMaskAll = 30;

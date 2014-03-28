@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/Reachability.m \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/ASI/Reachability.h
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/Reachability.m \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/Reachability.h

@@ -56,10 +56,10 @@ function ApplicationWindow(windowtitle, masterView) {
 		self.fireEvent('menuClick');
 	});
 	
-	var navGroup = Ti.UI.iPhone.createNavigationGroup({
+	var navGroup  = Titanium.UI.iOS.createNavigationWindow({
 		window:masterContainerWindow
 	});
-	self.add(navGroup);
+	//self.add(navGroup);
 	
 	return self;
 };

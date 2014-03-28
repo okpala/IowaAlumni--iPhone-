@@ -19,6 +19,9 @@
 
 -(UITabBar*)tabbar;
 -(void)_resetTabArray:(NSArray*)newTabOrder; // Used in tab reordering 
+
+#pragma mark - internal use only
+-(BOOL)canFocusTabs;
 @end
 
 #endif

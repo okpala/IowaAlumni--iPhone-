@@ -194,6 +194,8 @@ function RootWindow(title, tracker) {
 	
 	masterView.add(ad);
 	var self = new ApplicationWindow("Home", masterView);
+	
+	
 
 	return self;
 

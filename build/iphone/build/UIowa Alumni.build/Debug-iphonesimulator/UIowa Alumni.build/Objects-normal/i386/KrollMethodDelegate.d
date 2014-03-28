@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethodDelegate.m \
-  /Users/aawebstudent/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethodDelegate.h
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethodDelegate.m \
+  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethodDelegate.h

@@ -30,7 +30,7 @@
     CLActivityType activityType;
     BOOL pauseLocationUpdateAutomatically;
 #endif
-	
+	NSDictionary * lastLocationDict;
 	NSRecursiveLock* lock;
 }
 
