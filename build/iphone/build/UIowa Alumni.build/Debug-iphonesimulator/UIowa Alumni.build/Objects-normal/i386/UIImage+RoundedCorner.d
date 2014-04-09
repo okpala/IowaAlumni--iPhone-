@@ -1,4 +1,4 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/UIImage+RoundedCorner.m \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/UIImage+RoundedCorner.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/UIImage+Alpha.h
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/UIImage+RoundedCorner.m \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/UIImage+RoundedCorner.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/UIImage+Alpha.h

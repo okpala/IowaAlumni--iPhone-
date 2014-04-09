@@ -31,6 +31,11 @@
 	[super _destroy];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.EmailDialog";
+}
+
 -(NSArray *)attachments
 {
 	return attachments;

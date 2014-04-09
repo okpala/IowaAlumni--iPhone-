@@ -13,6 +13,11 @@
 
 @implementation TiUIiPhoneAnimationStyleProxy
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.iPhone.AnimationStyle";
+}
+
 MAKE_SYSTEM_PROP(NONE,UIViewAnimationOptionTransitionNone);
 MAKE_SYSTEM_PROP(CURL_UP,UIViewAnimationOptionTransitionCurlUp);
 MAKE_SYSTEM_PROP(CURL_DOWN,UIViewAnimationOptionTransitionCurlDown);

@@ -131,9 +131,15 @@
 	[self replaceValue:nil forKey:@"navTintColor" notification:NO];
 	[self replaceValue:nil forKey:@"barImage" notification:NO];
 	[self replaceValue:nil forKey:@"translucent" notification:NO];
+	[self replaceValue:nil forKey:@"titleAttributes" notification:NO];
 	[self replaceValue:NUMBOOL(NO) forKey:@"tabBarHidden" notification:NO];
 	[self replaceValue:NUMBOOL(NO) forKey:@"navBarHidden" notification:NO];
 	[super _configure];
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.UI.Window";
 }
 
 
@@ -274,14 +280,6 @@
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    //Update the barImage here as well. Might have the wrong bounds but that will be corrected
-    //in the call from frameSizeChanged in TiUIWindow. Avoids the visual glitch
-    if ( (shouldUpdateNavBar) && (controller != nil) && ([controller navigationController] != nil) ) {
-        id barImageValue = [self valueForKey:@"barImage"];
-        if ((barImageValue != nil) && (barImageValue != [NSNull null])) {
-            [self updateBarImage];
-        }
-    }
     [self willChangeSize];
 }
 
@@ -311,6 +309,7 @@
 }
 
 #pragma mark - UINavController, NavItem UI
+
 
 -(void)showNavBar:(NSArray*)args
 {
@@ -381,39 +380,117 @@
     }
 }
 
+-(void)setTitleAttributes:(id)args
+{
+    ENSURE_UI_THREAD(setTitleAttributes,args);
+    ENSURE_SINGLE_ARG_OR_NIL(args, NSDictionary);
+    [self replaceValue:args forKey:@"titleAttributes" notification:NO];
+
+    NSMutableDictionary* theAttributes = nil;
+    if (args != nil) {
+        theAttributes = [NSMutableDictionary dictionary];
+        if ([args objectForKey:@"color"] != nil) {
+            UIColor* theColor = [[TiUtils colorValue:@"color" properties:args] _color];
+            if (theColor != nil) {
+                [theAttributes setObject:theColor forKey:([TiUtils isIOS7OrGreater] ? NSForegroundColorAttributeName : UITextAttributeTextColor)];
+            }
+        }
+        if ([args objectForKey:@"shadow"] != nil) {
+            NSShadow* shadow = [TiUtils shadowValue:[args objectForKey:@"shadow"]];
+            if (shadow != nil) {
+                if ([TiUtils isIOS7OrGreater]) {
+                    [theAttributes setObject:shadow forKey:NSShadowAttributeName];
+                } else {
+                    if (shadow.shadowColor != nil) {
+                        [theAttributes setObject:shadow.shadowColor forKey:UITextAttributeTextShadowColor];
+                    }
+                    NSValue *theValue = [NSValue valueWithUIOffset:UIOffsetMake(shadow.shadowOffset.width, shadow.shadowOffset.height)];
+                    [theAttributes setObject:theValue forKey:UITextAttributeTextShadowOffset];
+                }
+            }
+        }
+        
+        if ([args objectForKey:@"font"] != nil) {
+            UIFont* theFont = [[TiUtils fontValue:[args objectForKey:@"font"] def:nil] font];
+            if (theFont != nil) {
+                [theAttributes setObject:theFont forKey:([TiUtils isIOS7OrGreater] ? NSFontAttributeName : UITextAttributeFont)];
+            }
+        }
+        
+        if ([theAttributes count] == 0) {
+            theAttributes = nil;
+        }
+    }
+    
+    if (shouldUpdateNavBar && ([controller navigationController] != nil)) {
+        [[[controller navigationController] navigationBar] setTitleTextAttributes:theAttributes];
+    }
+}
+
 -(void)updateBarImage
 {
-	UINavigationBar * ourNB = [[controller navigationController] navigationBar];
-	CGRect barFrame = [ourNB bounds];
-	UIImage * newImage = [TiUtils toImage:[self valueForUndefinedKey:@"barImage"]
-                                    proxy:self size:barFrame.size];
-    
-    if (newImage == nil) {
-        [barImageView removeFromSuperview];
-        RELEASE_TO_NIL(barImageView);
+    if (controller == nil || [controller navigationController] == nil || !shouldUpdateNavBar) {
         return;
     }
-    if (barImageView == nil) {
-        barImageView = [[UIImageView alloc]initWithImage:newImage];
+    
+    id barImageValue = [self valueForUndefinedKey:@"barImage"];
+    
+    UINavigationBar* ourNB = [[controller navigationController] navigationBar];
+    UIImage* theImage = nil;
+    if ([TiUtils isIOS7OrGreater]) {
+        //TIMOB-16490
+        theImage = [TiUtils toImage:barImageValue proxy:self];
     } else {
-        [barImageView setImage:newImage];
+        //TIMOB-16338
+        theImage = [TiUtils toImage:barImageValue proxy:self size:[ourNB bounds].size];
     }
-    [barImageView setFrame:barFrame];
-    int barImageViewIndex = 0;
-    if ([ourNB respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-        //We should ideally be using the setBackgroundImage:forBarMetrics:
-        //method. Revisit after 1.8.1 release
-        barImageViewIndex = 1;
-    }
-    if ([[ourNB subviews] indexOfObject:barImageView] != barImageViewIndex) {
-        [ourNB insertSubview:barImageView atIndex:barImageViewIndex];
+    
+    if (theImage == nil) {
+        [ourNB setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    } else {
+        UIImage* resizableImage = [theImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
+        [ourNB setBackgroundImage:resizableImage forBarMetrics:UIBarMetricsDefault];
+        //You can only set up the shadow image with a custom background image.
+        id shadowImageValue = [self valueForUndefinedKey:@"shadowImage"];
+        theImage = [TiUtils toImage:shadowImageValue proxy:self];
+        
+        if (theImage != nil) {
+            UIImage* resizableImage = [theImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
+            ourNB.shadowImage = resizableImage;
+        } else {
+            BOOL clipValue = [TiUtils boolValue:[self valueForUndefinedKey:@"hideShadow"] def:NO];
+            if (clipValue) {
+                //Set an empty Image.
+                ourNB.shadowImage = [[[UIImage alloc] init] autorelease];
+            } else {
+                ourNB.shadowImage = nil;
+            }
+        }
     }
     
 }
 
 -(void)setBarImage:(id)value
 {
-	[self replaceValue:[self sanitizeURL:value] forKey:@"barImage" notification:NO];
+	[self replaceValue:value forKey:@"barImage" notification:NO];
+	if (controller!=nil)
+	{
+		TiThreadPerformOnMainThread(^{[self updateBarImage];}, NO);
+	}
+}
+
+-(void)setShadowImage:(id)value
+{
+	[self replaceValue:value forKey:@"shadowImage" notification:NO];
+	if (controller!=nil)
+	{
+		TiThreadPerformOnMainThread(^{[self updateBarImage];}, NO);
+	}
+}
+
+-(void)setHideShadow:(id)value
+{
+	[self replaceValue:value forKey:@"hideShadow" notification:NO];
 	if (controller!=nil)
 	{
 		TiThreadPerformOnMainThread(^{[self updateBarImage];}, NO);
@@ -460,8 +537,7 @@
 				// add the new one
                 BOOL animated = [TiUtils boolValue:@"animated" properties:properties def:NO];
                 [controller.navigationItem setRightBarButtonItem:[proxy barButtonItem] animated:animated];
-                [self updateBarImage];
-			}
+            }
 			else 
 			{
 				controller.navigationItem.rightBarButtonItem = nil;
@@ -508,8 +584,7 @@
 				// add the new one
                 BOOL animated = [TiUtils boolValue:@"animated" properties:properties def:NO];
                 [controller.navigationItem setLeftBarButtonItem:[proxy barButtonItem] animated:animated];
-                [self updateBarImage];
-			}
+            }
 			else 
 			{
 				controller.navigationItem.leftBarButtonItem = nil;
@@ -585,7 +660,6 @@
 	}
 	[[prevController navigationItem] setBackBarButtonItem:backButton];
 	[backButton release];
-    [self updateBarImage];
 }
 
 -(void)setBackButtonTitle:(id)proxy
@@ -620,10 +694,6 @@
     TiThreadPerformOnMainThread(^{
         if ([[self valueForKey:@"titleControl"] isKindOfClass:[TiViewProxy class]]) {
             [self updateTitleView];
-        }
-        id barImageValue = [self valueForKey:@"barImage"];
-        if ((barImageValue != nil) && (barImageValue != [NSNull null])) {
-            [self updateBarImage];
         }
     }, NO);
 }
@@ -666,8 +736,6 @@
             //layout the titleControl children
             [titleControl layoutChildren:NO];
             
-            [self updateBarImage];
-            
             return;
         }
         [oldProxy removeBarButtonView];
@@ -691,7 +759,6 @@
     if (oldView != newTitleView) {
         [ourNavItem setTitleView:newTitleView];
     }
-	[self updateBarImage];
 }
 
 
@@ -853,7 +920,9 @@ else{\
     }
     
     [[controller navigationController] setToolbarHidden:!hasToolbar animated:YES];
-
+    //Need to clear title for titleAttributes to apply correctly on iOS6.
+    [[controller navigationItem] setTitle:nil];
+    SETPROP(@"titleAttributes",setTitleAttributes);
     SETPROP(@"title",setTitle);
     SETPROP(@"titlePrompt",setTitlePrompt);
     [self updateTitleView];
@@ -864,7 +933,7 @@ else{\
     SETPROPOBJ(@"leftNavButton",setLeftNavButton);
     SETPROPOBJ(@"rightNavButton",setRightNavButton);
     SETPROPOBJ(@"toolbar",setToolbar);
-    SETPROP(@"barImage",setBarImage);
+    [self updateBarImage];
     [self refreshBackButton];
 
     id navBarHidden = [self valueForKey:@"navBarHidden"];

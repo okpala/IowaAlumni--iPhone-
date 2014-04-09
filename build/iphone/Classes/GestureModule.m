@@ -15,6 +15,11 @@
 
 #pragma mark Internal
 
+-(NSString*)apiName
+{
+    return @"Ti.Gesture";
+}
+
 -(void)shakeEvent:(NSNotification*)sender
 {
 	UIEvent *evt = [sender object];

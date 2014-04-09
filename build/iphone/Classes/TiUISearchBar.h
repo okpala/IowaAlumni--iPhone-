@@ -6,7 +6,7 @@
  * 
  * WARNING: This is generated code. Modify at your own risk and without support.
  */
-#ifdef USE_TI_UITABLEVIEW
+#if defined(USE_TI_UITABLEVIEW) || defined(USE_TI_UILISTVIEW)
 #ifndef USE_TI_UISEARCHBAR
 #define USE_TI_UISEARCHBAR
 #endif

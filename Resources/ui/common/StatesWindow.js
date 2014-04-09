@@ -9,7 +9,7 @@ var Feed = require('ui/common/Feed');
  */
 
 function StatesWindow(title, tracker){
-	tracker.trackScreen(title);
+	//tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var masterView = Ti.UI.createView();
 	
@@ -26,12 +26,17 @@ function StatesWindow(title, tracker){
 	
 	var table = Ti.UI.createTableView({
 		height: 'auto',
+		left: 0,
+		width: Ti.Platform.displayCaps.platformWidth,
 		bottom: 70,
 		top: 145
 	});
 	
 	var people = Ti.UI.createImageView({
 	  image:    'https://www.iowalum.com/mobile/clubs.png',
+	  left: 10,
+		//right: 10,
+	  width:  Ti.Platform.displayCaps.platformWidth - 20,
 	  top:   85
 	});
 	
@@ -78,13 +83,17 @@ function StatesWindow(title, tracker){
 	masterView.add(table);
 	table.addEventListener('click', function(e){
 		var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
-		(new GameWatchWindow(stateClubs[0], stateClubs[1], tracker));
+		var win = new GameWatchWindow(stateClubs[0], stateClubs[1], tracker);
+		win.open();
+	
+		/*
 		tracker.trackEvent({
 			category: title,
 			action: "click",
 			label: e.row.text,
 			value: 1
 		});
+		*/
 	});
 	
 	

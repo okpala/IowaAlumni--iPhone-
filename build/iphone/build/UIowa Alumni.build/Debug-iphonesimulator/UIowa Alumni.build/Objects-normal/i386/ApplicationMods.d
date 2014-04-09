@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ApplicationMods.m \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ApplicationMods.h
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ApplicationMods.m \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ApplicationMods.h

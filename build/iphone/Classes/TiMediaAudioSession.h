@@ -49,7 +49,7 @@ TiMediaAudioSessionInputType;
 -(CGFloat)volume;
 -(BOOL)isAudioPlaying;
 -(BOOL)hasInput;
-
+-(void)setRouteOverride:(UInt32)mode;
 @end
 
 #endif

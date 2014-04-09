@@ -22,7 +22,7 @@
 -(void)lockViews;
 -(void)unlockViews;
 -(int)viewCount;
-
+-(NSArray *)views;
 @end
 
 #endif

@@ -40,6 +40,11 @@ static const char* backupAttr = "com.apple.MobileBackup";
 	[super dealloc];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Filesystem.File";
+}
+
 -(id)nativePath
 {
 	return [[NSURL fileURLWithPath:path] absoluteString];

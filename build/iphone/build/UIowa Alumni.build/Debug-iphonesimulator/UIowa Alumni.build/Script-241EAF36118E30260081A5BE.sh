@@ -1,4 +1,7 @@
 #!/bin/sh
-if [ "x$TITANIUM_CLI_XCODEBUILD" == "x" ]; then NO_COLORS="--no-colors"; else NO_COLORS=""; fi
-/usr/local/bin/node "/usr/local/bin/titanium" build --platform iphone --sdk 3.1.3.GA --no-prompt --no-banner $NO_COLORS --xcode
-exit $?
+if [ "x$TITANIUM_CLI_XCODEBUILD" == "x" ]; then
+    /usr/local/bin/node "/usr/local/bin/titanium" build --platform iphone --sdk 3.2.2.GA --no-prompt --no-progress-bars --no-banner --no-colors --build-only --xcode
+    exit $?
+else
+    echo "skipping pre-compile phase"
+fi

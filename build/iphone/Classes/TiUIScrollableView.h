@@ -30,7 +30,7 @@
     int lastPage;
     BOOL enforceCacheRecalculation;
     int cacheSize;
-    
+    BOOL pageChanged;
 }
 
 -(void)manageRotation;

@@ -2,12 +2,11 @@
 	"target": "simulator",
 	"deployType": "development",
 	"deviceFamily": "iphone",
-	"iosSdkPath": "/Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/iphone",
-	"appGuid": "1d505bc3-a313-4102-81b6-62ed140216c7",
+	"iosSdkPath": "/Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.2.2.GA/iphone",
 	"tiCoreHash": "77157e1ffaec640cf559356a147b6a4c",
-	"modulesHash": "73a45b387f5032f071b4cbbdfad55470",
-	"nativeModulesHash": "731725fb26e8b1dc367f9db32ce0f009",
-	"gitHash": "222f4d1",
+	"modulesHash": "2385c69ed8a7701d0b4bd9af06e5b44d",
+	"modulesNativeHash": "07f3f168b05f58354b857fa8d2c8e6b8",
+	"gitHash": "96e9a07",
 	"name": "UIowa Alumni",
 	"id": "com.iowalum.uiowaalumni",
 	"analytics": true,
@@ -19,5 +18,6 @@
 	"guid": "1d505bc3-a313-4102-81b6-62ed140216c7",
 	"skipJSMinification": true,
 	"forceCopy": false,
-	"forceCopyAll": false
+	"forceCopyAll": false,
+	"encryptJS": false
 }

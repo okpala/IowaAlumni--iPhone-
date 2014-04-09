@@ -127,6 +127,11 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
     [self initializeProperty:@"cache" defaultValue:NUMBOOL(NO)];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Network.HTTPClient";
+}
+
 -(void)setOnload:(KrollCallback *)callback
 {
 	hasOnload = [callback isKindOfClass:[KrollCallback class]];

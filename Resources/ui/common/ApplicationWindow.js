@@ -1,5 +1,5 @@
 function ApplicationWindow(windowtitle, masterView) {
-	
+	/*
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: true,
@@ -7,26 +7,31 @@ function ApplicationWindow(windowtitle, masterView) {
 		
 		
 	});
-	
+	*/
 	var statusBar = Ti.UI.createView({
 	    backgroundColor:'#000',
 	    top: 0,
 	    height: 20
 	});
 	
-	self.add(statusBar);
+	//
 	
 	
 
 	//create master view container
 	var masterContainerWindow = Ti.UI.createWindow({
 		title: windowtitle,
-		navBarHidden:false,
+		backgroundColor:'#e2e2e2',
+		//horizontalWrap: false,
+		width: Ti.Platform.displayCaps.platformWidth,
+		left: 0,
 		barImage:'navbar.png',
+		translucent:false,
 		titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
 	});
+	
 	var menuButton = Ti.UI.createButton({
 		backgroundImage: 'newmenubutton.png',
 		backgroundSelectedImage: 'newmenubuttonselected.png',
@@ -37,30 +42,32 @@ function ApplicationWindow(windowtitle, masterView) {
 	});
 	masterContainerWindow.setLeftNavButton(menuButton);
 	masterContainerWindow.add(masterView);
-	
+	//masterContainerWindow.add(statusBar);
+	var navGroup = Titanium.UI.iOS.createNavigationWindow({
+		window:masterContainerWindow
+	});
 	
 	
 
 	//menuButton event
 	menuButton.addEventListener('click', function(e){
-		self.fireEvent('menuClick');
+		navGroup.fireEvent('menuClick');
 	});
 
-	self.addEventListener('swipeToggle', function(e){
-		self.fireEvent('menuClick');
+	navGroup.addEventListener('swipeToggle', function(e){
+		navGroup.fireEvent('menuClick');
 	});
-	self.addEventListener('swipe', function(e){
-		self.fireEvent('menuClick');
+	navGroup.addEventListener('swipe', function(e){
+		navGroup.fireEvent('menuClick');
 	});
-	self.addEventListener('swipeListen', function(e){
-		self.fireEvent('menuClick');
+	navGroup.addEventListener('swipeListen', function(e){
+		navGroup.fireEvent('menuClick');
 	});
 	
-	var navGroup  = Titanium.UI.iOS.createNavigationWindow({
-		window:masterContainerWindow
-	});
+	/**/
 	//self.add(navGroup);
 	
-	return self;
+	return navGroup;
+	
 };
 module.exports = ApplicationWindow; 

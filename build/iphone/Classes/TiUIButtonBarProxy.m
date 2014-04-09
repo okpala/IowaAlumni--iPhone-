@@ -22,6 +22,11 @@ NSArray* tabbedKeySequence;
 	return tabbedKeySequence;
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.ButtonBar";
+}
+
 -(TiUIView*)newView
 {
 	TiUIButtonBar * result = [[TiUIButtonBar alloc] init];

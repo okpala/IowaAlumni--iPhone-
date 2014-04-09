@@ -12,6 +12,11 @@
 
 @implementation TiUIiPhoneTableViewScrollPositionProxy
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.iPhone.TableViewScrollPosition";
+}
+
 
 MAKE_SYSTEM_PROP(NONE,UITableViewScrollPositionNone);
 MAKE_SYSTEM_PROP(TOP,UITableViewScrollPositionTop);

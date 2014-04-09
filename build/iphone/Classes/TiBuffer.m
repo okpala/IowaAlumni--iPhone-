@@ -32,6 +32,11 @@ NSArray* bufferKeySequence = nil;
     [super dealloc];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Buffer";
+}
+
 -(NSArray *)keySequence
 {
 	if (bufferKeySequence == nil)

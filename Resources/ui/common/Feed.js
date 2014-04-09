@@ -10,6 +10,19 @@ Feed.prototype.eventsFeed = function(){
 	return 'http://iowalum.com/calendar/feed_xml.cfm';
 };
 
+
+Feed.prototype.eventsClubsCategoryFeed = function(){
+	return 'http://iowalum.com/calendar/feed_xml_clubs.cfm';
+};
+
+Feed.prototype.eventsStudentCategoryFeed = function(){
+	return 'http://iowalum.com/calendar/feed_xml_student.cfm';
+};
+
+Feed.prototype.eventsUIAACategoryFeed = function(){
+	return 'http://iowalum.com/calendar/feed_xml_uiaa.cfm';
+};
+
 Feed.prototype.eventsSportsCategoryFeed = function(){
 	return 'http://iowalum.com/calendar/feed_xml_sports.cfm';
 };

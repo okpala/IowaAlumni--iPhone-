@@ -58,6 +58,11 @@
 	[super _destroy];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Media.AudioRecorder";
+}
+
 -(AQRecorder*)recorder
 {
 	if (recorder==NULL)

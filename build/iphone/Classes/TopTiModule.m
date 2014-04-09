@@ -21,17 +21,17 @@
 
 -(id)version
 {
-	return @"3.1.3";
+	return @"3.2.2";
 }
 
 -(id)buildDate
 {
-	return @"09/18/13 12:00";
+	return @"03/05/14 12:21";
 }
 
 -(id)buildHash
 {
-	return @"222f4d1";
+	return @"96e9a07";
 }
 
 +(BOOL)shouldRegisterOnInit
@@ -42,6 +42,11 @@
 -(id)userAgent
 {
 	return [[TiApp app] userAgent];
+}
+
+-(NSString*)apiName
+{
+    return @"Ti";
 }
 
 -(void)include:(NSArray*)jsfiles

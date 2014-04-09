@@ -30,6 +30,11 @@
     return [NSMutableDictionary dictionaryWithObject:@"title" forKey:@"titleid"];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.OptionDialog";
+}
+
 -(void)show:(id)args
 {
 	ENSURE_SINGLE_ARG_OR_NIL(args,NSDictionary);
@@ -47,7 +52,7 @@
 	}
 
     persistentFlag = [TiUtils boolValue:[self valueForKey:@"persistent"] def:YES];
-
+    forceOpaqueBackground = [TiUtils boolValue:[self valueForKey:@"opaquebackground"] def:NO];
 	if (actionSheet != nil) {
 		[actionSheet setDelegate:nil];
 		[actionSheet release];
@@ -137,6 +142,19 @@
 }
 
 #pragma mark AlertView Delegate
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet_
+{
+    //TIMOB-15939. Workaround rendering issue on iPAD on iOS7
+    if (actionSheet_ == actionSheet && forceOpaqueBackground &&[TiUtils isIOS7OrGreater] && [TiUtils isIPad]) {
+        NSArray* subviews = [actionSheet subviews];
+        
+        for (UIView* subview in subviews) {
+            [subview setBackgroundColor:[UIColor whiteColor]];
+        }
+        [actionSheet setBackgroundColor:[UIColor whiteColor]];
+    }
+}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet_ didDismissWithButtonIndex:(NSInteger)buttonIndex;
 {

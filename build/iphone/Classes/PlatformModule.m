@@ -123,6 +123,11 @@ NSString* const DATA_IFACE = @"pdp_ip0";
 	[super dealloc];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Platform";
+}
+
 -(void)_listenerAdded:(NSString *)type count:(int)count
 {
 	if (count == 1 && [type isEqualToString:@"battery"])

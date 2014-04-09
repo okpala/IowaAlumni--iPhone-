@@ -11,6 +11,11 @@
 #import "TiDOMEntityProxy.h"
 
 @implementation TiDOMEntityProxy
+-(NSString*)apiName
+{
+    return @"Ti.XML.Entity";
+}
+
 -(id)nodeValue
 {
 	// DOM spec says nodeValue must return null

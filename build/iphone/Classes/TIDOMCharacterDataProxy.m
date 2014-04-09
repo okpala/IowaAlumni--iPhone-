@@ -15,6 +15,10 @@
 
 @implementation TiDOMCharacterDataProxy
 
+-(NSString*)apiName
+{
+    return @"Ti.XML.CharacterData";
+}
 
 -(NSString *)data
 {

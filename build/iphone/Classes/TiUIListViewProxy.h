@@ -17,7 +17,11 @@
 @property (nonatomic, readonly) NSNumber *sectionCount;
 
 - (TiUIListSectionProxy *)sectionForIndex:(NSUInteger)index;
-
+- (void) deleteSectionAtIndex:(NSUInteger)index;
+- (void) setMarker:(id)args;
 @end
 
+@interface TiUIListViewProxy (internal)
+-(void)willDisplayCell:(NSIndexPath*)indexPath;
+@end
 #endif

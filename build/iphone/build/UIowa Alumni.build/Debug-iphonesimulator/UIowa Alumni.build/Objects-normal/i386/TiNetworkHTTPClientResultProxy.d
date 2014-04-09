@@ -1,31 +1,31 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkHTTPClientResultProxy.m \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkHTTPClientResultProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkHTTPClientResultProxy.m \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkHTTPClientResultProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkHTTPClientProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBlob.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIFormDataRequest.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequest.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestConfig.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIProgressDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASICacheDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMDocumentProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/GDataXMLNode.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkHTTPClientProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBlob.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIFormDataRequest.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequest.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestConfig.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIHTTPRequestDelegate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASIProgressDelegate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/ASI/ASICacheDelegate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMDocumentProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/GDataXMLNode.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/tree.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/xmlversion.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/xmlexports.h \
@@ -49,13 +49,13 @@ dependencies: \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/SAX2.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/xpath.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/xpathInternals.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMNodeProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethod.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethodDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollPropertyDelegate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiUtils.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiDimension.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiColor.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/WebFont.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiFile.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBuffer.h
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMNodeProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethod.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollMethodDelegate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollPropertyDelegate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiUtils.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDimension.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiColor.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/WebFont.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiFile.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBuffer.h

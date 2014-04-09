@@ -12,6 +12,11 @@
 
 @implementation TiDOMNotationProxy
 
+-(NSString*)apiName
+{
+    return @"Ti.XML.Notation";
+}
+
 -(id)nodeValue
 {
 	// DOM spec says nodeValue must return null

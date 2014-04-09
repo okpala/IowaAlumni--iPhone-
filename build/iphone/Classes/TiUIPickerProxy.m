@@ -34,6 +34,11 @@ NSArray* pickerKeySequence;
 	[super _configure];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.Picker";
+}
+
 -(void)_destroy
 {
 	RELEASE_TO_NIL(selectOnLoad);

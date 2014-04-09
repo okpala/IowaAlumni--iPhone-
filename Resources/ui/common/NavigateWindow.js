@@ -11,12 +11,13 @@ function NavigateWindow(windowtitle, webview) {
 	    height: 20
 	});
 	
-	self.add(statusBar);
+	//self.add(statusBar);
 	
 	//create master view container
 	var masterContainerWindow = Ti.UI.createWindow({
 		title: windowtitle,
 		navBarHidden:false,
+		translucent:false,
 		barImage:'navbar.png',
 		//hires:true,
 		moving:false, // Custom property for movement
@@ -35,19 +36,21 @@ function NavigateWindow(windowtitle, webview) {
 	});
 	masterContainerWindow.setLeftNavButton(menuButton);
 	masterContainerWindow.add(webview);
-
+	//masterContainerWindow.add(statusBar);
+	var navGroup = Titanium.UI.iOS.createNavigationWindow({
+		window:masterContainerWindow
+	});
+	
 	//menuButton event
 	menuButton.addEventListener('click', function(e){
-		self.close();
+		navGroup.close();
 		
 	});
 	
-	var navGroup = Ti.UI.iPhone.createNavigationGroup({
-		window:masterContainerWindow
-	});
-	self.add(navGroup);
+	
+	//self.add(navGroup);
 	
 	
-	return self;
+	return navGroup;
 };
 module.exports = NavigateWindow;

@@ -5,7 +5,7 @@ var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 
 function NationalBenefitsWindow(title, tracker){
-	tracker.trackScreen(title);
+	//tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var masterView = Ti.UI.createView();
 	var textView = Ti.UI.createView({
@@ -34,7 +34,8 @@ function NationalBenefitsWindow(title, tracker){
 	
 	var table = Ti.UI.createTableView({
 		height: 'auto',
-		//top: 134
+		left: 0,
+		width: Ti.Platform.displayCaps.platformWidth,
 		top: 70
 	});
 	

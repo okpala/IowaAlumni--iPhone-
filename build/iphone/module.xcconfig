@@ -1,4 +1,5 @@
 // this is a generated file - DO NOT EDIT
 
 ANALYTICS_GOOGLE_OTHER_LDFLAGS=$(inherited) -framework CoreData
-OTHER_LDFLAGS=$(inherited) $(ANALYTICS_GOOGLE_OTHER_LDFLAGS) 
+TI_MAP_OTHER_LDFLAGS=$(inherited) -weak_framework MapKit
+OTHER_LDFLAGS=$(inherited) $(ANALYTICS_GOOGLE_OTHER_LDFLAGS) $(TI_MAP_OTHER_LDFLAGS) 

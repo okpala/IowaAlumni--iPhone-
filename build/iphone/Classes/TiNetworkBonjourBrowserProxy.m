@@ -51,6 +51,11 @@
     [super dealloc];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Network.BonjourBrowser";
+}
+
 -(NSString*)description
 {
     return [NSString stringWithFormat:@"BonjourServiceBrowser: %@ (%d)", [services description], [services retainCount]];

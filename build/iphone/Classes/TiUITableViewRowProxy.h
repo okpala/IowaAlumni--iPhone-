@@ -15,14 +15,6 @@
 @class TiUITableView;
 @class TiUITableViewSectionProxy;
 
-typedef enum  
-{
-    TiCellBackgroundViewPositionTop, 
-    TiCellBackgroundViewPositionMiddle, 
-    TiCellBackgroundViewPositionBottom,
-	TiCellBackgroundViewPositionSingleLine
-} TiCellBackgroundViewPosition;
-
 @interface TiUITableViewRowProxy : TiViewProxy <TiProxyDelegate>
 {
 @private

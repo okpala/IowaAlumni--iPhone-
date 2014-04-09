@@ -2,12 +2,14 @@
 var RootWindow = require('ui/common/RootWindow');
 
 function ApplicationWindow(feed,windowtitle, tracker) {
-	tracker.trackScreen(windowtitle);
+	
+	//tracker.trackScreen(windowtitle);
 	//declare module dependencies
 	var RSS = require('services/rss'),
 		MasterView = require('ui/common/MasterView'),
 		DetailView = require('ui/common/DetailView'),	
 		Description = require('ui/common/Description');
+	
 		
 	//var rssfeed = new RSS(feed);
 
@@ -37,6 +39,9 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		title: windowtitle,
 		navBarHidden:false,
 		barImage:'navbar.png',
+		translucent:false,
+		width: Ti.Platform.displayCaps.platformWidth,
+		left: 0,
 		titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
@@ -53,11 +58,16 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 	masterContainerWindow.setLeftNavButton(menuButton);
 	masterContainerWindow.add(masterView);
 	
+	//create iOS specific NavGroup UI
+	var navGroup = Titanium.UI.iOS.createNavigationWindow({
+		window:masterContainerWindow
+	});
+	
 	//menuButton event
 	menuButton.addEventListener('click', function(e){
-		self.fireEvent('menuClick');
+		navGroup.fireEvent('menuClick');
 	});
-
+	/*
 	self.addEventListener('swipeToggle', function(e){
 		self.fireEvent('menuClick');
 	});
@@ -67,16 +77,13 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 	self.addEventListener('swipeListen', function(e){
 		self.fireEvent('menuClick');
 	});
-
+*/
 	//create detail view container
 	var detailContainerWindow = Ti.UI.createWindow({barImage: 'navbar.png',navBarHidden:false});
 	detailContainerWindow.add(detailView);
 
-	//create iOS specific NavGroup UI
-	var navGroup = Ti.UI.iPhone.createNavigationGroup({
-		window:masterContainerWindow
-	});
-	self.add(navGroup);
+	
+	//self.add(navGroup);
 
 	//add behavior for master view
 	masterView.addEventListener('itemSelected', function(e) {
@@ -86,6 +93,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 
 	
 	
-	return self;
+	return navGroup;
+	
 };
 module.exports = ApplicationWindow;

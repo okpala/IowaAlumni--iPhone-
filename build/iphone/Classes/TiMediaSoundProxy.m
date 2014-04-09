@@ -50,6 +50,11 @@
     });
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Media.Sound";
+}
+
 -(void)_destroy
 {
 	if (player != nil) {

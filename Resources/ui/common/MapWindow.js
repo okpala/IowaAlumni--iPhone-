@@ -3,8 +3,9 @@ var ApplicationWindow = require('ui/common/ApplicationWindow');
 var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
+var Map = require('ti.map');
 function MapWindow(title, tracker) {
-	tracker.trackScreen(title);
+	//tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var mapWin = Ti.UI.createView({
 	    
@@ -20,21 +21,21 @@ function MapWindow(title, tracker) {
 	var companyInfo = [];
 	for (var i = 0; i <= businessesInfo.length - 1; i++) {
 		companyInfo.push(
-			Titanium.Map.createAnnotation(
+			Map.createAnnotation(
 			{
 			    latitude:  businessesInfo[i].latitude,
 			    longitude: businessesInfo[i].longitude,
 			    title: businessesInfo[i].company,
 			    subtitle: businessesInfo[i].street,
-			    pincolor: Titanium.Map.ANNOTATION_RED,
+			    pincolor: Map.ANNOTATION_RED,
 			    animate:true
 			})
 		);
 	}
  
 	
-	var map = Ti.Map.createView({
-		mapType: Titanium.Map.STANDARD_TYPE,
+	var map = Map.createView({
+		mapType: Map.NORMAL_TYPE,
 		region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
 				latitudeDelta:0.01, longitudeDelta:0.01 },
 		animate: true,
@@ -45,7 +46,7 @@ function MapWindow(title, tracker) {
 		top: 0
 	});
 	
-	
+	/*
 	
 	map.addEventListener('loading', function(e){
 		map.setLocation({latitude: companyInfo[0].latitude , longitude: companyInfo[0].longitude,
@@ -56,7 +57,7 @@ function MapWindow(title, tracker) {
 				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
 	});
 	
-
+*/
 	
 	var textView = Ti.UI.createView({
 		backgroundColor: 	'#e2e2e2',
@@ -156,8 +157,8 @@ function MapWindow(title, tracker) {
 	table.addEventListener('click', function(e){
 		
 		
-		map = Ti.Map.createView({
-			mapType: Titanium.Map.STANDARD_TYPE,
+		map = Map.createView({
+			mapType: Map.NORMAL_TYPE,
 			region: {latitude: e.row.latitude, longitude: e.row.longitude,
 				latitudeDelta:0.01, longitudeDelta:0.01 },
 			animate: true,
@@ -171,13 +172,14 @@ function MapWindow(title, tracker) {
 		mapWin.add(map);
 		
 		map.selectAnnotation(companyInfo[e.index]);
-		
+		/*
 		tracker.trackEvent({
 			category: "Benefits",
 			action: "click",
 			label: companyInfo[e.index].title,
 			value: 1
 		});
+		*/
 	});
 	
 	

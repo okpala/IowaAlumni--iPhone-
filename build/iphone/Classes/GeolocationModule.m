@@ -203,6 +203,11 @@ extern BOOL const TI_APPLICATION_ANALYTICS;
 	[super _destroy];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Geolocation";
+}
+
 -(void)contextWasShutdown:(KrollBridge*)bridge
 {
 	if (singleHeading!=nil)
@@ -703,7 +708,7 @@ extern BOOL const TI_APPLICATION_ANALYTICS;
 {
     if ([TiUtils isIOS6OrGreater]) {
         activityType = [TiUtils intValue:value];
-        TiThreadPerformOnMainThread(^{[locationManager setActivityType:accuracy];}, NO);
+        TiThreadPerformOnMainThread(^{[locationManager setActivityType:activityType];}, NO);
     }
     
 }

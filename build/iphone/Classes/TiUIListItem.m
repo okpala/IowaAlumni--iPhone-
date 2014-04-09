@@ -12,6 +12,7 @@
 #import "TiUtils.h"
 #import "TiViewProxy.h"
 #import "ImageLoader.h"
+#import "Webcolor.h"
 
 @implementation TiUIListItem {
 	TiUIListItemProxy *_proxy;
@@ -21,6 +22,9 @@
 	NSMutableSet *_resetKeys;
 	NSDictionary *_dataItem;
 	NSDictionary *_bindings;
+    int _positionMask;
+    BOOL _grouped;
+    UIView* _bgView;
 }
 
 @synthesize templateStyle = _templateStyle;
@@ -62,8 +66,14 @@
 	[_currentValues release];
 	[_resetKeys release];
 	[_dataItem release];
+	[_proxy deregisterProxy:[_proxy pageContext]];
 	[_proxy release];
 	[_bindings release];
+	[gradientLayer release];
+	[backgroundGradient release];
+	[selectedBackgroundGradient release];
+    [_bgView removeFromSuperview];
+    [_bgView release];
 	[super dealloc];
 }
 
@@ -86,12 +96,153 @@
 
 - (void)layoutSubviews
 {
+    if (_bgView != nil) {
+        if ([_bgView superview] == nil) {
+            [self.backgroundView addSubview:_bgView];
+        }
+        CGRect bounds = [self.backgroundView bounds];
+        if ((_positionMask == TiCellBackgroundViewPositionTop) || (_positionMask == TiCellBackgroundViewPositionSingleLine) ) {
+            [_bgView setFrame:CGRectMake(0, 1, bounds.size.width, bounds.size.height -2)];
+        } else {
+            [_bgView setFrame:bounds];
+        }
+        [_bgView setNeedsDisplay];
+    } else if ([self.backgroundView isKindOfClass:[TiSelectedCellBackgroundView class]]) {
+        [self.backgroundView setNeedsDisplay];
+    }
 	[super layoutSubviews];
 	if (_templateStyle == TiUIListItemTemplateStyleCustom) {
 		// prevent any crashes that could be caused by unsupported layouts
 		_proxy.layoutProperties->layoutStyle = TiLayoutRuleAbsolute;
 		[_proxy layoutChildren:NO];
 	}
+}
+
+#pragma mark - Background Support 
+-(BOOL) selectedOrHighlighted
+{
+	return [self isSelected] || [self isHighlighted];
+}
+
+-(void) updateGradientLayer:(BOOL)useSelected withAnimation:(BOOL)animated
+{
+	TiGradient * currentGradient = useSelected?selectedBackgroundGradient:backgroundGradient;
+    
+	if(currentGradient == nil)
+	{
+		[gradientLayer removeFromSuperlayer];
+		//Because there's the chance that the other state still has the gradient, let's keep it around.
+		return;
+	}
+    
+	
+	if(gradientLayer == nil)
+	{
+		gradientLayer = [[TiGradientLayer alloc] init];
+		[gradientLayer setNeedsDisplayOnBoundsChange:YES];
+		[gradientLayer setFrame:[self bounds]];
+	}
+    
+	[gradientLayer setGradient:currentGradient];
+
+	CALayer * ourLayer = [[[self contentView] layer] superlayer];
+	
+	if([gradientLayer superlayer] != ourLayer)
+	{
+		CALayer* contentLayer = [[self contentView] layer];
+		[ourLayer insertSublayer:gradientLayer below:contentLayer];
+    }
+    if (animated) {
+        CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        flash.fromValue = [NSNumber numberWithFloat:0.0];
+        flash.toValue = [NSNumber numberWithFloat:1.0];
+        flash.duration = 1.0;
+        [gradientLayer addAnimation:flash forKey:@"flashAnimation"];
+    }
+	[gradientLayer setNeedsDisplay];
+}
+
+-(void)setSelected:(BOOL)yn animated:(BOOL)animated
+{
+    [super setSelected:yn animated:animated];
+    [self updateGradientLayer:yn|[self isHighlighted] withAnimation:animated];
+}
+
+-(void)setHighlighted:(BOOL)yn animated:(BOOL)animated
+{
+    [super setHighlighted:yn animated:animated];
+    [self updateGradientLayer:yn|[self isSelected] withAnimation:animated];
+}
+
+-(void) setBackgroundGradient_:(id)value
+{
+	TiGradient * newGradient = [TiGradient gradientFromObject:value proxy:_proxy];
+	if(newGradient == backgroundGradient)
+	{
+		return;
+	}
+	[backgroundGradient release];
+	backgroundGradient = [newGradient retain];
+	
+	if(![self selectedOrHighlighted])
+	{
+		[self updateGradientLayer:NO withAnimation:NO];
+	}
+}
+
+-(void) setSelectedBackgroundGradient_:(id)value
+{
+	TiGradient * newGradient = [TiGradient gradientFromObject:value proxy:_proxy];
+	if(newGradient == selectedBackgroundGradient)
+	{
+		return;
+	}
+	[selectedBackgroundGradient release];
+	selectedBackgroundGradient = [newGradient retain];
+	
+	if([self selectedOrHighlighted])
+	{
+		[self updateGradientLayer:YES withAnimation:NO];
+	}
+}
+
+-(void)setPosition:(int)position isGrouped:(BOOL)grouped
+{
+    _positionMask = position;
+    _grouped = grouped;
+}
+
+-(void) applyBackgroundWithSelectedColor:(id)selectedBackgroundColor selectedImage:(id)selectedBackgroundImage
+{
+    UIColor* sbgColor = (selectedBackgroundColor != nil) ? ([[TiUtils colorValue:selectedBackgroundColor] _color]) : nil;
+    UIImage *sbgImage = [[ImageLoader sharedLoader] loadImmediateStretchableImage:[TiUtils toURL:selectedBackgroundImage proxy:_proxy] withLeftCap:TiDimensionAuto topCap:TiDimensionAuto];
+    if (sbgImage != nil) {
+        if ([self.selectedBackgroundView isKindOfClass:[UIImageView class]]) {
+            [(UIImageView*)self.selectedBackgroundView setImage:sbgImage];
+            [(UIImageView*)self.selectedBackgroundView setBackgroundColor:((sbgColor == nil) ? [UIColor clearColor] : sbgColor)];
+        } else {
+            UIImageView *view_ = [[[UIImageView alloc] initWithFrame:CGRectZero] autorelease];
+            [view_ setImage:sbgImage];
+            [view_ setBackgroundColor:((sbgColor == nil) ? [UIColor clearColor] : sbgColor)];
+            self.selectedBackgroundView = view_;
+        }
+    } else {
+        if (![self.selectedBackgroundView isKindOfClass:[TiSelectedCellBackgroundView class]]) {
+            self.selectedBackgroundView = [[[TiSelectedCellBackgroundView alloc] initWithFrame:CGRectZero] autorelease];
+        }
+        TiSelectedCellBackgroundView *selectedBGView = (TiSelectedCellBackgroundView*)self.selectedBackgroundView;
+        selectedBGView.grouped = _grouped;
+        if (sbgColor == nil) {
+            switch (self.selectionStyle) {
+                case UITableViewCellSelectionStyleGray:sbgColor = [Webcolor webColorNamed:@"#bbb"];break;
+                case UITableViewCellSelectionStyleNone:sbgColor = [UIColor clearColor];break;
+                case UITableViewCellSelectionStyleBlue:sbgColor = [Webcolor webColorNamed:@"#0272ed"];break;
+                default:sbgColor = [TiUtils isIOS7OrGreater] ? [Webcolor webColorNamed:@"#e0e0e0"] : [Webcolor webColorNamed:@"#0272ed"];break;
+            }
+        }
+        selectedBGView.fillColor = sbgColor;
+        [selectedBGView setPosition:_positionMask];
+    }
 }
 
 - (BOOL)canApplyDataItem:(NSDictionary *)otherItem;
@@ -116,7 +267,13 @@
 {
     //Ensure that we store the default backgroundColor
     if ([_initialValues objectForKey:@"backgroundColor"] == nil) {
-        id initialValue = [self backgroundColor];
+        id initialValue = nil;
+        if (_templateStyle == TiUIListItemTemplateStyleCustom) {
+            initialValue = [[TiUtils colorValue:[_proxy valueForKey:@"backgroundColor"]] color];
+        }
+        if (IS_NULL_OR_NIL(initialValue)) {
+            initialValue = [self backgroundColor];
+        }
         [_initialValues setObject:(initialValue != nil ? initialValue : [NSNull null]) forKey:@"backgroundColor"];
     }
     id propertiesValue = [_dataItem objectForKey:@"properties"];
@@ -124,9 +281,61 @@
     id colorValue = [properties objectForKey:@"backgroundColor"];
     UIColor *color = colorValue != nil ? [[TiUtils colorValue:colorValue] _color] : nil;
     if (color == nil) {
-        color = [_initialValues objectForKey:@"backgroundColor"];
+        id initVal = [_initialValues objectForKey:@"backgroundColor"];
+        if ([initVal isKindOfClass:[UIColor class]]) {
+            color = initVal;
+        } else {
+            color = [[TiUtils colorValue:initVal] color];
+        }
     }
     self.backgroundColor = color;
+    
+    //Ensure that we store the backgroundImage
+    if ([_initialValues objectForKey:@"backgroundImage"] == nil) {
+        id initialValue = nil;
+        if (_templateStyle == TiUIListItemTemplateStyleCustom) {
+            initialValue = [_proxy valueForKey:@"backgroundImage"];
+        }
+        [_initialValues setObject:(initialValue != nil ? initialValue : [NSNull null]) forKey:@"backgroundImage"];
+    }
+    id backgroundImage = [properties objectForKey:@"backgroundImage"];
+    if (IS_NULL_OR_NIL(backgroundImage)) {
+        backgroundImage = [_initialValues objectForKey:@"backgroundImage"];
+    }
+    UIImage* bgImage = [[ImageLoader sharedLoader] loadImmediateStretchableImage:[TiUtils toURL:backgroundImage proxy:_proxy] withLeftCap:TiDimensionAuto topCap:TiDimensionAuto];
+    if (_grouped && ![TiUtils isIOS7OrGreater]) {
+        UIView* superView = [self backgroundView];
+        if (bgImage != nil) {
+            if (![_bgView isKindOfClass:[UIImageView class]]) {
+                [_bgView removeFromSuperview];
+                RELEASE_TO_NIL(_bgView);
+                _bgView = [[UIImageView alloc] initWithFrame:CGRectZero];
+                _bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+                [superView addSubview:_bgView];
+            }
+            [(UIImageView*)_bgView setImage:bgImage];
+            [_bgView setBackgroundColor:[UIColor clearColor]];
+        } else {
+            [_bgView removeFromSuperview];
+            RELEASE_TO_NIL(_bgView);
+        }
+    } else {
+        if (bgImage != nil) {
+            //Set the backgroundView to ImageView and set its backgroundColor to bgColor
+            if ([self.backgroundView isKindOfClass:[UIImageView class]]) {
+                [(UIImageView*)self.backgroundView setImage:bgImage];
+                [(UIImageView*)self.backgroundView setBackgroundColor:[UIColor clearColor]];
+            } else {
+                UIImageView *view_ = [[[UIImageView alloc] initWithFrame:CGRectZero] autorelease];
+                [view_ setImage:bgImage];
+                [view_ setBackgroundColor:[UIColor clearColor]];
+                self.backgroundView = view_;
+            }
+        } else {
+            self.backgroundView = nil;
+        }
+    }
+    
 }
 
 - (void)setDataItem:(NSDictionary *)dataItem
@@ -140,20 +349,11 @@
 		case UITableViewCellStyleValue1:
 		case UITableViewCellStyleValue2:
 			self.detailTextLabel.text = [[properties objectForKey:@"subtitle"] description];
-
-			id backgroundColorValue = [properties objectForKey:@"backgroundColor"];
-			if ([self shouldUpdateValue:backgroundColorValue forKeyPath:@"detailTextLabel.backgroundColor"]) {
-				UIColor *backgroundColor = backgroundColorValue != nil ? [[TiUtils colorValue:backgroundColorValue] _color] : [UIColor clearColor];
-				if (backgroundColor != nil) {
-					[self recordChangeValue:backgroundColorValue forKeyPath:@"detailTextLabel.backgroundColor" withBlock:^{
-						[self.detailTextLabel setBackgroundColor:backgroundColor];
-					}];
-				}
-			}
-
+            self.detailTextLabel.backgroundColor = [UIColor clearColor];
 			// pass through
 		case UITableViewCellStyleDefault:
 			self.textLabel.text = [[properties objectForKey:@"title"] description];
+            self.textLabel.backgroundColor = [UIColor clearColor];
 			if (_templateStyle != UITableViewCellStyleValue2) {
 				id imageValue = [properties objectForKey:@"image"];
 				if ([self shouldUpdateValue:imageValue forKeyPath:@"imageView.image"]) {
@@ -186,17 +386,6 @@
 					}];
 				}
 			}
-
-			backgroundColorValue = [properties objectForKey:@"backgroundColor"];
-			if ([self shouldUpdateValue:backgroundColorValue forKeyPath:@"textLabel.backgroundColor"]) {
-				UIColor *backgroundColor = backgroundColorValue != nil ? [[TiUtils colorValue:backgroundColorValue] _color] : [UIColor clearColor];
-				if (backgroundColor != nil) {
-					[self recordChangeValue:backgroundColorValue forKeyPath:@"textLabel.backgroundColor" withBlock:^{
-						[self.textLabel setBackgroundColor:backgroundColor];
-					}];
-				}
-			}
-
 			break;
 			
 		default:
@@ -245,6 +434,29 @@
 		}
 	}
     
+    id backgroundGradientValue = [properties objectForKey:@"backgroundGradient"];
+    if (IS_NULL_OR_NIL(backgroundGradientValue)) {
+        backgroundGradientValue = [_proxy valueForKey:@"backgroundGradient"];
+    }
+    [self setBackgroundGradient_:backgroundGradientValue];
+	
+    
+    id selectedBackgroundGradientValue = [properties objectForKey:@"selectedBackgroundGradient"];
+    if (IS_NULL_OR_NIL(selectedBackgroundGradientValue)) {
+        backgroundGradientValue = [_proxy valueForKey:@"selectedBackgroundGradient"];
+    }
+    [self setSelectedBackgroundGradient_:selectedBackgroundGradientValue];
+	
+    id selectedbackgroundColorValue = [properties objectForKey:@"selectedBackgroundColor"];
+    if (IS_NULL_OR_NIL(selectedbackgroundColorValue)) {
+        selectedbackgroundColorValue = [_proxy valueForKey:@"selectedBackgroundColor"];
+    }
+
+    id selectedBackgroundImageValue = [properties objectForKey:@"selectedBackgroundImage"];
+    if (IS_NULL_OR_NIL(selectedBackgroundImageValue)) {
+        selectedBackgroundImageValue = [_proxy valueForKey:@"selectedBackgroundImage"];
+    }
+	[self applyBackgroundWithSelectedColor:selectedbackgroundColorValue selectedImage:selectedBackgroundImageValue];
 	[_resetKeys enumerateObjectsUsingBlock:^(NSString *keyPath, BOOL *stop) {
 		id value = [_initialValues objectForKey:keyPath];
 		[self setValue:(value != [NSNull null] ? value : nil) forKeyPath:keyPath];

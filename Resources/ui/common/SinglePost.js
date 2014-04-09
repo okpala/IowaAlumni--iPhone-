@@ -31,12 +31,14 @@ function SinglePost (post, tracker, title){
 
 	 rowText.addEventListener('click', function(e) {
 			new WebView ( post.url);
+			/*
 			tracker.trackEvent({
 				category: "Articles",
 				action: "click",
 				label: "An Article in the " + title + "'s Window - " + post.url,
 				value: 1
 			});
+			*/
 	 });
 	 
 	 table.height = rowText.height;
@@ -77,9 +79,16 @@ function SinglePost (post, tracker, title){
 				borderWidth: 	1
 		
 			});
-			var postImage = getPostImage(post.image);
+			//var postImage = getPostImage(post.image);
+			var imagebox = Ti.UI.createImageView({
+				image: post.image,
+				hires: true,
+				width: Ti.UI.FILL,
+				height: Ti.UI.FILL,
+				top: 0
+			});
 			
-			imageContainer.add(postImage);
+			imageContainer.add(imagebox);
 			rowText.add(imageContainer);
 			
 			var desclbl = getDescriptionLabel(post.description, 200);

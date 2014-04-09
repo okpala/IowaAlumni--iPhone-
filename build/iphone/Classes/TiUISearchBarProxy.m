@@ -6,7 +6,7 @@
  * 
  * WARNING: This is generated code. Modify at your own risk and without support.
  */
-#ifdef USE_TI_UITABLEVIEW
+#if defined(USE_TI_UITABLEVIEW) || defined(USE_TI_UILISTVIEW)
 #ifndef USE_TI_UISEARCHBAR
 #define USE_TI_UISEARCHBAR
 #endif
@@ -21,6 +21,11 @@
 @synthesize showsCancelButton;
 
 #pragma mark Method forwarding
+
+-(NSString*)apiName
+{
+    return @"Ti.UI.SearchBar";
+}
 
 -(void)blur:(id)args
 {
@@ -59,6 +64,20 @@
 {
 	return [(TiUISearchBar*)[self view] searchBar];
 }
+
+-(void)ensureSearchBarHeirarchy
+{
+    WARN_IF_BACKGROUND_THREAD;
+    if ([self viewAttached]) {
+        UISearchBar* searchBar = [self searchBar];
+        if ([searchBar superview] != view) {
+            [view addSubview:searchBar];
+            [searchBar setFrame:[view bounds]];
+        }
+    }
+    
+}
+
 
 -(NSMutableDictionary*)langConversionTable
 {

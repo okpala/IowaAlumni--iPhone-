@@ -36,6 +36,11 @@
         isSpecified = NO;
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.XML.Attr";
+}
+
 -(id)name
 {
 	if (name != nil)

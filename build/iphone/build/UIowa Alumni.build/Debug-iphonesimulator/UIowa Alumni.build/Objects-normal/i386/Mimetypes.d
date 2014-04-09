@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/Mimetypes.m \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/Mimetypes.h
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/Mimetypes.m \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/Mimetypes.h

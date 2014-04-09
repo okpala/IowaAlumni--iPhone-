@@ -17,7 +17,7 @@
 @private
 	id<NSObject,TiOrientationController> detailView;
 }
-
+-(void)popupVisibilityChanged:(BOOL)newVal;
 @end
 
 #endif

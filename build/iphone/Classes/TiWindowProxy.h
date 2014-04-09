@@ -10,6 +10,10 @@
 #import "TiTab.h"
 #import "TiViewController.h"
 
+#ifdef USE_TI_UIIOSTRANSITIONANIMATION
+#import "TiUIiOSTransitionAnimationProxy.h"
+#endif
+
 @interface TiWindowProxy : TiViewProxy<TiWindowProtocol, TiAnimationDelegate> {
 @protected
     TiViewController* controller;
@@ -26,8 +30,16 @@
     TiAnimation * openAnimation;
     TiAnimation * closeAnimation;
     UIView* animatedOver;
+#ifdef USE_TI_UIIOSTRANSITIONANIMATION
+    TiUIiOSTransitionAnimationProxy* transitionProxy;
+#endif
+    
 }
 
 @property (nonatomic, readwrite, assign) TiViewProxy<TiTab> *tab;
 @property (nonatomic, readonly) TiProxy* tabGroup;
+
+#ifdef USE_TI_UIIOSTRANSITIONANIMATION
+-(TiUIiOSTransitionAnimationProxy*) transitionAnimation;
+#endif
 @end

@@ -15,18 +15,19 @@
 
 + (NSMutableDictionary*) copyDefaults
 {
-	NSMutableDictionary * _property = [[NSMutableDictionary alloc] init];
-	
-	[_property release];
 	return nil;
 }
 
 + (NSDictionary*) launchUrl {
-    static BOOL launched = NO;
-    if (!launched) {
-        launched = YES;
-        return nil;
-    } else { return nil;}
+	static BOOL launched = NO;
+	if (!launched) {
+		launched = YES;
+		
+			return nil;
+		
+	} else {
+		return nil;
+	}
 }
- 
+
 @end

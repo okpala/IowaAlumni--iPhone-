@@ -39,6 +39,11 @@
 	[self replaceValue:value forKey:@"style" notification:YES];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.Button";
+}
+
 -(UIBarButtonItem*)barButtonItem
 {
     /*

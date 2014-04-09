@@ -13,6 +13,11 @@
 
 @implementation TiUIiPadProxy
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.iPad";
+}
+
 
 #ifdef USE_TI_UIIPADPOPOVER
 

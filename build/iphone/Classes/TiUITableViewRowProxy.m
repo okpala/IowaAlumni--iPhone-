@@ -16,6 +16,7 @@
 #import "TiUtils.h"
 #import "Webcolor.h"
 #import "ImageLoader.h"
+#import "TiSelectedCellbackgroundView.h"
 #import "TiLayoutQueue.h"
 #import <libkern/OSAtomic.h>
 
@@ -26,152 +27,6 @@ NSString * const defaultRowTableClass = @"_default_";
 #define IOS7_ACCESSORY_EXTRA_OFFSET 15.0
 // TODO: Clean this up a bit
 #define NEEDS_UPDATE_ROW 1
-
-static void addRoundedRectToPath(CGContextRef context, CGRect rect,
-								 float ovalWidth,float ovalHeight)
-
-{
-    float fw, fh;
-	
-    if (ovalWidth == 0 || ovalHeight == 0) {// 1
-        CGContextAddRect(context, rect);
-        return;
-    }
-	
-    CGContextSaveGState(context);// 2
-	
-    CGContextTranslateCTM (context, CGRectGetMinX(rect),// 3
-						   CGRectGetMinY(rect));
-    CGContextScaleCTM (context, ovalWidth, ovalHeight);// 4
-    fw = CGRectGetWidth (rect) / ovalWidth;// 5
-    fh = CGRectGetHeight (rect) / ovalHeight;// 6
-	
-    CGContextMoveToPoint(context, fw, fh/2); // 7
-    CGContextAddArcToPoint(context, fw, fh, fw/2, fh, 1);// 8
-    CGContextAddArcToPoint(context, 0, fh, 0, fh/2, 1);// 9
-    CGContextAddArcToPoint(context, 0, 0, fw/2, 0, 1);// 10
-    CGContextAddArcToPoint(context, fw, 0, fw, fh/2, 1); // 11
-    CGContextClosePath(context);// 12
-	
-    CGContextRestoreGState(context);// 13
-}
-
-@interface TiSelectedCellBackgroundView : UIView 
-{
-    TiCellBackgroundViewPosition position;
-	UIColor *fillColor;
-	BOOL grouped;
-}
-@property(nonatomic) TiCellBackgroundViewPosition position;
-@property(nonatomic,retain) UIColor *fillColor;
-@property(nonatomic) BOOL grouped;
-@end
-
-#define ROUND_SIZE 10
-
-@implementation TiSelectedCellBackgroundView
-@synthesize position,fillColor,grouped;
-
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame])
-    {
-        self.fillColor = [UIColor clearColor];
-        position = TiCellBackgroundViewPositionMiddle;
-    }
-    return self;
-}
-
--(void)dealloc
-{
-	RELEASE_TO_NIL(fillColor);
-	[super dealloc];
-}
-
--(BOOL)isOpaque 
-{
-    return NO;
-}
-
--(void)drawRect:(CGRect)rect 
-{
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-	
-	CGContextSetFillColorWithColor(ctx, [fillColor CGColor]);
-    CGContextSetStrokeColorWithColor(ctx, [fillColor CGColor]);
-    CGContextSetLineWidth(ctx, 2);
-	
-    if (grouped && position == TiCellBackgroundViewPositionTop) 
-	{
-        CGFloat minx = CGRectGetMinX(rect), midx = CGRectGetMidX(rect), maxx = CGRectGetMaxX(rect) ;
-        CGFloat miny = CGRectGetMinY(rect), maxy = CGRectGetMaxY(rect);
-		
-        CGContextMoveToPoint(ctx, minx, maxy);
-        CGContextAddArcToPoint(ctx, minx, miny, midx, miny, ROUND_SIZE);
-        CGContextAddArcToPoint(ctx, maxx, miny, maxx, maxy, ROUND_SIZE);
-        CGContextAddLineToPoint(ctx, maxx, maxy);
-		
-        // Close the path
-        CGContextClosePath(ctx);
-		CGContextSaveGState(ctx);
-		CGContextDrawPath(ctx, kCGPathFill);
-        return;
-    } 
-	else if (grouped && position == TiCellBackgroundViewPositionBottom) 
-	{
-        CGFloat minx = CGRectGetMinX(rect) , midx = CGRectGetMidX(rect), maxx = CGRectGetMaxX(rect) ;
-        CGFloat miny = CGRectGetMinY(rect) , maxy = CGRectGetMaxY(rect) ;
-		
-        CGContextMoveToPoint(ctx, minx, miny);
-        CGContextAddArcToPoint(ctx, minx, maxy, midx, maxy, ROUND_SIZE);
-        CGContextAddArcToPoint(ctx, maxx, maxy, maxx, miny, ROUND_SIZE);
-        CGContextAddLineToPoint(ctx, maxx, miny);
-        CGContextClosePath(ctx);
-		CGContextSaveGState(ctx);
-		CGContextDrawPath(ctx, kCGPathFill);
-        return;
-    } 
-	else if (!grouped || position == TiCellBackgroundViewPositionMiddle) 
-	{
-        CGFloat minx = CGRectGetMinX(rect), maxx = CGRectGetMaxX(rect);
-        CGFloat miny = CGRectGetMinY(rect), maxy = CGRectGetMaxY(rect);
-        CGContextMoveToPoint(ctx, minx, miny);
-        CGContextAddLineToPoint(ctx, maxx, miny);
-        CGContextAddLineToPoint(ctx, maxx, maxy);
-        CGContextAddLineToPoint(ctx, minx, maxy);
-        CGContextClosePath(ctx);
-		CGContextSaveGState(ctx);
-		CGContextDrawPath(ctx, kCGPathFill);
-        return;
-    }
-	else if (grouped && position == TiCellBackgroundViewPositionSingleLine)
-	{
-		CGContextBeginPath(ctx);
-		addRoundedRectToPath(ctx, rect, ROUND_SIZE*1.5, ROUND_SIZE*1.5);
-		CGContextFillPath(ctx);  
-		
-		CGContextSetLineWidth(ctx, 2);  
-		CGContextBeginPath(ctx);
-		addRoundedRectToPath(ctx, rect, ROUND_SIZE*1.5, ROUND_SIZE*1.5);  
-		CGContextStrokePath(ctx);   
-		
-		return;
-	}
-	[super drawRect:rect];
-}
-
--(void)setPosition:(TiCellBackgroundViewPosition)inPosition
-{
-	if((position != inPosition) && (![TiUtils isIOS7OrGreater]))
-	{
-		position = inPosition;
-	}
-	[self setNeedsDisplay];
-}
-
-@end
-
-
-// used as a marker interface
 
 @interface TiUITableViewRowContainer : UIView
 {
@@ -222,6 +77,11 @@ TiProxy * DeepScanForProxyOfViewContainingPoint(UIView * targetView, CGPoint poi
 {
 	[hitTarget autorelease];
 	hitTarget = nil;
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.UI.TableViewRow";
 }
 
 -(TiProxy *)hitTarget
@@ -638,7 +498,7 @@ TiProxy * DeepScanForProxyOfViewContainingPoint(UIView * targetView, CGPoint poi
 
 -(BOOL)viewAttached
 {
-	return callbackCell != nil;
+	return (callbackCell != nil) && (callbackCell.proxy == self);
 }
 
 -(BOOL)canHaveControllerParent
@@ -876,17 +736,43 @@ TiProxy * DeepScanForProxyOfViewContainingPoint(UIView * targetView, CGPoint poi
 	attaching = NO;
 }
 
+-(void)triggerUpdateIfHeightChanged
+{
+    TiThreadPerformOnMainThread(^{
+        if ([self viewAttached] && rowContainerView != nil) {
+            CGFloat curHeight = rowContainerView.bounds.size.height;
+            CGSize newSize = [callbackCell computeCellSize];
+            if (newSize.height != curHeight) {
+                DeveloperLog(@"Height changing from %.1f to %.1f. Triggering update.",curHeight,newSize.height);
+                [self triggerRowUpdate];
+            } else {
+                DeveloperLog(@"Height does not change. Just laying out children. Height %.1f",curHeight);
+                //TIMOB-13121. Ensure touchdelegate is set if we are not going to reconstruct the row.
+                if ([rowContainerView superview] != nil) {
+                    UIView* contentView = [rowContainerView superview];
+                    [[self children] enumerateObjectsUsingBlock:^(TiViewProxy *proxy, NSUInteger idx, BOOL *stop) {
+                        [self redelegateViews:proxy toView:contentView];
+                    }];
+                }
+                [callbackCell setNeedsDisplay];
+            }
+        } else {
+            [callbackCell setNeedsDisplay];
+        }
+    }, NO);
+}
+
 -(void)contentsWillChange
 {
 	if (attaching==NO)
 	{
-		[self triggerRowUpdate];
+		[self triggerUpdateIfHeightChanged];
 	}
 }
 
 -(void)childWillResize:(TiViewProxy *)child
 {
-	[self triggerRowUpdate];
+	[self triggerUpdateIfHeightChanged];
 }
 
 -(TiProxy *)touchedViewProxyInCell:(UITableViewCell *)targetCell atPoint:(CGPoint*)point
@@ -951,26 +837,32 @@ TiProxy * DeepScanForProxyOfViewContainingPoint(UIView * targetView, CGPoint poi
 
 -(void)setSelectedBackgroundColor:(id)arg
 {
-	[self replaceValue:arg forKey:@"selectedBackgroundColor" notification:NO];	
-	if (callbackCell != nil) {
-		[self configureBackground:callbackCell];
-	}
+    [self replaceValue:arg forKey:@"selectedBackgroundColor" notification:NO];
+    TiThreadPerformOnMainThread(^{
+        if ([self viewAttached]) {
+            [self configureBackground:callbackCell];
+        }
+    }, NO);
 }
 
 -(void)setBackgroundImage:(id)arg
 {
 	[self replaceValue:arg forKey:@"backgroundImage" notification:NO];	
-	if (callbackCell != nil) {
-		[self configureBackground:callbackCell];
-	}
+    TiThreadPerformOnMainThread(^{
+        if ([self viewAttached]) {
+            [self configureBackground:callbackCell];
+        }
+    }, NO);
 }
 
 -(void)setSelectedBackgroundImage:(id)arg
 {
 	[self replaceValue:arg forKey:@"selectedBackgroundImage" notification:NO];	
-	if (callbackCell != nil) {
-		[self configureBackground:callbackCell];
-	}
+    TiThreadPerformOnMainThread(^{
+        if ([self viewAttached]) {
+            [self configureBackground:callbackCell];
+        }
+    }, NO);
 }
 
 -(void)setBackgroundGradient:(id)arg
@@ -1002,10 +894,34 @@ TiProxy * DeepScanForProxyOfViewContainingPoint(UIView * targetView, CGPoint poi
 					nil];
 	}
 	
-	if ([TableViewRowProperties member:key]!=nil)
-	{
-		[self triggerRowUpdate];
-	}
+    if ([TableViewRowProperties member:key]!=nil)
+    {
+        TiThreadPerformOnMainThread(^{
+            if (![self viewAttached]) {
+                return;
+            }
+            if ([key isEqualToString:@"height"] || [key isEqualToString:@"width"] || [key isEqualToString:@"indentionLevel"]) {
+                [self triggerRowUpdate];
+            } else if ([key isEqualToString:@"title"] || [key isEqualToString:@"color"] || [key isEqualToString:@"font"] || [key isEqualToString:@"selectedColor"]) {
+                [self configureTitle:callbackCell];
+                [callbackCell setNeedsDisplay];
+            } else if ([key isEqualToString:@"hasCheck"] || [key isEqualToString:@"hasChild"] || [key isEqualToString:@"hasDetail"] || [key isEqualToString:@"rightImage"]) {
+                [self configureRightSide:callbackCell];
+                [self triggerUpdateIfHeightChanged];
+            } else if ([key isEqualToString:@"leftImage"]) {
+                [self configureLeftSide:callbackCell];
+                [self triggerUpdateIfHeightChanged];
+            } else if ([key isEqualToString:@"backgroundImage"]) {
+                [self configureBackground:callbackCell];
+                [callbackCell setNeedsDisplay];
+            } else if ([key isEqualToString:@"backgroundColor"]) {
+                [callbackCell setBackgroundColor:[[TiUtils colorValue:newValue] color]];
+                [self triggerRowUpdate];
+            } else if ([key isEqualToString:@"accessibilityLabel"]){
+                callbackCell.accessibilityLabel = [TiUtils stringValue:newValue];
+            }
+        }, NO);
+    }
 }
 
 -(TiDimension)defaultAutoHeightBehavior:(id)unused

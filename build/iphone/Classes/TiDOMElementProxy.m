@@ -24,6 +24,11 @@
 	[super dealloc];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.XML.Element";
+}
+
 -(void)setElement:(GDataXMLElement*)element_
 {
 	RELEASE_TO_NIL(element);

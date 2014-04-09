@@ -6,17 +6,14 @@
  *
  * WARNING: This is generated code. Do not modify. Your changes *will* be lost.
  */
-
 #import <Foundation/Foundation.h>
 #import "ApplicationRouting.h"
-
-extern NSData* filterDataInRange(NSData* thedata, NSRange range);
 
 @implementation ApplicationRouting
 
 + (NSData*) resolveAppAsset:(NSString*)path;
 {
-	return nil;
+    return nil;
 }
 
 @end

@@ -17,6 +17,11 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 
 @implementation APIModule
 
+-(NSString*)apiName
+{
+    return @"Ti.API";
+}
+
 -(void)logMessage:(NSArray*)args severity:(NSString*)severity
 {
     NSMutableString* message = [NSMutableString string];

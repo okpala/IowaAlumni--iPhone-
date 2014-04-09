@@ -72,9 +72,16 @@ function Row(post, tracker, title) {
 		borderWidth: 	1
 
 	});
-	var postImage = getPostImage(post.image);
+	var imagebox = Ti.UI.createImageView({
+		image: post.image,
+		hires: true,
+		width: Ti.UI.FILL,
+		height: Ti.UI.FILL,
+		top: 0
+	});
+	//var postImage = getPostImage(post.image);
 	//new CachedImageView('imageDirectoryName', post.image, postImage);
-	imageContainer.add(postImage);
+	imageContainer.add(imagebox);
 	container.add(imageContainer);
 
 	container.height = titlelbl.height + desclbl.height + posted.height + 35;//<--- container.height = titlelbl.height + timelbl.height + desclbl.height + posted.height + 35;

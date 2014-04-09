@@ -13,6 +13,11 @@
 
 #pragma mark Public API : Functions
 
+-(NSString*)apiName
+{
+    return @"Ti.IOStream";
+}
+
 -(NSNumber*)read:(id)args
 {
     if (![[self isReadable:nil] boolValue]) {

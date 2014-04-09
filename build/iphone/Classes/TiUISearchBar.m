@@ -6,7 +6,7 @@
  * 
  * WARNING: This is generated code. Modify at your own risk and without support.
  */
-#ifdef USE_TI_UITABLEVIEW
+#if defined(USE_TI_UITABLEVIEW) || defined(USE_TI_UILISTVIEW)
 #ifndef USE_TI_UISEARCHBAR
 #define USE_TI_UISEARCHBAR
 #endif
@@ -17,6 +17,7 @@
 #import "TiUtils.h"
 #import "TiUISearchBarProxy.h"
 #import "TiUISearchBar.h"
+#import "ImageLoader.h"
 
 @implementation TiUISearchBar
 
@@ -43,11 +44,6 @@
 		[searchView setShowsCancelButton:[(TiUISearchBarProxy *)[self proxy] showsCancelButton]];
 		[self addSubview:searchView];
 	}
-    //IOS7 DP3 bug fix. See searchcontroller delegate method in listView.
-    if ([searchView superview] != self) {
-        [self addSubview:searchView];
-        [searchView setFrame:[self bounds]];
-    }
 	return searchView;
 }	
 
@@ -150,18 +146,21 @@
 	}
 }
 
--(CALayer *)backgroundImageLayer
+-(void)setBackgroundImage_:(id)arg
 {
-	if(backgroundLayer==nil)
-	{
-		backgroundLayer = [[CALayer alloc] init];
-		[backgroundLayer setFrame:[self bounds]];
-		[[[self searchBar] layer] insertSublayer:backgroundLayer atIndex:1];
-	}
-	return backgroundLayer;
+    UIImage *image = [self loadImage:arg];
+    [[self searchBar] setBackgroundImage:image];
+    self.backgroundImage = arg;
 }
 
 #pragma mark Delegate 
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    if (delegate!=nil && [delegate respondsToSelector:@selector(searchBarShouldBeginEditing:)]) {
+        [delegate searchBarShouldBeginEditing:searchBar];
+    }
+    return YES;
+}
 
 // called when text starts editing
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar                    

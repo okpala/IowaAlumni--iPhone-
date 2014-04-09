@@ -15,8 +15,9 @@ var Feed = require('ui/common/Feed');
  * Home Window
  */
 function RootWindow(title, tracker) {
-	tracker.trackScreen(title);
+	//tracker.trackScreen(title);
 	var masterView = Ti.UI.createView();
+	
 	var Feeds = new Feed();
 	var tableView = new PostTable();
 	tableView.top = 0;
@@ -193,9 +194,10 @@ function RootWindow(title, tracker) {
 	
 	
 	masterView.add(ad);
+	
 	var self = new ApplicationWindow("Home", masterView);
 	
-	
+
 
 	return self;
 

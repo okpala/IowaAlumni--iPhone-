@@ -54,6 +54,11 @@
 	[super dealloc];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Media.MusicPlayer";
+}
+
 #pragma mark Queue management
 
 // Future-proofing for more sophisticated queue management

@@ -20,6 +20,11 @@
 	sqlite3_enable_shared_cache(TRUE);
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Database";
+}
+
 -(id)open:(id)path
 {
 	ENSURE_SINGLE_ARG(path,NSString);

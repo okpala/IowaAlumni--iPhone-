@@ -11,6 +11,10 @@
 
 @implementation TiCalendarReminder
 
+-(NSString*)apiName
+{
+    return @"Ti.Calendar.Reminder";
+}
 
 
 @end

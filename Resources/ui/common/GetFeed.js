@@ -112,6 +112,67 @@ function GetFeed (feed){
                                         
                                         });
                         }
+           else if (feed == Feeds.eventsFeed()){
+                                data.push({
+                                        snl: getRssText(item, 'snl'),
+                                        place: getRssText(item, 'place'),
+                                        title: getRssText(item, 'title'),
+                                        url: getRssText(item, 'link'),
+                                        description: getRssText(item, 'description'),
+                                        category: getRssText(item, 'category'),
+                                        pubDate: getRssText(item, 'pubDate')
+                                
+                                        
+                                        });
+                        }
+             else if (feed == Feeds.eventsSportsCategoryFeed()){
+                                data.push({
+                                        snl: getRssText(item, 'snl'),
+                                        place: getRssText(item, 'place'),
+                                        title: getRssText(item, 'title'),
+                                        url: getRssText(item, 'link'),
+                                        description: getRssText(item, 'description'),
+                                        category: getRssText(item, 'category'),
+                                        pubDate: getRssText(item, 'pubDate')
+                                
+                                        
+                                        });
+                        }
+            else if (feed == Feeds.eventsClubsCategoryFeed()){
+            	data.push({
+                	snl: getRssText(item, 'snl'),
+                    place: getRssText(item, 'place'),
+                    title: getRssText(item, 'title'),
+                    url: getRssText(item, 'link'),
+                    description: getRssText(item, 'description'),
+                    category: getRssText(item, 'category'),
+                    pubDate: getRssText(item, 'pubDate')
+                });
+            }
+			
+			 else if (feed == Feeds.eventsStudentCategoryFeed()){
+            	data.push({
+                	snl: getRssText(item, 'snl'),
+                    place: getRssText(item, 'place'),
+                    title: getRssText(item, 'title'),
+                    url: getRssText(item, 'link'),
+                    description: getRssText(item, 'description'),
+                    category: getRssText(item, 'category'),
+                    pubDate: getRssText(item, 'pubDate')
+                });
+            }
+			
+			 else if (feed == Feeds.eventsUIAACategoryFeed()){
+            	data.push({
+                	snl: getRssText(item, 'snl'),
+                    place: getRssText(item, 'place'),
+                    title: getRssText(item, 'title'),
+                    url: getRssText(item, 'link'),
+                    description: getRssText(item, 'description'),
+                    category: getRssText(item, 'category'),
+                    pubDate: getRssText(item, 'pubDate')
+                });
+            }
 			
 			else if (feed == Feeds.clubsFeed()){
 				data.push({

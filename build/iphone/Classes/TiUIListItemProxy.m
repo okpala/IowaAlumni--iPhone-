@@ -29,11 +29,39 @@ static void SetEventOverrideDelegateRecursive(NSArray *children, id<TiViewEventO
 		_listViewProxy = listViewProxy;
 		[context.krollContext invokeBlockOnThread:^{
 			[context registerProxy:self];
-			[listViewProxy rememberProxy:self];
+			//Reusable cell will keep native proxy alive.
+			//This proxy will keep its JS object alive.
+			[self rememberSelf];
 		}];
 		self.modelDelegate = self;
     }
     return self;
+}
+
++(BOOL)shouldRegisterOnInit
+{
+    //Since this is initialized on main thread,
+    //there is no need to register on init. Registration
+    //done later on JS thread (See above)
+    return NO;
+}
+
+-(void)deregisterProxy:(id<TiEvaluator>)context
+{
+    //Aggressive removal of children on deallocation of cell
+    [self removeAllChildren:nil];
+    [self windowDidClose];
+    //Go ahead and unprotect JS object and mark context closed
+    //(Since cell no longer exists, the proxy is inaccessible)
+    [context.krollContext invokeBlockOnThread:^{
+        [self forgetSelf];
+        [self contextShutdown:context];
+    }];
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.UI.ListItem";
 }
 
 - (id)init
@@ -77,10 +105,6 @@ static void SetEventOverrideDelegateRecursive(NSArray *children, id<TiViewEventO
 		TiThreadPerformOnMainThread(^{
 			_listItem.accessoryType = [TiUtils intValue:newValue def:UITableViewCellAccessoryNone];
 		}, YES);
-	} else if ([key isEqualToString:@"backgroundColor"]) {
-		TiThreadPerformOnMainThread(^{
-			_listItem.contentView.backgroundColor = [[TiUtils colorValue:newValue] _color];
-		}, YES);
 	} else if ([key isEqualToString:@"selectionStyle"]) {
 		TiThreadPerformOnMainThread(^{
 			_listItem.selectionStyle = [TiUtils intValue:newValue def:UITableViewCellSelectionStyleBlue];
@@ -92,6 +116,11 @@ static void SetEventOverrideDelegateRecursive(NSArray *children, id<TiViewEventO
 {
 	[super unarchiveFromTemplate:viewTemplate];
 	SetEventOverrideDelegateRecursive(self.children, self);
+}
+
+-(BOOL)canHaveControllerParent
+{
+	return NO;
 }
 
 #pragma mark - TiViewEventOverrideDelegate

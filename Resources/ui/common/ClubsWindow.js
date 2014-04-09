@@ -8,11 +8,13 @@ var Feed = require('ui/common/Feed');
  * Root Window for Clubs and Gamewatches
  */
 
-function ClubsWindow(clubData, clubInfoData, tabGroup, tracker, top){
-	
-	var self = Ti.UI.createWindow({
+function ClubsWindow(clubData, clubInfoData,  tracker, top){
+	var scrollBoxHeight = 60;
+	var self = Ti.UI.createView({
 	    backgroundColor:'#e2e2e2',
-		navBarHidden: true,	
+		//navBarHidden: true,	
+		top: top,
+		height: Ti.Platform.displayCaps.platformHeight - (scrollBoxHeight + top),
 	});
 
 	var statusBar = Ti.UI.createView({
@@ -21,12 +23,9 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker, top){
 	    height: 20
 	});
 	
-	self.add(statusBar);
+	//self.add(statusBar);
 	
-	var navTab1 = Titanium.UI.iPhone.createNavigationGroup({
-	    window: self
-	});
-
+	
 	if (Ti.Platform.version >= 7.0){
 		//mainWinTab1.add(statusBar);
 		
@@ -36,7 +35,11 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker, top){
 	var masterContainerWindow = Ti.UI.createWindow({
 		title: clubData[0].state,
 		navBarHidden:false,
+		width: Ti.Platform.displayCaps.platformWidth,
+		top: 0,
+		left: 0,
 		barImage:'navbar.png',
+		translucent:false,
 		//hires:true,
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
@@ -55,21 +58,21 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker, top){
 
 	//menuButton event
 	menuButton.addEventListener('click', function(e){
-		tabGroup.close();
+		//tabGroup.close();
 		self.close();
 		
 	});
 	
-	var navGroup = Ti.UI.iPhone.createNavigationGroup({
+	var navGroup = Titanium.UI.iOS.createNavigationWindow({
 		window:masterContainerWindow
 	});
-	self.add(navGroup);
+	//self.add(navGroup);
 	
 
 	
 	var table = Ti.UI.createTableView({
 		height: 'auto',
-		top: top
+		top: 0
 	});
 
 	
@@ -191,7 +194,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker, top){
 	
 	self.add(table);
 	/**/
-	return navTab1;
+	return self;
 	
 }
 

@@ -78,6 +78,7 @@
 -(void)keyboardWillShow:(NSNotification*)notification;
 -(void)keyboardDidHide:(NSNotification*)notification;
 -(void)keyboardDidShow:(NSNotification*)notification;
+-(void)adjustFrameForUpSideDownOrientation:(NSNotification*)notification;
 @end
 
 @implementation TiRootViewController
@@ -137,6 +138,7 @@
         [nc addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
         [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
         [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        [nc addObserver:self selector:@selector(adjustFrameForUpSideDownOrientation:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     }
     return self;
@@ -427,7 +429,7 @@
 - (void)keyboardDidHide:(NSNotification*)notification
 {
 	startFrame = endFrame;
-    [self performSelector:@selector(adjustKeyboardHeight:) withObject:[NSNumber numberWithBool:NO] afterDelay:leaveDuration];
+    [self performSelector:@selector(adjustKeyboardHeight:) withObject:[NSNumber numberWithBool:NO]];
 }
 
 - (void)keyboardDidShow:(NSNotification*)notification
@@ -516,7 +518,7 @@
 	[focusedToolbar setBounds:focusedToolbarBounds];
     
     CGFloat keyboardHeight = endingFrame.origin.y;
-    if(focusedToolbar != nil){
+    if(focusedToolbar != nil && focusedToolbar != leavingAccessoryView){
         keyboardHeight -= focusedToolbarBounds.size.height;
     }
     
@@ -965,6 +967,49 @@
     return TI_ORIENTATION_ALLOWED([self getFlags:check],toInterfaceOrientation) ? YES : NO;
 }
 
+-(void)adjustFrameForUpSideDownOrientation:(NSNotification*)notification
+{
+    if ( (![TiUtils isIPad]) &&  ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationPortraitUpsideDown) ) {
+        CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+        if (statusBarFrame.size.height == 0) {
+            return;
+        }
+        
+        CGRect mainScreenBounds = [[UIScreen mainScreen] bounds];
+        CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
+        CGRect viewBounds = [[self view] bounds];
+        
+        if ([TiUtils isIOS7OrGreater]) {
+            //Need to do this to force navigation bar to draw correctly on iOS7
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTiFrameAdjustNotification object:nil];
+            if (statusBarFrame.size.height > 20) {
+                if (viewBounds.size.height != (mainScreenBounds.size.height - statusBarFrame.size.height)) {
+                    CGRect newBounds = CGRectMake(0, 0, mainScreenBounds.size.width, mainScreenBounds.size.height - statusBarFrame.size.height);
+                    CGPoint newCenter = CGPointMake(mainScreenBounds.size.width/2, (mainScreenBounds.size.height - statusBarFrame.size.height)/2);
+                    [[self view] setBounds:newBounds];
+                    [[self view] setCenter:newCenter];
+                    [[self view] setNeedsLayout];
+                }
+            } else {
+                if (viewBounds.size.height != mainScreenBounds.size.height) {
+                    CGRect newBounds = CGRectMake(0, 0, mainScreenBounds.size.width, mainScreenBounds.size.height);
+                    CGPoint newCenter = CGPointMake(mainScreenBounds.size.width/2, mainScreenBounds.size.height/2);
+                    [[self view] setBounds:newBounds];
+                    [[self view] setCenter:newCenter];
+                    [[self view] setNeedsLayout];
+                }
+            }
+            
+        } else {
+            if (viewBounds.size.height != appFrame.size.height) {
+                [[self view] setFrame:appFrame];
+                [[self view] setNeedsLayout];
+            }
+        }
+    }
+}
+
+
 #ifdef DEVELOPER
 - (void)viewWillLayoutSubviews
 {
@@ -988,6 +1033,7 @@
         }
     }
     [super viewDidLayoutSubviews];
+    [self adjustFrameForUpSideDownOrientation:nil];
 }
 
 //IOS5 support. Begin Section. Drop in 3.2
@@ -1292,6 +1338,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     isCurrentlyVisible = YES;
+    [self.view becomeFirstResponder];
     if ([containedWindows count] > 0) {
         for (id<TiWindowProtocol> thisWindow in containedWindows) {
             [thisWindow viewDidAppear:animated];

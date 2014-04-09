@@ -27,6 +27,11 @@
 
 // Public API : Functions
 
+-(NSString*)apiName
+{
+    return @"Ti.Codec";
+}
+
 -(NSNumber*)encodeNumber:(id)args
 {
     ENSURE_SINGLE_ARG(args, NSDictionary);

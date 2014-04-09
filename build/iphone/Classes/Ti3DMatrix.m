@@ -43,6 +43,11 @@
 	return self;
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.3DMatrix";
+}
+
 -(CATransform3D)matrix
 {
 	return matrix;

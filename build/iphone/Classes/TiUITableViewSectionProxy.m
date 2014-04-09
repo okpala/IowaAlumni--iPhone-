@@ -41,6 +41,11 @@
 	self.modelDelegate = self;
 }	
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.TableViewSection";
+}
+
 -(void)reorderRows
 {
 	NSInteger index = 0;

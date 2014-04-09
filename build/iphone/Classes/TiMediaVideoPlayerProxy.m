@@ -90,6 +90,11 @@ NSArray* moviePlayerKeys = nil;
 	[super _destroy];
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.Media.VideoPlayer";
+}
+
 -(void)configureNotifications
 {
 	WARN_IF_BACKGROUND_THREAD;	//NSNotificationCenter is not threadsafe!
@@ -1018,7 +1023,7 @@ NSArray* moviePlayerKeys = nil;
 			if (!sizeSet) {
 				[self setFullscreen:[loadProperties valueForKey:@"fullscreen"]];
 			}
-			if (player.loadState == MPMovieLoadStatePlayable) {
+			if ((player.loadState & MPMovieLoadStatePlayable)==MPMovieLoadStatePlayable) {
 				if ([self _hasListeners:@"load"]) {
 					[self fireEvent:@"load" withObject:nil];
 				}

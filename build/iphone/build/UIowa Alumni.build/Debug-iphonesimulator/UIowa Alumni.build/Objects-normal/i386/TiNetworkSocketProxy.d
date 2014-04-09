@@ -1,23 +1,23 @@
 dependencies: \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkSocketProxy.m \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkSocketProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkSocketProxy.m \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkSocketProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkSocketTCPProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiStreamProxy.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/Tibuffer.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/TiBlob.h \
-  /Users/charlesokpala/IowaAlumni--iPhone-/build/iphone/Classes/AsyncSocket.h
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiNetworkSocketTCPProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiStreamProxy.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/Tibuffer.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBlob.h \
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/AsyncSocket.h

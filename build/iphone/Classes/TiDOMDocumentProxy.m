@@ -47,6 +47,11 @@
 	return NO;
 }
 
+-(NSString*)apiName
+{
+    return @"Ti.XML.Document";
+}
+
 -(void)parseString:(NSString*)xml
 {
 	NSError *error = nil;

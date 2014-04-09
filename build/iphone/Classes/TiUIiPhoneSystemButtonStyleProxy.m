@@ -13,6 +13,11 @@
 
 @implementation TiUIiPhoneSystemButtonStyleProxy
 
+-(NSString*)apiName
+{
+    return @"Ti.UI.iPhone.SystemButtonStyle";
+}
+
 
 MAKE_SYSTEM_PROP(DONE,UIBarButtonItemStyleDone);
 MAKE_SYSTEM_PROP(BORDERED,UIBarButtonItemStyleBordered);
