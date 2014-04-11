@@ -15,7 +15,7 @@ var Feed = require('ui/common/Feed');
  * Home Window
  */
 function RootWindow(title, tracker) {
-	//tracker.trackScreen(title);
+	tracker.trackScreen(title);
 	var masterView = Ti.UI.createView();
 	
 	var Feeds = new Feed();

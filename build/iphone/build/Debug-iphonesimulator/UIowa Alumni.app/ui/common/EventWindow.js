@@ -13,7 +13,7 @@ function EventsWindow(title, tracker) {
 	var perviousPage = 0;
 	var scrollBoxHeight = 60;
 	var Feeds = new Feed();
-	//tracker.trackScreen(title);
+	tracker.trackScreen(title);
 	
 	var events = new GetFeed (Feeds.eventsFeed());
 	var eventsSportsCategoryFeed = new GetFeed (Feeds.eventsSportsCategoryFeed());

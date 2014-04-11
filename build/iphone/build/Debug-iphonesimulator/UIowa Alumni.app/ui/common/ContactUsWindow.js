@@ -6,7 +6,7 @@ var StaticAd = require('ui/common/StaticAd');
 
 function ContactUsWindow(title, tracker) {
 	
-	//tracker.trackScreen(title);
+	tracker.trackScreen(title);
 	//The Different Views
 	var contactView = Ti.UI.createView({
 		separatorColor: 	'd5d5d5',

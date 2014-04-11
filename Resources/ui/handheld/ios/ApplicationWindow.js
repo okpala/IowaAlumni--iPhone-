@@ -3,7 +3,7 @@ var RootWindow = require('ui/common/RootWindow');
 
 function ApplicationWindow(feed,windowtitle, tracker) {
 	
-	//tracker.trackScreen(windowtitle);
+	tracker.trackScreen(windowtitle);
 	//declare module dependencies
 	var RSS = require('services/rss'),
 		MasterView = require('ui/common/MasterView'),

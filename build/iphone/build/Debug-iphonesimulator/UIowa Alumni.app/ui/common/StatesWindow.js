@@ -9,7 +9,7 @@ var Feed = require('ui/common/Feed');
  */
 
 function StatesWindow(title, tracker){
-	//tracker.trackScreen(title);
+	tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var masterView = Ti.UI.createView();
 	
@@ -86,14 +86,14 @@ function StatesWindow(title, tracker){
 		var win = new GameWatchWindow(stateClubs[0], stateClubs[1], tracker);
 		win.open();
 	
-		/*
+		
 		tracker.trackEvent({
 			category: title,
 			action: "click",
 			label: e.row.text,
 			value: 1
 		});
-		*/
+		
 	});
 	
 	

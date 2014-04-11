@@ -14,11 +14,20 @@
 		var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
 		var EventWindow = require('ui/common/EventWindow');
 		var Tracker = require('ui/common/Tracker');
-		var tracker = new Tracker();
+		//var tracker = new Tracker();
 		var Feeds = new Feed();
 		var tracker = new Tracker();
+		/*
+		//var tracker = "";
+		//var gaModule = require('Ti.Google.Analytics');
+		//var analytics = new gaModule('UA-46448216-1');
 		
-		var win = new RootWindow("home", tracker);
+		Ti.App.addEventListener('analytics_trackPageview', function(e){
+			analytics.trackPageview('Navigation Page');
+			Ti.API.info("It happened");
+		});
+		*/
+		var win = new RootWindow("Home", tracker);
 		
 		win.moving = false;
 		win.axis = 0;
@@ -143,7 +152,7 @@
 		 
 		 tableView.addEventListener('click', function(e) {
 			//// ---- Window with navigationGroup
-			
+			//analytics.trackPageview('Navigation Page');
 			menuWindow.open();
 			
 			menuWindow.width = 270;

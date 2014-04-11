@@ -84,6 +84,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		    	city: clubInfoData[i].city,
 		        height: 'auto',
 		        selectionStyle: 'none',
+		        index: i,
 		        bottom: 10
 		    });
 		}
@@ -133,6 +134,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		        text: (clubInfoData[i].email),
 		        textAlign: 'left',
 		        color: 'blue',
+		        index: i,
 		        left: 10,
 		        top: currentTop,
 		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
@@ -141,7 +143,8 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		   
 	    	emailLabel.addEventListener('click', function(e) {
 	    		//data[e.index].emailLabel.color = 'purple'
-	    		//Ti.API.info(e.row);
+	    		//Ti.API.info(e.row.index);
+	    		Ti.API.info(e.index);
 				var emailDialog = Ti.UI.createEmailDialog();
 				emailDialog.toRecipients = [clubInfoData[e.index].email];
 				var f = Ti.Filesystem.getFile('cricket.wav');

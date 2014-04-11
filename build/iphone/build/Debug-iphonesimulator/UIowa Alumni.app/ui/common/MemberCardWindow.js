@@ -3,7 +3,7 @@ var GetFeed = require('ui/common/GetFeed');
 var Feed = require('ui/common/Feed');
 
 function  MemberCardWindow(title, tracker){
-	//tracker.trackScreen(title);
+	tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var passwordWin = Ti.UI.createView({
 	    top: 0,

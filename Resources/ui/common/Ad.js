@@ -50,12 +50,14 @@ function Ad(post, tracker, title) {
 	
 	row.addEventListener('click', function(e) {
 		new WebView (post.link );
+		/*
 		tracker.trackEvent({
 				category: "Ads",
 				action: "click",
 				label: "An Ad in the " + title + "'s Window - " + post.ad,
 				value: 1
 		});
+		*/
 	});
 	
 	return row;
