@@ -27,7 +27,7 @@ function ApplicationWindow(windowtitle, masterView) {
 		left: 0,
 		barImage:'navbar.png',
 		translucent:false,
-		titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
+		//titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
 	});

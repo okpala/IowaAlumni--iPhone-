@@ -14,7 +14,8 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	    backgroundColor:'#e2e2e2',
 		//navBarHidden: true,	
 		top: top,
-		height: Ti.Platform.displayCaps.platformHeight - (scrollBoxHeight + top),
+		//height: 200//Ti.Platform.displayCaps.platformHeight - (scrollBoxHeight + top),
+		bottom: 60
 	});
 
 	var statusBar = Ti.UI.createView({

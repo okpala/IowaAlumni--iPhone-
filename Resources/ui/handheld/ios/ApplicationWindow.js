@@ -42,7 +42,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		translucent:false,
 		width: Ti.Platform.displayCaps.platformWidth,
 		left: 0,
-		titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
+		//titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
 	});
@@ -67,17 +67,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 	menuButton.addEventListener('click', function(e){
 		navGroup.fireEvent('menuClick');
 	});
-	/*
-	self.addEventListener('swipeToggle', function(e){
-		self.fireEvent('menuClick');
-	});
-	self.addEventListener('swipe', function(e){
-		self.fireEvent('menuClick');
-	});
-	self.addEventListener('swipeListen', function(e){
-		self.fireEvent('menuClick');
-	});
-*/
+
 	//create detail view container
 	var detailContainerWindow = Ti.UI.createWindow({barImage: 'navbar.png',navBarHidden:false});
 	detailContainerWindow.add(detailView);

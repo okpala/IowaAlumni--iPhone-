@@ -81,8 +81,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	var mapWin = Ti.UI.createView({
 	    top: top,
 	    backgroundColor:'#ffffff',
-		navBarHidden: true,
-		height: Ti.Platform.displayCaps.platformHeight - (scrollBoxHeight + top),
+		bottom: scrollBoxHeight,
 	});
 
 	
@@ -118,16 +117,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	    annotations: gameWatchInfo,
 		top: 0
 	});
-	/*
-	map.addEventListener('loading', function(e){
-		map.setLocation({latitude: clubData[0].latitude , longitude: clubData[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
-	});
-	map.addEventListener('postlayout', function(e){
-		map.setLocation({latitude: clubData[0].latitude , longitude: clubData[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
-	});
-*/
+
 	var table = Ti.UI.createTableView({
 		height: 'auto',
 		top: 200
@@ -212,14 +202,14 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		
 	}
 	table.addEventListener('click', function(e){
-		/*
+		
 		tracker.trackEvent({
 					category: "Game Watches",
 					action: "click",
 					label: clubData[e.index].club,
 					value: 1
 		});
-		*/
+		
 		map = Map.createView({
 			mapType: Map.NORMAL_TYPE,
 			region: {latitude: e.row.latitude, longitude: e.row.longitude,
@@ -272,13 +262,10 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	var clubsView = new ClubsWindow(clubData, clubInfoData,  tracker, top);
 	navGroup1.add(clubsView);
 	navGroup1.add(scrollingView);
-	var tabGroup = Titanium.UI.createTabGroup({top: -21});
 
 	
 	viewArray = [navGroup1, clubsView, mapWin];
 	scrollingView.addEventListener('scrollend', function(e){
-		Ti.API.info("C=" + e.currentPage);
-
 		
 		 if(e.currentPage == 0 && perviousPage == 1){
 		 	viewArray[0].remove(viewArray[2]);

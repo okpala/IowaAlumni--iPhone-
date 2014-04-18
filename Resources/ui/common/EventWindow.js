@@ -133,7 +133,10 @@ function EventsWindow(title, tracker) {
 }
 
 function createEventView(events, title, scrollBoxHeight){
-	var table = new PostTable();
+	var table = Ti.UI.createTableView({
+		separatorColor: 'transparent',
+		backgroundColor: '#e2e2e2'
+		});
 	table.bottom = scrollBoxHeight;
 	var rows = [];
 	if (events.length == 0){

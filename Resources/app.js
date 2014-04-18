@@ -14,7 +14,6 @@
 		var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
 		var EventWindow = require('ui/common/EventWindow');
 		var Tracker = require('ui/common/Tracker');
-		//var tracker = new Tracker();
 		var Feeds = new Feed();
 		var tracker = new Tracker();
 		/*
@@ -310,7 +309,8 @@
 		 
 			});
 			
-	
+			win.moving = false;
+			win.axis = 0;
 			win.addEventListener('menuClick', function(e){
 				
 			    // If the menu is opened
@@ -321,6 +321,7 @@
 			            curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
 			        });
 			        e.source.toggle = false;
+			        win.setTitle(" ");
 			    }
 			    // If the menu isn't opened
 			    else{
@@ -330,6 +331,7 @@
 			            curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
 			        });
 			        e.source.toggle  = true;
+
 			    }
 			});
 			win.open();
