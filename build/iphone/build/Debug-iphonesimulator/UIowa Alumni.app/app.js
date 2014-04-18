@@ -321,7 +321,7 @@
 			            curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
 			        });
 			        e.source.toggle = false;
-			        win.setTitle(" ");
+			        //win.setTitle(" ");
 			    }
 			    // If the menu isn't opened
 			    else{

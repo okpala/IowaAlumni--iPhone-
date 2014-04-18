@@ -46,6 +46,11 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
 	});
+	if (Ti.Platform.version >= 7.0){
+		masterContainerWindow.titleControl = Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} });
+		
+	}
+	
 	var menuButton = Ti.UI.createButton({
 		backgroundImage: 'newmenubutton.png',
 		backgroundSelectedImage: 'newmenubuttonselected.png',
