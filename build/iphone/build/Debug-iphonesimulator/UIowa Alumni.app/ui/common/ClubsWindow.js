@@ -5,7 +5,7 @@ var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
 
 /*
- * Root Window for Clubs and Gamewatches
+ * Clubs View
  */
 
 function ClubsWindow(clubData, clubInfoData,  tracker, top){
@@ -24,14 +24,6 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	    height: 20
 	});
 	
-	//self.add(statusBar);
-	
-	
-	if (Ti.Platform.version >= 7.0){
-		//mainWinTab1.add(statusBar);
-		
-	}
-	
 	//create master view container
 	var masterContainerWindow = Ti.UI.createWindow({
 		title: clubData[0].state,
@@ -46,8 +38,6 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		    axis:0 // Custom property for X axis
 	});
 	var menuButton = Ti.UI.createButton({
-		
-		//title: 'Back',
 		height: 26,
 		width: 15,
 		backgroundImage: 'back.png',
@@ -59,7 +49,6 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 
 	//menuButton event
 	menuButton.addEventListener('click', function(e){
-		//tabGroup.close();
 		self.close();
 		
 	});
@@ -67,8 +56,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	var navGroup = Titanium.UI.iOS.createNavigationWindow({
 		window:masterContainerWindow
 	});
-	//self.add(navGroup);
-	
+
 
 	
 	var table = Ti.UI.createTableView({
@@ -143,8 +131,6 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		    
 		   
 	    	emailLabel.addEventListener('click', function(e) {
-	    		//data[e.index].emailLabel.color = 'purple'
-	    		//Ti.API.info(e.row.index);
 	    		Ti.API.info(e.index);
 				var emailDialog = Ti.UI.createEmailDialog();
 				emailDialog.toRecipients = [clubInfoData[e.index].email];

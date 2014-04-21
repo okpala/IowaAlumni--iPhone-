@@ -74,6 +74,7 @@ function Row(post, tracker, title) {
 	});
 	var imagebox = Ti.UI.createImageView({
 		image: post.image,
+		defaultImage:  "loader120x120.png",
 		hires: true,
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,

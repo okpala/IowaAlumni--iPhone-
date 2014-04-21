@@ -9,17 +9,11 @@ function NationalBenefitsWindow(title, tracker){
 	var Feeds = new Feed();
 	var masterView = Ti.UI.createView();
 	var textView = Ti.UI.createView({
-		//backgroundColor: 	'#ebc22f',//#ebc22f  e2e2e2
 		backgroundImage:	'gray-broder.png',
 		height:				90,
 		width:				316,
 		top:				0,
 		left:				2,
-		//borderRadius:		15,
-		//borderColor: 		'#444444',
-		//borderWidth: 		2
-
-		
 	});
 	var introLabel = Ti.UI.createLabel({
 			 text: ('As a UIAA member, you gain access to a variety of exclusive benefits that show our appreciation for your support of the UIAA.'),

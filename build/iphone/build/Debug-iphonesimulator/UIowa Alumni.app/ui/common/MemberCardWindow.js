@@ -87,7 +87,7 @@ function  MemberCardWindow(title, tracker){
 	
 	var image = Ti.UI.createImageView({
 	  image:    'http://iowalum.com/membership/images/MemberCard.png',
-	  top:    0,
+	  //top:    0,
 	  left:   0,
 	  height: 420,
 	  width:  320

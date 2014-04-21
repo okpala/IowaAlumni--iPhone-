@@ -35,6 +35,7 @@ function Ad(post, tracker, title) {
 
 	var imagebox = Ti.UI.createImageView({
 		image: post.ad,
+		defaultImage:  "loader480x120.png",
 		width: 300,
 		height: 70,
 		hires: true,
@@ -50,14 +51,14 @@ function Ad(post, tracker, title) {
 	
 	row.addEventListener('click', function(e) {
 		new WebView (post.link );
-		/*
+		
 		tracker.trackEvent({
 				category: "Ads",
 				action: "click",
 				label: "An Ad in the " + title + "'s Window - " + post.ad,
 				value: 1
 		});
-		*/
+		
 	});
 	
 	return row;

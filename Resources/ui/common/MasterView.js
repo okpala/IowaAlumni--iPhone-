@@ -17,7 +17,7 @@ var Post = require('ui/common/Post'),
 
 /* 
  * Master View is the layout
- * for Events Window, Iowa Magazine Window,
+ * for Iowa Magazine Window,
  *  and Iowa Insider Window
  */
 

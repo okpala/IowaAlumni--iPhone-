@@ -5,7 +5,7 @@ var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 var Map = require('ti.map');
 function MapWindow(title, tracker) {
-	//tracker.trackScreen(title);
+	tracker.trackScreen(title);
 	var Feeds = new Feed();
 	var mapWin = Ti.UI.createView({
 	    
@@ -172,14 +172,14 @@ function MapWindow(title, tracker) {
 		mapWin.add(map);
 		
 		map.selectAnnotation(companyInfo[e.index]);
-		/*
+		
 		tracker.trackEvent({
 			category: "Benefits",
 			action: "click",
 			label: companyInfo[e.index].title,
 			value: 1
 		});
-		*/
+	
 	});
 	
 	

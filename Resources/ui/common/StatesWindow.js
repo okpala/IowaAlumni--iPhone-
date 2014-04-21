@@ -33,9 +33,8 @@ function StatesWindow(title, tracker){
 	});
 	
 	var people = Ti.UI.createImageView({
-	  image:    'https://www.iowalum.com/mobile/clubs.png',
+	  image:    'clubsPeople.png',
 	  left: 10,
-		//right: 10,
 	  width:  Ti.Platform.displayCaps.platformWidth - 20,
 	  top:   85
 	});

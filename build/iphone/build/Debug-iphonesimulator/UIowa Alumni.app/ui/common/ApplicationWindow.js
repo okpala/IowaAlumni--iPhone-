@@ -1,22 +1,10 @@
 function ApplicationWindow(windowtitle, masterView) {
-	/*
-	var self = Ti.UI.createWindow({
-	    backgroundColor:'#e2e2e2',
-		navBarHidden: true,
-		//barColor:'#99cc66',
-		
-		
-	});
-	*/
+
 	var statusBar = Ti.UI.createView({
 	    backgroundColor:'#000',
 	    top: 0,
 	    height: 20
 	});
-	
-	//
-	
-	
 
 	//create master view container
 	var masterContainerWindow = Ti.UI.createWindow({
@@ -64,8 +52,6 @@ function ApplicationWindow(windowtitle, masterView) {
 		navGroup.fireEvent('menuClick');
 	});
 	
-	/**/
-	//self.add(navGroup);
 	
 	return navGroup;
 	
