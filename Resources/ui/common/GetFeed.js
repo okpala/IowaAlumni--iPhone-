@@ -92,7 +92,8 @@ function GetFeed (feed){
                     url:  getRssText(item, 'link'),
                     image: getRssText(item, 'image'),
                     description: getRssText(item, 'description'),
-                    pubDate: getRssText(item, 'pubDate')
+                    pubDate: getRssText(item, 'pubDate'),
+                  
 
 					
 					});
@@ -107,10 +108,11 @@ function GetFeed (feed){
                                         title: getRssText(item, 'title'),
                                         url: getRssText(item, 'link'),
                                         description: getRssText(item, 'description'),
-                                        pubDate: getRssText(item, 'pubDate')
-                                
+                                        pubDate: getRssText(item, 'pubDate'),
+                                		postDate: getRssText(item, 'pdate')
                                         
                                         });
+                                        Ti.API.info("post.postDate");
                         }
            else if (feed == Feeds.eventsFeed()){
                                 data.push({
@@ -120,8 +122,8 @@ function GetFeed (feed){
                                         url: getRssText(item, 'link'),
                                         description: getRssText(item, 'description'),
                                         category: getRssText(item, 'category'),
-                                        pubDate: getRssText(item, 'pubDate')
-                                
+                                        pubDate: getRssText(item, 'pubDate'),
+                                		postDate: getRssText(item, 'pdate')
                                         
                                         });
                         }
@@ -133,8 +135,8 @@ function GetFeed (feed){
                                         url: getRssText(item, 'link'),
                                         description: getRssText(item, 'description'),
                                         category: getRssText(item, 'category'),
-                                        pubDate: getRssText(item, 'pubDate')
-                                
+                                        pubDate: getRssText(item, 'pubDate'),
+                                		postDate: getRssText(item, 'pdate')
                                         
                                         });
                         }
@@ -146,7 +148,8 @@ function GetFeed (feed){
                     url: getRssText(item, 'link'),
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
-                    pubDate: getRssText(item, 'pubDate')
+                    pubDate: getRssText(item, 'pubDate'),
+                    postDate: getRssText(item, 'pdate')
                 });
             }
 			
@@ -158,7 +161,8 @@ function GetFeed (feed){
                     url: getRssText(item, 'link'),
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
-                    pubDate: getRssText(item, 'pubDate')
+                    pubDate: getRssText(item, 'pubDate'),
+                    postDate: getRssText(item, 'pdate')
                 });
             }
 			
@@ -170,7 +174,8 @@ function GetFeed (feed){
                     url: getRssText(item, 'link'),
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
-                    pubDate: getRssText(item, 'pubDate')
+                    pubDate: getRssText(item, 'pubDate'),
+                    postDate: getRssText(item, 'pdate')
                 });
             }
 			

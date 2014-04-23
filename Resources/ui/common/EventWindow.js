@@ -174,6 +174,7 @@ function createEventView(events, title, scrollBoxHeight){
 				headerCounter++;
 			}
 			var row = new SingleRow(post, tracker, title);
+			Ti.API.info(post.postDate);
 			rows.push(row);
 			Counter++;		
 			tempDate = post.pubDate;

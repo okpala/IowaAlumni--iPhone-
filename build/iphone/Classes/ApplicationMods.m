@@ -44,6 +44,20 @@
 			nil
 		]];
 		
+		[modules addObject:[NSDictionary
+			dictionaryWithObjectsAndKeys:@"tieventkit",
+			@"name",
+			@"ti.eventkit",
+			@"moduleid",
+			@"0.1",
+			@"version",
+			@"651197ae-0c27-4dc8-8a0e-d2ef727ee20e",
+			@"guid",
+			@"",
+			@"licensekey",
+			nil
+		]];
+		
 
 	return modules;
 }

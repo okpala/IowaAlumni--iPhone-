@@ -1,6 +1,7 @@
 var DateObject = require('ui/common/DateObject');
 var EditText = require('ui/common/EditText');
 var WebView = require('ui/common/WebView');
+var EK = require("ti.eventkit");
 /*
  * Return a Single Post Area for Events Window
  * that contains Tilte, Time, and Place
@@ -57,6 +58,42 @@ function SingleRow(post, tracker, title) {
 	row.backgroundFocusImage = null;
 
 	row.add(table);
+	var addEventButton = Ti.UI.createButton({
+		title:'+',
+		width:25,
+		height:25,
+		backgroundColor:'#ccc',
+		bottom: 0,
+  		right: 10,
+  		zIndex: 5,
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		
+	});
+	table.add(addEventButton);
+	
+	addEventButton.addEventListener('click', function(e){
+		EK.requestAuthorization(function(e) {
+		if (e.authorized == true) {
+			EK.createCalendarEvent({
+				title: post.title,
+				notes: post.description,
+				location: post.place,
+				begin: post.postDate,
+				end:  post.postDate
+			});
+	
+			Ti.UI.createAlertDialog({
+				title: "Fuu",
+				message:  post.postDate,
+				buttonNames: [ "OK"]
+			}).show();
+		} else {
+			alert("You haven't permissions to add Events");
+		}
+		});
+	
+	});
+
 
 
 	titlelbl = getTitleLabel(post.title);

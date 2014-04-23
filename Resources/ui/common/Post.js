@@ -11,6 +11,7 @@ function Post(item) {//<----
     this.place = item.place;
     this.description = (new Description(item.description)).getDescription();
     this.pubDate = item.pubDate;
+    this.postDate = item.postDate;
     this.hlink = item.hlink;
     this.image = (new Description(item.description)).getImage();
     this.url = item.link;

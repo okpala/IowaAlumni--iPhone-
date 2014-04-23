@@ -4,6 +4,7 @@ var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 var Map = require('ti.map');
+
 function MapWindow(title, tracker) {
 	tracker.trackScreen(title);
 	var Feeds = new Feed();
@@ -19,6 +20,8 @@ function MapWindow(title, tracker) {
 	var businessesInfo =  new GetFeed (Feeds.iowaCityFeed());
 	
 	var companyInfo = [];
+	var curLatitude = businessesInfo[0].latitude;
+	var curLongitude = businessesInfo[0].longitude;
 	for (var i = 0; i <= businessesInfo.length - 1; i++) {
 		companyInfo.push(
 			Map.createAnnotation(
@@ -46,18 +49,48 @@ function MapWindow(title, tracker) {
 		top: 0
 	});
 	
-	/*
-	
-	map.addEventListener('loading', function(e){
-		map.setLocation({latitude: companyInfo[0].latitude , longitude: companyInfo[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
+	var routeButton = Ti.UI.createButton({
+		title:'Get Route',
+		width:80,
+		height:25,
+		backgroundColor:'#ffffff',
+		bottom: 20,
+  		left: 20,
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		
 	});
-	map.addEventListener('postlayout', function(e){
-		map.setLocation({latitude: companyInfo[0].latitude , longitude: companyInfo[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
+	map.add(routeButton);
+	
+	routeButton.addEventListener('click', function(e){
+		
+		
+		if(Ti.Network.online){
+	        Ti.Geolocation.purpose = "Receive User Location";
+	        Titanium.Geolocation.getCurrentPosition(function(e){
+	
+	            if (!e.success || e.error)
+	            {
+	                alert('Could not find the device location');
+	                return;
+	            }
+	            var longitude = parseFloat( e.coords.longitude, 10).toFixed(5);
+	            var latitude =  parseFloat(e.coords.latitude, 10).toFixed(5);
+	
+	          
+				var url = 'http://maps.google.com/maps?saddr=' +latitude+ ',' + longitude + '&daddr=' + curLatitude+','+curLongitude;
+				new WebView (url);
+				 //Titanium.Platform.openURL(url); 
+				//alert("latitude: " + latitude + "longitude: " + longitude);
+			
+	        });
+		    }
+		   else{
+		        alert("Internet connection is required to use localization features");
+		   }/*
+		   */
 	});
 	
-*/
+
 	
 	var textView = Ti.UI.createView({
 		backgroundColor: 	'#e2e2e2',
@@ -168,7 +201,8 @@ function MapWindow(title, tracker) {
 		    annotations: companyInfo,
 			top: 0
 		});
-		
+		curLatitude = e.row.latitude;
+		curLongitude = e.row.longitude;
 		mapWin.add(map);
 		
 		map.selectAnnotation(companyInfo[e.index]);
@@ -179,6 +213,7 @@ function MapWindow(title, tracker) {
 			label: companyInfo[e.index].title,
 			value: 1
 		});
+		map.add(routeButton);
 	
 	});
 	

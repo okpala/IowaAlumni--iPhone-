@@ -197,7 +197,8 @@ function RootWindow(title, tracker) {
 	
 	var self = new ApplicationWindow("Home", masterView);
 	
-
+	//performCalendarWriteFunctions();
+	
 
 	return self;
 

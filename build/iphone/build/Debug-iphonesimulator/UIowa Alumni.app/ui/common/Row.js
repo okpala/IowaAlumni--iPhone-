@@ -36,7 +36,6 @@ function Row(post, tracker, title) {
 
 
 
-
 	titlelbl = getTitleLabel(post.title);
 	container.add(titlelbl);
 	
@@ -207,6 +206,7 @@ function getPostImage(image) {
 
 	return imagebox;
 }
+
 
  
 module.exports = Row;

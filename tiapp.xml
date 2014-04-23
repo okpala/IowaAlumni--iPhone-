@@ -47,5 +47,7 @@
     <modules>
         <module platform="iphone" version="1.0">analytics.google</module>
         <module platform="iphone">ti.map</module>
+        <module platform="iphone">ti.eventkit</module>
+       
     </modules>
 </ti:app>

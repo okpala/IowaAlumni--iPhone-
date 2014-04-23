@@ -105,7 +105,8 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		
 	}
  		
-	
+	var curLatitude = clubData[0].latitude;
+	var curLongitude = clubData[0].longitude;
 	var map = Map.createView({
 		mapType: Map.NORMAL_TYPE,
 		region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
@@ -117,6 +118,48 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	    annotations: gameWatchInfo,
 		top: 0
 	});
+	
+	var routeButton = Ti.UI.createButton({
+		title:'Get Route',
+		width:80,
+		height:25,
+		backgroundColor:'#ffffff',
+		bottom: 20,
+  		left: 20,
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		
+	});
+	map.add(routeButton);
+	
+	routeButton.addEventListener('click', function(e){
+		
+		
+		if(Ti.Network.online){
+	        Ti.Geolocation.purpose = "Receive User Location";
+	        Titanium.Geolocation.getCurrentPosition(function(e){
+	
+	            if (!e.success || e.error)
+	            {
+	                alert('Could not find the device location');
+	                return;
+	            }
+	            var longitude = parseFloat( e.coords.longitude, 10).toFixed(5);
+	            var latitude =  parseFloat(e.coords.latitude, 10).toFixed(5);
+	
+	          
+				var url = 'http://maps.google.com/maps?saddr=' +latitude+ ',' + longitude + '&daddr=' + curLatitude+','+curLongitude;
+				new WebView (url);
+				 //Titanium.Platform.openURL(url); 
+				//alert("latitude: " + latitude + "longitude: " + longitude);
+			
+	        });
+		    }
+		   else{
+		        alert("Internet connection is required to use localization features");
+		   }/*
+		   */
+	});
+	
 
 	var table = Ti.UI.createTableView({
 		height: 'auto',
@@ -221,9 +264,10 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		    annotations: gameWatchInfo,
 			top: 0
 		});
-		
+		map.add(routeButton);
 		mapWin.add(map);
-		
+		curLatitude =  e.row.latitude;
+		curLongitude =  e.row.longitude;
 		map.selectAnnotation(gameWatchInfo[e.index]);
 	});
 	
