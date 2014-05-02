@@ -102,44 +102,44 @@ function GetFeed (feed){
 			
 			
 			else if (feed == Feeds.todayEventsFeed()){
-                                data.push({
-                                        snl: getRssText(item, 'snl'),
-                                        place: getRssText(item, 'place'),
-                                        title: getRssText(item, 'title'),
-                                        url: getRssText(item, 'link'),
-                                        description: getRssText(item, 'description'),
-                                        pubDate: getRssText(item, 'pubDate'),
-                                		postDate: getRssText(item, 'pdate')
+                data.push({
+                    snl: getRssText(item, 'snl'),
+                    place: getRssText(item, 'place'),
+                    title: getRssText(item, 'title'),
+                    url: getRssText(item, 'link'),
+                    description: getRssText(item, 'description'),
+                    pubDate: getRssText(item, 'pubDate'),
+                    startDate: getRssText(item, 'startDate'),
+                    endDate: getRssText(item, 'endDate')                         
+            	});
                                         
-                                        });
-                                        Ti.API.info("post.postDate");
-                        }
+           }
            else if (feed == Feeds.eventsFeed()){
-                                data.push({
-                                        snl: getRssText(item, 'snl'),
-                                        place: getRssText(item, 'place'),
-                                        title: getRssText(item, 'title'),
-                                        url: getRssText(item, 'link'),
-                                        description: getRssText(item, 'description'),
-                                        category: getRssText(item, 'category'),
-                                        pubDate: getRssText(item, 'pubDate'),
-                                		postDate: getRssText(item, 'pdate')
+                data.push({
+                    snl: getRssText(item, 'snl'),
+                    place: getRssText(item, 'place'),
+                    title: getRssText(item, 'title'),
+                    url: getRssText(item, 'link'),
+                    description: getRssText(item, 'description'),
+                    pubDate: getRssText(item, 'pubDate'),
+                    startDate: getRssText(item, 'startDate'),
+                    endDate: getRssText(item, 'endDate')                         
+            	});
                                         
-                                        });
-                        }
+           }
              else if (feed == Feeds.eventsSportsCategoryFeed()){
-                                data.push({
-                                        snl: getRssText(item, 'snl'),
-                                        place: getRssText(item, 'place'),
-                                        title: getRssText(item, 'title'),
-                                        url: getRssText(item, 'link'),
-                                        description: getRssText(item, 'description'),
-                                        category: getRssText(item, 'category'),
-                                        pubDate: getRssText(item, 'pubDate'),
-                                		postDate: getRssText(item, 'pdate')
+                  data.push({
+                    snl: getRssText(item, 'snl'),
+                    place: getRssText(item, 'place'),
+                    title: getRssText(item, 'title'),
+                    url: getRssText(item, 'link'),
+                    description: getRssText(item, 'description'),
+                    pubDate: getRssText(item, 'pubDate'),
+                    startDate: getRssText(item, 'startDate'),
+                    endDate: getRssText(item, 'endDate')                         
+            	});
                                         
-                                        });
-                        }
+           }
             else if (feed == Feeds.eventsClubsCategoryFeed()){
             	data.push({
                 	snl: getRssText(item, 'snl'),
@@ -149,7 +149,8 @@ function GetFeed (feed){
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
-                    postDate: getRssText(item, 'pdate')
+                    startDate: getRssText(item, 'startDate'),
+                    endDate: getRssText(item, 'endDate')
                 });
             }
 			
@@ -162,7 +163,8 @@ function GetFeed (feed){
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
-                    postDate: getRssText(item, 'pdate')
+                    startDate: getRssText(item, 'startDate'),
+                    endDate: getRssText(item, 'endDate')
                 });
             }
 			
@@ -175,7 +177,8 @@ function GetFeed (feed){
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
-                    postDate: getRssText(item, 'pdate')
+                    startDate: getRssText(item, 'startDate'),
+                    endDate: getRssText(item, 'endDate')
                 });
             }
 			

@@ -2,6 +2,7 @@ var DateObject = require('ui/common/DateObject');
 var EditText = require('ui/common/EditText');
 var WebView = require('ui/common/WebView');
 var EK = require("ti.eventkit");
+Titanium.event = require('ti.eventkit');
 /*
  * Return a Single Post Area for Events Window
  * that contains Tilte, Time, and Place
@@ -69,29 +70,24 @@ function SingleRow(post, tracker, title) {
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		
 	});
-	table.add(addEventButton);
+	if (post.startDate != 'NA' && post.endDate != 'NA') {
+		table.add(addEventButton);
+	}
+	//Ti.API.info(post.startDate);
 	
 	addEventButton.addEventListener('click', function(e){
-		EK.requestAuthorization(function(e) {
-		if (e.authorized == true) {
-			EK.createCalendarEvent({
-				title: post.title,
-				notes: post.description,
-				location: post.place,
-				begin: post.postDate,
-				end:  post.postDate
-			});
-	
-			Ti.UI.createAlertDialog({
-				title: "Fuu",
-				message:  post.postDate,
-				buttonNames: [ "OK"]
-			}).show();
-		} else {
-			alert("You haven't permissions to add Events");
-		}
-		});
-	
+		if(Ti.Calendar.eventsAuthorization == Ti.Calendar.AUTHORIZATION_AUTHORIZED) {
+    		performCalendarWriteFunctions(post);
+		} 
+		else {
+    		Ti.Calendar.requestEventsAuthorization(function(e){
+            if (e.success) {
+                performCalendarWriteFunctions(post);
+            } else {
+                alert('Access to calendar is not allowed');
+            }
+        });
+       }
 	});
 
 
@@ -170,6 +166,38 @@ function getTitleLabel(title) {
 	return label;
 }
 
+function performCalendarWriteFunctions(post){
+     var dlg = Titanium.UI.createAlertDialog({
+     	title: post.title,
+	    message:'Do you want to save this event to your calendar?', 
+	    buttonNames: ['Yes','No']
+	});
+	dlg.addEventListener('click', function(ev) {
+	    if (ev.index == 0) { // clicked "Yes"
+	    	var defCalendar = Ti.Calendar.defaultCalendar;
+		   	var date1 = new Date(post.startDate),
+        	date2 = new Date(post.endDate);
+		    Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
+		    
+		    var event1 = defCalendar.createEvent({
+		                        title: post.title,
+		                        notes: post.description,
+		                        location: post.place,
+		                        begin: date1,
+		                        end: date2,
+		                        availability: Ti.Calendar.AVAILABILITY_FREE,
+		                        allDay: false,
+		     });
+  
+	      	event1.save(Ti.Calendar.SPAN_THISEVENT);
+	    } 
+	    else if (ev.index == 1) { // clicked "No"
+	      // do nothing
+	    }
+	});
+	dlg.show();
+
+}
 
 function getpubDateLabel(pubDate) {
 

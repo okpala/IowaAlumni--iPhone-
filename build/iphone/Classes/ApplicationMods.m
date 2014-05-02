@@ -51,7 +51,7 @@
 			@"moduleid",
 			@"0.1",
 			@"version",
-			@"651197ae-0c27-4dc8-8a0e-d2ef727ee20e",
+			@"2e959bc4-eec9-4cda-a0ab-06b571c308c7",
 			@"guid",
 			@"",
 			@"licensekey",

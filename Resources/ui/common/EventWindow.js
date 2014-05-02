@@ -77,7 +77,7 @@ function EventsWindow(title, tracker) {
 	mainWindow.add(scrollingView);
 	//Ti.API.info(mainWindow);
 	scrollingView.addEventListener('scrollend', function(e){
-		Ti.API.info("C=" + e.currentPage);
+		//Ti.API.info("C=" + e.currentPage);
 
 		
 		 if(e.currentPage == 0 && perviousPage == 1){
@@ -93,7 +93,7 @@ function EventsWindow(title, tracker) {
 		 	perviousPage = 1;
 		 }
 		 else if(e.currentPage == 2 && perviousPage == 1){
-		 	Ti.API.info("hello" + e.currentPage);
+		 	//Ti.API.info("hello" + e.currentPage);
 		 	viewArray[1].add(eventsClubstable);
 		 	perviousPage = 2;
 		 }

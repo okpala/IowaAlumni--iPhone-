@@ -197,13 +197,82 @@ function RootWindow(title, tracker) {
 	
 	var self = new ApplicationWindow("Home", masterView);
 	
-	//performCalendarWriteFunctions();
-	
 
 	return self;
 
 }
 
+function printEventDetails(eventID) {
+    Ti.API.info('eventID:' + eventID);
+    var defCalendar = Ti.Calendar.defaultCalendar;
+    var eventFromCalendar = defCalendar.getEventById(eventID);
+    if (eventFromCalendar != null) {
+        Ti.API.info('Printing event values ::');
+        Ti.API.info('title : '+ eventFromCalendar.title);
+        Ti.API.info('notes : ' + eventFromCalendar.notes);
+        Ti.API.info('location:' + eventFromCalendar.location);
+        Ti.API.info('allDay ? :' + eventFromCalendar.allDay);
+        Ti.API.info('status : '+ eventFromCalendar.status);
+        Ti.API.info('availability : '+ eventFromCalendar.availability);
+        Ti.API.info('hasAlarm ? : '+ eventFromCalendar.hasAlarm);
+        Ti.API.info('id : '+ eventFromCalendar.id);
+        Ti.API.info('isDetached ? : '+ eventFromCalendar.isDetached);
+        Ti.API.info('begin : '+ eventFromCalendar.begin);
+        Ti.API.info('end : '+ eventFromCalendar.end);
+        var eventRule = eventFromCalendar.recurrenceRules;
+        Ti.API.info("recurrenceRules : " + eventRule);
+        for (var i = 0; i < eventRule.length; i++) {
+            Ti.API.info("Rule # "+ i);
+            Ti.API.info('frequency : ' + eventRule[i].frequency);
+            Ti.API.info('interval : ' + eventRule[i].interval);
+            Ti.API.info('daysofTheWeek : ' );
+            var daysofTheWeek = eventRule[i].daysOfTheWeek; 
+            for (var j = 0; j < daysofTheWeek.length; j++) {
+                Ti.API.info('{ dayOfWeek : '+ daysofTheWeek[j].dayOfWeek +'weekNumber : '+daysofTheWeek[j].week +'}, ');
+            }
+            Ti.API.info('firstDayOfTheWeek : ' + eventRule[i].firstDayOfTheWeek);
+            Ti.API.info('daysOfTheMonth : ');
+            var daysOfTheMonth = eventRule[i].daysOfTheMonth;
+            for(var j=0;j<daysOfTheMonth.length;j++) {
+                Ti.API.info(' ' + daysOfTheMonth[j]);
+            }
+            Ti.API.info('daysOfTheYear : ');
+            var daysOfTheYear = eventRule[i].daysOfTheYear;
+            for(var j=0;i<daysOfTheYear.length;j++) {
+                Ti.API.info(' ' + daysOfTheYear[j]);
+            }
+            Ti.API.info('weeksOfTheYear : ');
+            var weeksOfTheYear = eventRule[i].weeksOfTheYear;
+            for(var j=0;j<weeksOfTheYear.length;j++) {
+                Ti.API.info(' ' + weeksOfTheYear[j]);
+            }
+            Ti.API.info('monthsOfTheYear : ');
+            var monthsOfTheYear = eventRule[i].monthsOfTheYear;
+            for(var j=0;j<monthsOfTheYear.length;j++) {
+                Ti.API.info(' ' + monthsOfTheYear[j]);
+            }
+            Ti.API.info('daysOfTheYear : ');
+            var setPositions = eventRule[i].setPositions;
+            for(var j=0;j<setPositions.length;j++) {
+                Ti.API.info(' ' + setPositions[j]);
+            }
+        };
+        Ti.API.info('alerts : '+ eventFromCalendar.alerts);
+        var newAlerts = eventFromCalendar.alerts;
+        
+        for(var i=0 ; i < newAlerts.length ; i++) {
+            Ti.API.info('*****ALert '+ i);
+            Ti.API.info('absoluteDate :'+ newAlerts[i].absoluteDate);
+            Ti.API.info('relativeOffset ;' + newAlerts[i].relativeOffset);
+        }
+   }
+}
 
+function performCalendarWriteFunctions(){
+    
+   
+    
+    
+}
 
 module.exports = RootWindow;
