@@ -40,14 +40,33 @@ function EventsWindow(title, tracker) {
 	var imageViewArray = [];
 	var viewArray = [mainWindow,mainView];
 	var imageNames = ["dots1.png", "dots2.png", "dots3.png", "dots4.png", "dots5.png"] ;
-	
+	var rightArrowImage = Ti.UI.createImageView({
+			image: 'slide_right.png',
+			bottom: 3,
+			right: 5,
+			width: 54,
+			height: 54,
+			zIndex: 5
+		});
+		
+		var leftArrowImage = Ti.UI.createImageView({
+			image: 'slide_left.png',
+			bottom: 3,
+			left: 5,
+			width: 54,
+			height: 54,
+			zIndex: 5
+		});
+		
 	
 	for(var i = 0; i < 5 ; i++){
 		var View = Titanium.UI.createView({});
 		var titleLabel = Ti.UI.createLabel({
 				text: title[i],
-				font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+				font:{fontFamily:'HelveticaNeue-Light',fontSize:20,fontWeight:'bold'},
+				top: 15
 		});
+		
 		var dotsImage = Ti.UI.createImageView({
 			image: imageNames[i],
 			top: 45,
@@ -58,8 +77,7 @@ function EventsWindow(title, tracker) {
 		View.add(dotsImage);
 		imageViewArray[i] = View;
 	}
-	
-	
+
 	var scrollingView = Titanium.UI.createScrollableView({
 		width: Ti.UI.FILL,
 		height: scrollBoxHeight,
@@ -68,18 +86,23 @@ function EventsWindow(title, tracker) {
 	  	backgroundColor: '#ccc',
 	  	contentWidth: Ti.UI.FILL,
 	  	contentHeight: 100,
-		borderWidth: 2,
-		borderColor: '#000',
+		//borderWidth: 2,
+		//borderColor: '#000',
 		mainContent: mainView
 	});
-	
+	mainWindow.add(rightArrowImage);
+	mainWindow.add(leftArrowImage);
 	mainWindow.add(mainView);
 	mainWindow.add(scrollingView);
+	rightArrowImage.hide();
+	leftArrowImage.hide();
 	//Ti.API.info(mainWindow);
+	
+	//leftArrowImage.show();
 	scrollingView.addEventListener('scrollend', function(e){
-		//Ti.API.info("C=" + e.currentPage);
-
-		
+		//Ti.API.info("C=" + e.currentPage)
+		leftArrowImage.hide();
+		rightArrowImage.hide();
 		 if(e.currentPage == 0 && perviousPage == 1){
 		 	viewArray[1].remove(eventsSportstable);
 		 	perviousPage = 0;
@@ -117,8 +140,49 @@ function EventsWindow(title, tracker) {
 		 }
 		
  	});
+ 	
+ 	scrollingView.addEventListener('scroll', function(e){
+		leftArrowImage.hide();
+		rightArrowImage.hide();
+
+ 	});
 	
-	
+	scrollingView.addEventListener('touchstart', function(e){
+		//Ti.API.info("C=" + e.currentPage);
+		if(perviousPage ==0){
+			leftArrowImage.show();
+			
+			//setTimeout(function(){rightArrowImage.hide();}, 1000);
+		}
+		else if(perviousPage == 4){
+			rightArrowImage.show();
+			//setTimeout(function(){leftArrowImage.hide();}, 1000);
+		}
+		else{
+			rightArrowImage.show();
+			leftArrowImage.show();
+			//setInterval(function(){leftArrowImage.show();rightArrowImage.show(); }, 3000);
+			//setTimeout(function(){leftArrowImage.hide();rightArrowImage.hide(); }, 1000);
+		}
+ 	});
+	scrollingView.addEventListener('touchend', function(e){
+		//Ti.API.info("C=" + e.currentPage);
+		if(perviousPage ==0){
+			leftArrowImage.hide();
+			
+			//setTimeout(function(){rightArrowImage.hide();}, 1000);
+		}
+		else if(perviousPage == 4){
+			rightArrowImage.hide();
+			//setTimeout(function(){leftArrowImage.hide();}, 1000);
+		}
+		else{
+			rightArrowImage.hide();
+			leftArrowImage.hide();
+			//setInterval(function(){leftArrowImage.show();rightArrowImage.show(); }, 3000);
+			//setTimeout(function(){leftArrowImage.hide();rightArrowImage.hide(); }, 1000);
+		}
+ 	});
 	
 	mainWindow = null;
 	scrollingView = null;

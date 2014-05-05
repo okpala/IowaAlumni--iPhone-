@@ -117,6 +117,22 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		    });
 		    row.add(phoneLabel);
 		    currentTop = currentTop + 15;
+		   
+		    
+		     phoneLabel.addEventListener('click', function(e) {
+	    		var phone = (clubInfoData[e.index].phone).replace(/(\|H: |C: |W: )/gm,"");
+		    	phone = phone.replace(/(-)/gm, "");
+	    		Titanium.Platform.openURL("tel:" + phone);
+	    		/*
+	    		tracker.trackEvent({
+					category: "Clubs",
+					action: "click",
+					label: clubInfoData[index].city + " " + clubInfoData[index].phone,
+					value: 1
+				});
+			*/
+			}); 
+			
 	    }
 	    if (clubInfoData[i].email != 'NA'){
 		    var emailLabel = Ti.UI.createLabel({
@@ -131,7 +147,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		    
 		   
 	    	emailLabel.addEventListener('click', function(e) {
-	    		Ti.API.info(e.index);
+	    		//Ti.API.info(e.index);
 				var emailDialog = Ti.UI.createEmailDialog();
 				emailDialog.toRecipients = [clubInfoData[e.index].email];
 				var f = Ti.Filesystem.getFile('cricket.wav');
