@@ -123,7 +123,8 @@ function GetFeed (feed){
                     description: getRssText(item, 'description'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
-                    endDate: getRssText(item, 'endDate')                         
+                    endDate: getRssText(item, 'endDate'),
+                    category:getRssText(item, 'category')                         
             	});
                                         
            }
@@ -136,7 +137,8 @@ function GetFeed (feed){
                     description: getRssText(item, 'description'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
-                    endDate: getRssText(item, 'endDate')                         
+                    endDate: getRssText(item, 'endDate'),
+                    category:getRssText(item, 'category')                          
             	});
                                         
            }
@@ -150,7 +152,8 @@ function GetFeed (feed){
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
-                    endDate: getRssText(item, 'endDate')
+                    endDate: getRssText(item, 'endDate'),
+                    category:getRssText(item, 'category') 
                 });
             }
 			
@@ -164,7 +167,8 @@ function GetFeed (feed){
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
-                    endDate: getRssText(item, 'endDate')
+                    endDate: getRssText(item, 'endDate'),
+                    category:getRssText(item, 'category') 
                 });
             }
 			
@@ -178,7 +182,8 @@ function GetFeed (feed){
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
-                    endDate: getRssText(item, 'endDate')
+                    endDate: getRssText(item, 'endDate'),
+                    category:getRssText(item, 'category') 
                 });
             }
 			

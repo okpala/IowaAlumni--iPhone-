@@ -14,7 +14,7 @@ function EventsWindow(title, tracker) {
 	var scrollBoxHeight = 60;
 	var Feeds = new Feed();
 	tracker.trackScreen(title);
-	
+	var categoryArray = [];
 	var events = new GetFeed (Feeds.eventsFeed());
 	var eventsSportsCategoryFeed = new GetFeed (Feeds.eventsSportsCategoryFeed());
 	var eventsClubsCategoryFeed = new GetFeed (Feeds.eventsClubsCategoryFeed());
@@ -29,17 +29,32 @@ function EventsWindow(title, tracker) {
 	  height: Ti.Platform.displayCaps.platformHeight - scrollBoxHeight,
 	});
 	
-	var allEventstable = createEventView(events, title, scrollBoxHeight);
-	var eventsSportstable = createEventView(eventsSportsCategoryFeed, title, scrollBoxHeight);
-	var eventsClubstable = createEventView(eventsClubsCategoryFeed, title, scrollBoxHeight);
-	var eventsUIAAtable = createEventView(eventsUIAACategoryFeed, title, scrollBoxHeight);
-	var eventsStudenttable = createEventView(eventsStudentCategoryFeed, title, scrollBoxHeight);
+	var allEventstable = createEventView(events, title, scrollBoxHeight, categoryArray);
+	var eventsSportstable = createEventView(eventsSportsCategoryFeed, title, scrollBoxHeight, categoryArray);
+	var eventsClubstable = createEventView(eventsClubsCategoryFeed, title, scrollBoxHeight, categoryArray);
+	var eventsUIAAtable = createEventView(eventsUIAACategoryFeed, title, scrollBoxHeight, categoryArray);
+	var eventsStudenttable = createEventView(eventsStudentCategoryFeed, title, scrollBoxHeight, categoryArray);
 	
 	mainView.add(allEventstable);
-	var title = ["All Events", "Athletics", "Clubs", "UIAA", "Student"];
+	
 	var imageViewArray = [];
 	var viewArray = [mainWindow,mainView];
-	var imageNames = ["dots1.png", "dots2.png", "dots3.png", "dots4.png", "dots5.png"] ;
+	var imageNames;
+	if (categoryArray.length == 1){
+		imageNames = ["dots1_1.png"];
+	}
+	else if(categoryArray.length == 2){
+		imageNames = ["dots2_1.png", "dots2_2.png"];		
+	}
+	else if( categoryArray.length == 3){
+		imageNames = ["dots3_1.png", "dots3_2.png", "dots3_3.png"];
+	}
+	else if( categoryArray.length == 3){
+		imageNames = ["dots4_1.png", "dots4_2.png", "dots4_3.png", "dots4_4.png"];
+	}
+	else{
+		imageNames = ["dots1.png", "dots2.png", "dots3.png", "dots4.png", "dots5.png"];
+	}
 	var rightArrowImage = Ti.UI.createImageView({
 			image: 'slide_right.png',
 			bottom: 3,
@@ -58,19 +73,19 @@ function EventsWindow(title, tracker) {
 			zIndex: 5
 		});
 		
-	
-	for(var i = 0; i < 5 ; i++){
+	Ti.API.info(categoryArray.length);
+	for(var i = 0; i < categoryArray.length ; i++){
 		var View = Titanium.UI.createView({});
 		var titleLabel = Ti.UI.createLabel({
-				text: title[i],
+				text: categoryArray[i][0][0].category,
 				font:{fontFamily:'HelveticaNeue-Light',fontSize:20,fontWeight:'bold'},
 				top: 15
 		});
-		
+		Ti.API.info(categoryArray[i][0][0].category);
 		var dotsImage = Ti.UI.createImageView({
 			image: imageNames[i],
 			top: 45,
-			width: 40,
+			//width: 40,
 			height: 10,
 		});
 		View.add(titleLabel);
@@ -104,38 +119,37 @@ function EventsWindow(title, tracker) {
 		leftArrowImage.hide();
 		rightArrowImage.hide();
 		 if(e.currentPage == 0 && perviousPage == 1){
-		 	viewArray[1].remove(eventsSportstable);
+		 	viewArray[1].remove(categoryArray[1][1]);
 		 	perviousPage = 0;
 		 }
 		 else if(e.currentPage == 1 && perviousPage == 0){
-		 	viewArray[1].add(eventsSportstable);
+		 	viewArray[1].add(categoryArray[1][1]);
 		 	perviousPage = 1;
 		 }
 		 else if(e.currentPage == 1 && perviousPage == 2){
-		 	viewArray[1].remove(eventsClubstable);
+		 	viewArray[1].remove(categoryArray[2][1]);
 		 	perviousPage = 1;
 		 }
 		 else if(e.currentPage == 2 && perviousPage == 1){
-		 	//Ti.API.info("hello" + e.currentPage);
-		 	viewArray[1].add(eventsClubstable);
+		 	viewArray[1].add(categoryArray[2][1]);
 		 	perviousPage = 2;
 		 }
 		 else if(e.currentPage == 2 && perviousPage == 3){
-		 	viewArray[1].remove(eventsUIAAtable);
+		 	viewArray[1].remove(categoryArray[3][1]);
 		 	perviousPage = 2;
 		 }
 		 
 		 else if(e.currentPage == 3 && perviousPage == 2){
-		 	viewArray[1].add(eventsUIAAtable);
+		 	viewArray[1].add(categoryArray[3][1]);
 		 	perviousPage = 3;
 		 }
 		
 		else if(e.currentPage == 3 && perviousPage == 4){
-		 	viewArray[1].remove(eventsStudenttable);
+		 	viewArray[1].remove(categoryArray[4][1]);
 		 	perviousPage = 3;
 		 }
 		 else if(e.currentPage == 4 && perviousPage == 3){
-		 	viewArray[1].add(eventsStudenttable);
+		 	viewArray[1].add(categoryArray[4][1]);
 		 	perviousPage = 4;
 		 }
 		
@@ -146,42 +160,30 @@ function EventsWindow(title, tracker) {
 		rightArrowImage.hide();
 
  	});
-	
+	//Displays arrows on touch events
 	scrollingView.addEventListener('touchstart', function(e){
 		//Ti.API.info("C=" + e.currentPage);
-		if(perviousPage ==0){
+		if (categoryArray.length == 1){//only one category
+		}
+		
+		else if(perviousPage == 0  && categoryArray.length != 1){//first category
 			leftArrowImage.show();
 			
-			//setTimeout(function(){rightArrowImage.hide();}, 1000);
 		}
-		else if(perviousPage == 4){
+		else if(perviousPage == (categoryArray.length - 1) && categoryArray.length != 1){//last category 
 			rightArrowImage.show();
-			//setTimeout(function(){leftArrowImage.hide();}, 1000);
 		}
-		else{
+		else{//if there is next and pervious category
 			rightArrowImage.show();
 			leftArrowImage.show();
-			//setInterval(function(){leftArrowImage.show();rightArrowImage.show(); }, 3000);
-			//setTimeout(function(){leftArrowImage.hide();rightArrowImage.hide(); }, 1000);
 		}
  	});
+ 	
+ 	//hides arrows on the end of touch events
 	scrollingView.addEventListener('touchend', function(e){
-		//Ti.API.info("C=" + e.currentPage);
-		if(perviousPage ==0){
-			leftArrowImage.hide();
-			
-			//setTimeout(function(){rightArrowImage.hide();}, 1000);
-		}
-		else if(perviousPage == 4){
-			rightArrowImage.hide();
-			//setTimeout(function(){leftArrowImage.hide();}, 1000);
-		}
-		else{
-			rightArrowImage.hide();
-			leftArrowImage.hide();
-			//setInterval(function(){leftArrowImage.show();rightArrowImage.show(); }, 3000);
-			//setTimeout(function(){leftArrowImage.hide();rightArrowImage.hide(); }, 1000);
-		}
+		rightArrowImage.hide();
+		leftArrowImage.hide();
+		
  	});
 	
 	mainWindow = null;
@@ -196,13 +198,14 @@ function EventsWindow(title, tracker) {
 
 }
 
-function createEventView(events, title, scrollBoxHeight){
+function createEventView(events, title, scrollBoxHeight, categoryArray){
 	var table = Ti.UI.createTableView({
 		separatorColor: 'transparent',
 		backgroundColor: '#e2e2e2'
 		});
 	table.bottom = scrollBoxHeight;
 	var rows = [];
+	/*
 	if (events.length == 0){
 		var titleLabel = Ti.UI.createLabel({
 				text: "There are no Upcoming Events at the Moment.",
@@ -213,7 +216,8 @@ function createEventView(events, title, scrollBoxHeight){
 		 row.add(titleLabel);
 		 rows.push(row);
 	}
-	else{	
+	*/
+	if (events.length > 0){	
 				
 		var Counter = 0;
 		var headerCounter = 0;
@@ -243,9 +247,11 @@ function createEventView(events, title, scrollBoxHeight){
 			Counter++;		
 			tempDate = post.pubDate;
 		}
-		
+	table.setData(rows);	
+	categoryArray.push([events, table]);	
 	}
-	table.setData(rows);
+	
+	
 	return table;
 }
 

@@ -5,63 +5,11 @@ var Map = require('ti.map');
 /*
  * Clubs and Game Watch Tabs 
  */
-function GameWatchWindow(clubData, clubInfoData, tracker) {
+function GameWatchWindow(clubData, clubInfoData, tracker, top) {
 	var perviousPage = 0;
 	var scrollBoxHeight = 60;
 	var windowtitle = clubData[0].state;
 	
-	var self = Ti.UI.createWindow({
-	    backgroundColor:'#e2e2e2',
-		navBarHidden: true,
-	});
-	
-	var statusBar = Ti.UI.createView({
-	    backgroundColor:'#000',
-	    top: 0,
-	    height: 20
-	});
-	//self.add(statusBar);
-
-	var masterContainerWindow = Ti.UI.createWindow({
-		title: windowtitle,
-		navBarHidden:false,
-		width: Ti.Platform.displayCaps.platformWidth,
-		top: 0,
-		left: 0,
-		barImage:'navbar.png',
-		translucent:false,
-		//hires:true,
-		moving:false, // Custom property for movement
-		    axis:0 // Custom property for X axis
-	});
-	var menuButton = Ti.UI.createButton({
-		height: 26,
-		width: 15,
-		backgroundImage: 'back.png',
-		font: {fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'bold'},
-    	toggle:false // Custom property for menu toggle
-	});
-	masterContainerWindow.setLeftNavButton(menuButton);
-
-	//backButton event
-	menuButton.addEventListener('click', function(e){
-		navGroup1.close();
-		
-	});
-	
-	var navGroup1 = Titanium.UI.iOS.createNavigationWindow({
-		window:masterContainerWindow
-	});
-	
-	if (Ti.Platform.version < 7.0){
-		var top = 43;
-		
-	}
-	else{
-		var top = 63;
-		
-	}
-
 	var mapWin = Ti.UI.createView({
 	    top: top,
 	    backgroundColor:'#ffffff',
@@ -250,106 +198,8 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		curLongitude =  e.row.longitude;
 		map.selectAnnotation(gameWatchInfo[e.index]);
 	});
-	var rightArrowImage = Ti.UI.createImageView({
-			image: 'slide_right.png',
-			bottom: 3,
-			right: 5,
-			width: 54,
-			height: 54,
-			zIndex: 5
-		});
-		
-		var leftArrowImage = Ti.UI.createImageView({
-			image: 'slide_left.png',
-			bottom: 3,
-			left: 5,
-			width: 54,
-			height: 54,
-			zIndex: 5
-		});
-		
-	var title = ["Iowa Clubs", "Game Watch Locations"];
-	var imageNames = ["dots2_1.png", "dots2_2.png"] ;
-	var imageViewArray = [];
-	for(var i = 0; i < 2 ; i++){
-		var View = Titanium.UI.createView({});
-		var titleLabel = Ti.UI.createLabel({
-				text: title[i],
-				font:{fontFamily:'HelveticaNeue-Light',fontSize:20,fontWeight:'bold'},
-				top: 15
-		});
-		
-		var dotsImage = Ti.UI.createImageView({
-			image: imageNames[i],
-			top: 45,
-			width: 40,
-			height: 10,
-		});
-		View.add(titleLabel);
-		View.add(dotsImage);
-		imageViewArray[i] = View;
-	}
 	
-	var scrollingView = Titanium.UI.createScrollableView({
-		width: Ti.UI.FILL,
-		height: scrollBoxHeight,
-		views: imageViewArray,
-		bottom: 0,
-	  	backgroundColor: '#ccc',
-	  	contentWidth: Ti.UI.FILL,
-	  	contentHeight: 100
-	});
-	navGroup1.add(rightArrowImage);
-	navGroup1.add(leftArrowImage);
-	rightArrowImage.hide();
-	leftArrowImage.hide();
-	var clubsView = new ClubsWindow(clubData, clubInfoData,  tracker, top);
-	navGroup1.add(clubsView);
-	navGroup1.add(scrollingView);
-
-	
-	viewArray = [navGroup1, clubsView, mapWin];
-	scrollingView.addEventListener('scrollend', function(e){
-		
-		 if(e.currentPage == 0 && perviousPage == 1){
-		 	viewArray[0].remove(viewArray[2]);
-		 	perviousPage = 0;
-		 }
-		 else if(e.currentPage == 1 && perviousPage == 0){
-		 	viewArray[0].add(viewArray[2]);
-		 	perviousPage = 1;
-		 }
-		 
-		
- 	});
- 	
- 	scrollingView.addEventListener('scroll', function(e){
-		leftArrowImage.hide();
-		rightArrowImage.hide();
-
- 	});
-	
-	scrollingView.addEventListener('touchstart', function(e){
-
-		if(perviousPage ==0){
-			leftArrowImage.show();			
-		}
-		else{
-			rightArrowImage.show();			
-		}
- 	});
-	scrollingView.addEventListener('touchend', function(e){
-		if(perviousPage ==0){
-			leftArrowImage.hide();	
-		}
-
-		else{
-			rightArrowImage.hide();		
-		}
- 	});
-	
-
-	return navGroup1;
+	return mapWin;
 }
 
 //Helper Functions

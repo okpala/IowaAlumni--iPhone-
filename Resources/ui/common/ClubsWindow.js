@@ -18,47 +18,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		bottom: 60
 	});
 
-	var statusBar = Ti.UI.createView({
-	    backgroundColor:'#000',
-	    top: 0,
-	    height: 20
-	});
-	
-	//create master view container
-	var masterContainerWindow = Ti.UI.createWindow({
-		title: clubData[0].state,
-		navBarHidden:false,
-		width: Ti.Platform.displayCaps.platformWidth,
-		top: 0,
-		left: 0,
-		barImage:'navbar.png',
-		translucent:false,
-		//hires:true,
-		moving:false, // Custom property for movement
-		    axis:0 // Custom property for X axis
-	});
-	var menuButton = Ti.UI.createButton({
-		height: 26,
-		width: 15,
-		backgroundImage: 'back.png',
-		//left: 15,
-		font: {fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'bold'},
-    	toggle:false // Custom property for menu toggle
-	});
-	masterContainerWindow.setLeftNavButton(menuButton);
 
-	//menuButton event
-	menuButton.addEventListener('click', function(e){
-		self.close();
-		
-	});
-	
-	var navGroup = Titanium.UI.iOS.createNavigationWindow({
-		window:masterContainerWindow
-	});
-
-
-	
 	var table = Ti.UI.createTableView({
 		height: 'auto',
 		top: 0
@@ -199,7 +159,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	table.setData(data);
 	
 	self.add(table);
-	/**/
+	
 	return self;
 	
 }
