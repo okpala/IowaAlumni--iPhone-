@@ -57,7 +57,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker, top) {
 		color: "#fff",
 		bottom: 5,
   		left: 5,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+		font: {fontFamily:'Helvetica',fontSize:14,fontWeight:'bold'}
 		
 	});
 	map.add(routeButton);
