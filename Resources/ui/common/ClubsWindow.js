@@ -28,6 +28,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	var data = [];
 	var rowCounter = 0;
 	for (var i = 0; i <= clubInfoData.length - 1; i++) {
+
 		if (rowCounter % 2 == 0){
 		    var row = Ti.UI.createTableViewRow({
 		    	city: clubInfoData[i].city,
@@ -66,6 +67,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	    row.add(leaderLabel);
 	    
 	    var currentTop = 46;
+	    var currentLeft = 0;
 	    
 	    if (clubInfoData[i].phone != 'NA'){
 		    var phoneLabel = Ti.UI.createLabel({
@@ -80,6 +82,8 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		   
 		    
 		     phoneLabel.addEventListener('click', function(e) {
+		     	Ti.API.info(e);
+		     	Ti.API.info(e.index);
 	    		var phone = (clubInfoData[e.index].phone).replace(/(\|H: |C: |W: )/gm,"");
 		    	phone = phone.replace(/(-)/gm, "");
 	    		Titanium.Platform.openURL("tel:" + phone);
@@ -120,7 +124,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 					label: clubInfoData[index].city + " " + clubInfoData[index].email,
 					value: 1
 				});
-	}); 
+			}); 
 	
 		    row.add(emailLabel);
 	    	currentTop = currentTop + 15;
@@ -150,7 +154,100 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 				});
 			}); 
 			row.add(webLabel);
+			currentTop = currentTop + 20;
 	    }
+	    if (clubInfoData[i].phone != 'NA'){
+		    var phoneButton = Ti.UI.createButton({
+		    	backgroundImage:"call.png",
+				width:35,
+				height:35,
+				top: currentTop,
+		  		left: currentLeft,
+				buttonid: i,
+			});
+			currentLeft = currentLeft + 40;
+		    row.add(phoneButton);
+		   
+
+		     phoneButton.addEventListener('click', function(e) {
+		     	//Ti.API.info(e);
+		     	Ti.API.info( e.source.buttonid);
+		     	//Ti.API.info(pos);
+	    		var phone = (clubInfoData[e.source.buttonid].phone).replace(/(\|H: |C: |W: )/gm,"");
+		    	phone = phone.replace(/(-)/gm, "");
+	    		Titanium.Platform.openURL("tel:" + phone);
+	    		/*
+	    		tracker.trackEvent({
+					category: "Clubs",
+					action: "click",
+					label: clubInfoData[index].city + " " + clubInfoData[index].phone,
+					value: 1
+				});
+			*/
+			}); 
+			
+	    }
+	    
+	      if (clubInfoData[i].email != 'NA'){
+		     var emailButton = Ti.UI.createButton({
+		    	backgroundImage:"mail.png",
+				width:35,
+				height:35,
+				top: currentTop,
+		  		left: currentLeft,
+				buttonid: i
+			});
+			currentLeft = currentLeft + 40;
+		    
+		   
+	    	emailButton.addEventListener('click', function(e) {
+	    		//Ti.API.info(e.index);
+				var emailDialog = Ti.UI.createEmailDialog();
+				emailDialog.toRecipients = [clubInfoData[e.source.buttonid].email];
+				var f = Ti.Filesystem.getFile('cricket.wav');
+				emailDialog.addAttachment(f);
+				emailDialog.open();
+				
+	    		tracker.trackEvent({
+					category: "Clubs",
+					action: "click",
+					label: clubInfoData[e.source.buttonid].city + " " + clubInfoData[e.source.buttonid].email,
+					value: 1
+				});
+			}); 
+	
+		    row.add(emailButton);
+	    	
+	    	
+	    }
+	    
+	    if (clubInfoData[i].web != 'NA'){
+		    var webButton = Ti.UI.createButton({
+		    	backgroundImage:"web.png",
+				width:35,
+				height:35,
+				top: currentTop,
+		  		left: currentLeft,
+				buttonid: i,
+			});
+			//currentLeft = currentLeft + 40;
+		   
+		    
+		    webButton.addEventListener('click', function(e) {
+				new WebView (clubInfoData[e.source.buttonid].web);
+				
+				tracker.trackEvent({
+					category: "Clubs",
+					action: "click",
+					label: clubInfoData[e.source.buttonid].city + " " + clubInfoData[e.source.buttonid].web,
+					autoLink: Titanium.UI.AUTOLINK_URLS,
+					value: 1
+				});
+			}); 
+			row.add(webButton);
+	
+	    }
+	    
 	   rowCounter++;
 	    data.push(row);
 	    

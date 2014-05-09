@@ -60,8 +60,8 @@ function SingleRow(post, tracker, title) {
 
 	row.add(table);
 	var addEventButton = Ti.UI.createButton({
-		width:25,
-		height:25,
+		width:40,
+		height:40,
 		backgroundImage: 'calendar_add.png',
 		bottom: 5,
   		right: 10,

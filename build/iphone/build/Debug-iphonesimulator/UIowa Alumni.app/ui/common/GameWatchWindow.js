@@ -50,11 +50,14 @@ function GameWatchWindow(clubData, clubInfoData, tracker, top) {
 	var routeButton = Ti.UI.createButton({
 		title:'Get Route',
 		width:80,
-		height:25,
-		backgroundColor:'#ffffff',
-		bottom: 20,
-  		left: 20,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		height:30,
+		backgroundColor:'#66CCFF',
+		borderRadius:		5,
+		borderWidth: 		1,
+		color: "#fff",
+		bottom: 5,
+  		left: 5,
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 		
 	});
 	map.add(routeButton);

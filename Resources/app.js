@@ -109,7 +109,7 @@
 			separatorColor: '#000000',
 			backgroundImage: 'menubg.jpg',
 		    //footerTitle:'',
-		    backgroundColor: "#000000",
+		    //backgroundColor: "#000000",
 		    height: tableHeight,
 		    top: 105
 		});
