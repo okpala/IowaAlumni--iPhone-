@@ -38,9 +38,10 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 	//create master view container
 	var masterContainerWindow = Ti.UI.createWindow({
 		title: windowtitle,
-		navBarHidden:false,
-		barImage:'navbar.png',
+		//navBarHidden:false,
+		barImage:'navbar.png',		
 		translucent:false,
+		backgroundColor:'#e2e2e2',
 		width: Ti.Platform.displayCaps.platformWidth,
 		left: 0,
 		//titleControl: Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} }),
@@ -58,7 +59,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		backgroundSelectedImage: 'newmenubuttonselected.png',
 		title: '',
 		height: 22,
-		width: 30,
+		width: 37,
 		//left: 15,
     	toggle:false // Custom property for menu toggle
 	});
@@ -74,7 +75,17 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 	menuButton.addEventListener('click', function(e){
 		navGroup.fireEvent('menuClick');
 	});
-
+	
+	navGroup.addEventListener('swipeToggle', function(e){
+		navGroup.fireEvent('menuClick');
+	});
+	navGroup.addEventListener('swipe', function(e){
+		navGroup.fireEvent('menuClick');
+	});
+	navGroup.addEventListener('swipeListen', function(e){
+		navGroup.fireEvent('menuClick');
+	});
+	/*
 	//create detail view container
 	var detailContainerWindow = Ti.UI.createWindow({barImage: 'navbar.png',navBarHidden:false});
 	detailContainerWindow.add(detailView);
@@ -88,7 +99,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		navGroup.open(detailContainerWindow);
 	});
 
-	
+	*/
 	
 	return navGroup;
 	
