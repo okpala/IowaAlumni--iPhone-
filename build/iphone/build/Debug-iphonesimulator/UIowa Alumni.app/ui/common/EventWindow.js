@@ -73,7 +73,7 @@ function EventsWindow(title, tracker) {
 			zIndex: 5
 		});
 		
-	Ti.API.info(categoryArray.length);
+	//Ti.API.info(categoryArray.length);
 	for(var i = 0; i < categoryArray.length ; i++){
 		var View = Titanium.UI.createView({});
 		var titleLabel = Ti.UI.createLabel({
@@ -81,7 +81,7 @@ function EventsWindow(title, tracker) {
 				font:{fontFamily:'HelveticaNeue-Light',fontSize:20,fontWeight:'bold'},
 				top: 15
 		});
-		Ti.API.info(categoryArray[i][0][0].category);
+		//Ti.API.info(categoryArray[i][0][0].category);
 		var dotsImage = Ti.UI.createImageView({
 			image: imageNames[i],
 			top: 45,
@@ -242,7 +242,7 @@ function createEventView(events, title, scrollBoxHeight, categoryArray){
 				headerCounter++;
 			}
 			var row = new SingleRow(post, tracker, title);
-			Ti.API.info(post.postDate);
+			//Ti.API.info(post.postDate);
 			rows.push(row);
 			Counter++;		
 			tempDate = post.pubDate;

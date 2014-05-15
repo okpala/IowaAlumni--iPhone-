@@ -176,7 +176,7 @@ function performCalendarWriteFunctions(post){
 	    	var defCalendar = Ti.Calendar.defaultCalendar;
 		   	var date1 = new Date(post.startDate),
         	date2 = new Date(post.endDate);
-		    Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
+		    //Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
 		    
 		    var event1 = defCalendar.createEvent({
 		                        title: post.title,

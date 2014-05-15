@@ -26,7 +26,8 @@
 		var menuWindow = Ti.UI.createWindow({
 			top: 0,
 			left: 0,
-			width:270
+			width:270,
+			opacity: 0
 		});
 		
 		
@@ -109,7 +110,7 @@
 			separatorColor: '#000000',
 			backgroundImage: 'menubg.jpg',
 		    //footerTitle:'',
-		    //backgroundColor: "#000000",
+		    backgroundColor: "#000000",
 		    height: tableHeight,
 		    top: 105
 		});
@@ -331,6 +332,7 @@
 
 		menuWindow.open();
 		win.open();
+		menuWindow.opacity = 100;
 		logorow = null;
 		logo = null;
 		

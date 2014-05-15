@@ -15,7 +15,7 @@ NSString * const TI_APPLICATION_NAME = @"UIowa Alumni";
 NSString * const TI_APPLICATION_VERSION = @"2.0";
 NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
 NSString * const TI_APPLICATION_COPYRIGHT = @"2013 by University of Iowa Alumni Association";
-NSString * const TI_APPLICATION_GUID = @"1d505bc3-a313-4102-81b6-62ed140216c7";
+NSString * const TI_APPLICATION_GUID = @"189bad4e-78c3-4d7a-862d-0f1d4ebf4e1f";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 
 #ifdef TARGET_IPHONE_SIMULATOR

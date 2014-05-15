@@ -54,7 +54,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker, top) {
 		backgroundColor:'#66CCFF',
 		borderRadius:		5,
 		borderWidth: 		1,
-		color: "#fff",
+		//color: "#fff",
 		bottom: 5,
   		left: 5,
 		font: {fontFamily:'Helvetica',fontSize:14,fontWeight:'bold'}
@@ -168,13 +168,6 @@ function GameWatchWindow(clubData, clubInfoData, tracker, top) {
 	mapWin.add(map);
 	mapWin.add(table);
 	
-	//masterContainerWindow.add(mapWin);
-	
-	//self.add(statusBar);
-	if (Ti.Platform.version >= 7.0){
-		//self.add(statusBar);
-		
-	}
 	table.addEventListener('click', function(e){
 		
 		tracker.trackEvent({
