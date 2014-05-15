@@ -2,7 +2,8 @@ var NavigateWindow = require('ui/common/NavigateWindow');
 var ClubsWindow = require('ui/common/ClubsWindow');
 var  GameWatchWindow = require('ui/common/GameWatchWindow');
 
-function  ClubsandWatchesScrollWindow (clubData, clubInfoData, tracker) {
+function  ClubsandWatchesScrollWindow (clubData, clubInfoData, tracker, gameWatchView) {
+	
 	var perviousPage = 0;
 	var masterView = Ti.UI.createView({backgroundColor:"#fff"});
 	var scrollBoxHeight = 60;
@@ -64,12 +65,12 @@ function  ClubsandWatchesScrollWindow (clubData, clubInfoData, tracker) {
 	rightArrowImage.hide();
 	leftArrowImage.hide();
 	var clubsView = new ClubsWindow(clubData, clubInfoData,  tracker, top);
-	var gameWatchView = new GameWatchWindow(clubData, clubInfoData,  tracker, top);
+	
 	masterView.add(clubsView);
 	masterView.add(scrollingView);
 
 	
-	viewArray = [masterView, clubsView, gameWatchView];
+	var viewArray = [masterView, clubsView, gameWatchView];
 	scrollingView.addEventListener('scrollend', function(e){
 		
 		 if(e.currentPage == 0 && perviousPage == 1){

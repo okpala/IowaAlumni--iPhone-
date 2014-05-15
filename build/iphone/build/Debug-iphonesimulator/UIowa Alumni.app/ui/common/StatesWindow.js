@@ -4,6 +4,7 @@ var WebView = require('ui/common/WebView');
 var ApplicationWindow = require('ui/common/ApplicationWindow');
 var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
+var  GameWatchWindow = require('ui/common/GameWatchWindow');
 /*
  * Root Window for Clubs and Gamewatches
  */
@@ -82,7 +83,8 @@ function StatesWindow(title, tracker){
 	masterView.add(table);
 	table.addEventListener('click', function(e){
 		var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
-		var win = new  ClubsandWatchesScrollWindow(stateClubs[0], stateClubs[1], tracker);
+		var gameWatchView = new GameWatchWindow(stateClubs[0], stateClubs[1],  tracker, 0);
+		var win = new  ClubsandWatchesScrollWindow(stateClubs[0], stateClubs[1], tracker, gameWatchView);
 		win.open();
 	
 		

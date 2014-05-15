@@ -6,9 +6,7 @@ var Map = require('ti.map');
  * Clubs and Game Watch Tabs 
  */
 function GameWatchWindow(clubData, clubInfoData, tracker, top) {
-	var perviousPage = 0;
 	var scrollBoxHeight = 60;
-	var windowtitle = clubData[0].state;
 	
 	var mapWin = Ti.UI.createView({
 	    top: top,

@@ -19,6 +19,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		//barImage: 'navbar.png'
 		navBarHidden: true
 	});
+	/*
 	
 	var statusBar = Ti.UI.createView({
 	    backgroundColor:'#000',
@@ -27,7 +28,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 	});
 	
 	self.add(statusBar);
-
+*/
 	//construct UI
 	var masterView = new MasterView(feed, windowtitle, tracker);
 	var	detailView = new DetailView();
@@ -46,6 +47,7 @@ function ApplicationWindow(feed,windowtitle, tracker) {
 		moving:false, // Custom property for movement
 		    axis:0 // Custom property for X axis
 	});
+	
 	if (Ti.Platform.version >= 7.0){
 		masterContainerWindow.titleControl = Ti.UI.createLabel({ text: windowtitle, color: 'white', font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:20,fontWeight:'bold'} });
 		
