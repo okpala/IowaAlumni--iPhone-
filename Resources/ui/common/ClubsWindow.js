@@ -12,9 +12,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	var scrollBoxHeight = 60;
 	var self = Ti.UI.createView({
 	    backgroundColor:'#e2e2e2',
-		//navBarHidden: true,	
 		top: top,
-		//height: 200//Ti.Platform.displayCaps.platformHeight - (scrollBoxHeight + top),
 		bottom: 60
 	});
 
@@ -67,7 +65,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 	    row.add(leaderLabel);
 	    
 	    var currentTop = 46;
-	    var currentLeft = 0;
+	    var currentLeft = 10;
 	    
 	    if (clubInfoData[i].phone != 'NA'){
 		    var phoneLabel = Ti.UI.createLabel({
@@ -79,23 +77,7 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 		    });
 		    row.add(phoneLabel);
 		    currentTop = currentTop + 15;
-		   
 		    
-		     phoneLabel.addEventListener('click', function(e) {
-		     	Ti.API.info(e);
-		     	Ti.API.info(e.index);
-	    		var phone = (clubInfoData[e.index].phone).replace(/(\|H: |C: |W: )/gm,"");
-		    	phone = phone.replace(/(-)/gm, "");
-	    		Titanium.Platform.openURL("tel:" + phone);
-	    		/*
-	    		tracker.trackEvent({
-					category: "Clubs",
-					action: "click",
-					label: clubInfoData[index].city + " " + clubInfoData[index].phone,
-					value: 1
-				});
-			*/
-			}); 
 			
 	    }
 	    if (clubInfoData[i].email != 'NA'){
@@ -171,19 +153,21 @@ function ClubsWindow(clubData, clubInfoData,  tracker, top){
 
 		     phoneButton.addEventListener('click', function(e) {
 		     	//Ti.API.info(e);
-		     	Ti.API.info( e.source.buttonid);
+		     	//Ti.API.info( e.source.buttonid);
 		     	//Ti.API.info(pos);
 	    		var phone = (clubInfoData[e.source.buttonid].phone).replace(/(\|H: |C: |W: )/gm,"");
 		    	phone = phone.replace(/(-)/gm, "");
+		    	phone = phone.replace(/(H: )/gm, "");
 	    		Titanium.Platform.openURL("tel:" + phone);
-	    		/*
+	    		//Ti.API.info(phone);
+	    		
 	    		tracker.trackEvent({
 					category: "Clubs",
 					action: "click",
-					label: clubInfoData[index].city + " " + clubInfoData[index].phone,
+					label: clubInfoData[e.source.buttonid].city + " " + clubInfoData[e.source.buttonid].phone,
 					value: 1
 				});
-			*/
+			
 			}); 
 			
 	    }
