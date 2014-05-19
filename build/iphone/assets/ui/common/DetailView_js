@@ -1,1 +1,0 @@
-function DetailView(){var e=Ti.UI.createView(),t=Ti.UI.createWebView();return e.add(t),e.showArticle=function(e){t.url=e,t.canGoBack=!0},t.addEventListener("load",function(){e.fireEvent("articleLoaded")}),e}module.exports=DetailView;

@@ -1,1 +1,0 @@
-function Tracker(){var e=require("analytics.google");e.debug=!0;var t=e.getTracker("UA-46448216-1");return t}module.exports=Tracker;
