@@ -179,9 +179,24 @@ function performCalendarWriteFunctions(post){
 	    	var defCalendar = Ti.Calendar.defaultCalendar;
 		   	var date1 = new Date(post.startDate),
         	date2 = new Date(post.endDate);
-		    //Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
+		    Ti.API.info('Date1 : '+ date1 + 'Date2 : '+ date2);
+		    Ti.API.info(post.allDay);
+		    var event1;
 		    
-		    var event1 = defCalendar.createEvent({
+		    if (post.allDay == "Yes"){
+		    	 event1 = defCalendar.createEvent({
+		                        title: post.title,
+		                        notes: post.description,
+		                        location: post.place,
+		                        begin: date1,
+		                        end: date2,
+		                        availability: Ti.Calendar.AVAILABILITY_FREE,
+		                        allDay: true,
+		     });
+  
+		    }
+		    else{
+		    	event1 = defCalendar.createEvent({
 		                        title: post.title,
 		                        notes: post.description,
 		                        location: post.place,
@@ -190,7 +205,8 @@ function performCalendarWriteFunctions(post){
 		                        availability: Ti.Calendar.AVAILABILITY_FREE,
 		                        allDay: false,
 		     });
-  
+		    }
+		   
 	      	event1.save(Ti.Calendar.SPAN_THISEVENT);
 	    } 
 	    else if (ev.index == 1) { // clicked "No"

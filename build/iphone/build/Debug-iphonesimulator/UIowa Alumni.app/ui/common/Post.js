@@ -12,6 +12,7 @@ function Post(item) {//<----
     this.description = (new Description(item.description)).getDescription();
     this.pubDate = item.pubDate;
     this.postDate = item.postDate;
+    this.allDay = item.allDay;
     this.startDate = item.startDate;
     this.endDate = item.endDate;
     this.hlink = item.hlink;
