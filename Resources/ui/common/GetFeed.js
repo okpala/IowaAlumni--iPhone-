@@ -119,13 +119,16 @@ function GetFeed (feed){
                     snl: getRssText(item, 'snl'),
                     place: getRssText(item, 'place'),
                     title: getRssText(item, 'title'),
-                    url: getRssText(item, 'link'),
+                    link:  getRssText(item, 'link'),
+                    hlink: getRssText(item, 'hlink'),
                     description: getRssText(item, 'description'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
                     endDate: getRssText(item, 'endDate'),
                     category:getRssText(item, 'category')                         
             	});
+            	
+            	
                                         
            }
              else if (feed == Feeds.eventsSportsCategoryFeed()){
@@ -133,7 +136,8 @@ function GetFeed (feed){
                     snl: getRssText(item, 'snl'),
                     place: getRssText(item, 'place'),
                     title: getRssText(item, 'title'),
-                    url: getRssText(item, 'link'),
+                    link: getRssText(item, 'link'),
+                    hlink: getRssText(item, 'hlink'),
                     description: getRssText(item, 'description'),
                     pubDate: getRssText(item, 'pubDate'),
                     startDate: getRssText(item, 'startDate'),
@@ -147,7 +151,8 @@ function GetFeed (feed){
                 	snl: getRssText(item, 'snl'),
                     place: getRssText(item, 'place'),
                     title: getRssText(item, 'title'),
-                    url: getRssText(item, 'link'),
+                    link: getRssText(item, 'link'),
+                    hlink: getRssText(item, 'hlink'),
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
@@ -162,7 +167,8 @@ function GetFeed (feed){
                 	snl: getRssText(item, 'snl'),
                     place: getRssText(item, 'place'),
                     title: getRssText(item, 'title'),
-                    url: getRssText(item, 'link'),
+                    link: getRssText(item, 'link'),
+                    hlink: getRssText(item, 'hlink'),
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),
@@ -177,7 +183,8 @@ function GetFeed (feed){
                 	snl: getRssText(item, 'snl'),
                     place: getRssText(item, 'place'),
                     title: getRssText(item, 'title'),
-                    url: getRssText(item, 'link'),
+                    link: getRssText(item, 'link'),
+                    hlink: getRssText(item, 'hlink'),
                     description: getRssText(item, 'description'),
                     category: getRssText(item, 'category'),
                     pubDate: getRssText(item, 'pubDate'),

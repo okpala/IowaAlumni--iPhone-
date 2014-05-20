@@ -18,6 +18,7 @@ function Post(item) {//<----
     this.image = (new Description(item.description)).getImage();
     this.url = item.link;
     this.imageheight = (this.image!=null) ? getImageHeight(this.image) : null;
+   
     
 }
 function getImageHeight(img) {

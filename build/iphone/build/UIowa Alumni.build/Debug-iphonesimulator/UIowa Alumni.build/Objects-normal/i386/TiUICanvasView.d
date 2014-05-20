@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiUICanvasView.m
+  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiUICanvasView.m
