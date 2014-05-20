@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.m \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.m \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h

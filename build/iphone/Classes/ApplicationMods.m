@@ -35,7 +35,7 @@
 			@"name",
 			@"ti.map",
 			@"moduleid",
-			@"2.0.1",
+			@"2.0.2",
 			@"version",
 			@"fee93b77-8eb3-418c-8f04-013664c4af83",
 			@"guid",

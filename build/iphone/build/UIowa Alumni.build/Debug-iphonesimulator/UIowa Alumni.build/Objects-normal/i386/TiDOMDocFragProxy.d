@@ -1,23 +1,23 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMDocFragProxy.m \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMDocFragProxy.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMNodeProxy.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMDocFragProxy.m \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMDocFragProxy.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiDOMNodeProxy.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/GDataXMLNode.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/GDataXMLNode.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/tree.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/xmlversion.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include/libxml2/libxml/xmlexports.h \

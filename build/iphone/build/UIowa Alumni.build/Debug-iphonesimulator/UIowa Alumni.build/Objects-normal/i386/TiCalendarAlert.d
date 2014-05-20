@@ -1,26 +1,26 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiCalendarAlert.m \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiCalendarAlert.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiCalendarAlert.m \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiCalendarAlert.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiProxy.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiBase.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiThreading.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiPublicAPI.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiEvaluator.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollContext.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiCalendarEvent.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiUtils.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiDimension.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiColor.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/WebFont.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiFile.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBuffer.h \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/TiBlob.h
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollCallback.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollObject.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiBindingRunLoop.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiCalendarEvent.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiUtils.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiDimension.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiColor.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/WebFont.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiFile.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiBuffer.h \
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/TiBlob.h

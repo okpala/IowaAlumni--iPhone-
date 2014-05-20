@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/localadmin/IowaAlumni--iPhone-/build/iphone/Classes/KrollCoverage.m
+  /Users/schmidt/IowaAlumni--iPhone-/build/iphone/Classes/KrollCoverage.m
